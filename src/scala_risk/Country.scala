@@ -1,14 +1,23 @@
 package scala_risk
 
 case class Country(name : String, var neighboring_countries : Set[Country], 
-                   var troops : Int, var owner : Player) {}
+                   var troops : Int, var owner : Player) {
+  override def toString(): String = {
+    var temp = "Name: " + name
+    temp += ", Neigbors: "
+    neighboring_countries.map { x => temp += x.name + " " }
+    temp += ", troops: " + troops
+    temp += ", owner: " + owner.name
+    return temp;
+  }
+}
 
 
 object Countries {
-  var country1 = Country("Northern Europe", null, 0, null)
-  var country2 = Country("Southern Europe", null, 0, null)
-  var country3 = Country("Western Europe", null, 0, null)
-  var country4 = Country("Ukraine", null, 0, null)
+  val country1 = Country("Northern Europe", Set.empty, 0, Player("Test", Colors.RED))
+  val country2 = Country("Southern Europe", Set.empty, 0,  Player("Test", Colors.RED))
+  val country3 = Country("Western Europe", Set.empty, 0,  Player("Test", Colors.RED))
+  val country4 = Country("Ukraine", Set.empty, 0,  Player("Test", Colors.RED))
     
   val n1 = Set(country2, country3, country4)
   val n2 = Set(country1, country3, country4)

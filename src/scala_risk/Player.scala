@@ -1,9 +1,11 @@
 package scala_risk
 
-case class Player(name : String, color : Colors) {
-  
+object Colors extends Enumeration {
+  type Colors = Value
+  val RED, YELLOW, GREEN, BLUE = Value
 }
 
-class Colors extends Enumeration {
-  val RED, YELLOW, GREEN, BLUE = Value
+import Colors._
+
+case class Player(name : String, color : Colors) {
 }
