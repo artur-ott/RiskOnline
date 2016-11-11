@@ -9,7 +9,7 @@ object Test {
     val x = 5
     val y = 7
     println(y+x)
-    println(Countries.country1.neighboring_countries)
+    //println(Countries.country1.neighboring_countries)
     
   }
-}
+}  
