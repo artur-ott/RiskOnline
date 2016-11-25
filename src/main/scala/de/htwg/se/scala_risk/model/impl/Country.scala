@@ -1,4 +1,4 @@
-package scala_risk
+package de.htwg.se.scala_risk.model.impl
 
 case class Country(name : String, var neighboring_countries : Set[Country], 
                    var troops : Int, var owner : Player) {
@@ -20,16 +20,16 @@ object Countries {
 //  val country7 = Country("WESTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
 //  val country8 = Country("OSTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
 //  val country9 = Country("MITTELAMERIKA", Set.empty, 0, Player("Test", Colors.RED))
-  val country10 = Country("VENEZUELA", Set.empty, 0,  Player("Test", Colors.RED))
-  val country11 = Country("PERU", Set.empty, 0,  Player("Test", Colors.RED))
-  val country12 = Country("ARGENTINIEN", Set.empty, 0,  Player("Test", Colors.RED))
-  val country13 = Country("BRASILIEN", Set.empty, 0, Player("Test", Colors.RED))
-  val country14 = Country("NORDAFRIKA", Set.empty, 0,  Player("Test", Colors.RED))
-  val country15 = Country("ZENTRALAFRIKA", Set.empty, 0,  Player("Test", Colors.RED))
-  val country16 = Country("SUEDAFRIKA", Set.empty, 0,  Player("Test", Colors.RED))
-  val country17 = Country("MADAGASKAR", Set.empty, 0, Player("Test", Colors.RED))
-  val country18 = Country("OSTAFRIKA", Set.empty, 0,  Player("Test", Colors.RED))
-  val country19 = Country("AEGYPTEN", Set.empty, 0,  Player("Test", Colors.RED))
+  val country10 = Country("VENEZUELA", Set.empty, 0, Players.Player1)
+  val country11 = Country("PERU", Set.empty, 0, Players.Player1)
+  val country12 = Country("ARGENTINIEN", Set.empty, 0, Players.Player1)
+  val country13 = Country("BRASILIEN", Set.empty, 0, Players.Player1)
+  val country14 = Country("NORDAFRIKA", Set.empty, 0, Players.Player2)
+  val country15 = Country("ZENTRALAFRIKA", Set.empty, 0, Players.Player2)
+  val country16 = Country("SUEDAFRIKA", Set.empty, 0, Players.Player2)
+  val country17 = Country("MADAGASKAR", Set.empty, 0, Players.Player1)
+  val country18 = Country("OSTAFRIKA", Set.empty, 0,Players.Player2)
+  val country19 = Country("AEGYPTEN", Set.empty, 0, Players.Player2)
 //  val country20 = Country("SUEDEUROPA", Set.empty, 0,  Player("Test", Colors.RED))
 //  val country21 = Country("WESTEUROPA", Set.empty, 0, Player("Test", Colors.RED))
 //  val country22 = Country("NORDEUROPA", Set.empty, 0,  Player("Test", Colors.RED))
@@ -66,7 +66,7 @@ object Countries {
   val n10 = Set(country11, country13)
   val n11 = Set(country10, country12, country13)
   val n12 = Set(country11, country13)
-  val n13 = Set(country10, country11, country12)
+  val n13 = Set(country10, country11, country12, country14)
   val n14 = Set(country13, country15, country18, country19)
   val n15 = Set(country14, country16, country18)
   val n16 = Set(country15, country17, country18)

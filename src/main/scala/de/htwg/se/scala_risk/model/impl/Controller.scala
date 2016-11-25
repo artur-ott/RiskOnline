@@ -1,4 +1,6 @@
-package scala_risk
+package de.htwg.se.scala_risk.model.impl
+
+
 
 class Controller {
   
