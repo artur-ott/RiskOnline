@@ -9,12 +9,18 @@ import Colors._
 import Players._
 case class Player(name : String, color : Colors) {
     PlayerList = PlayerList ::: List(this)
+    def ==(that: Player): Boolean = 
+      if (this.name.equals(that.name) && this.color.equals(that.color)) 
+        true 
+      else 
+        false
+        
+    def !=(that: Player): Boolean = ! (this == that)
 }
 
 
 object Players {
   var PlayerList : List[Player] = List()
-  val Player1 = Player("Jaromir", Colors.RED)
-  val Player2 = Player("Jamal", Colors.BLUE)
+  val Default = Player("", null.asInstanceOf[Colors])
 }
 

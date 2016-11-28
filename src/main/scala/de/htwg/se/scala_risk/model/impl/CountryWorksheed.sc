@@ -6,33 +6,32 @@ object CountryWorksheed {
 	x                                         //> res1: Int = 1
 	"hi"                                      //> res2: String("hi") = hi
 	Countries.country10                       //> res3: de.htwg.se.scala_risk.model.impl.Country = Name: VENEZUELA, Neigbors: 
-                                                  //| PERU BRASILIEN , troops: 0, owner: Jaromir
+                                                  //| PERU BRASILIEN , troops: 0, owner: 
 	Countries.country11                       //> res4: de.htwg.se.scala_risk.model.impl.Country = Name: PERU, Neigbors: VENEZ
-                                                  //| UELA ARGENTINIEN BRASILIEN , troops: 0, owner: Jaromir
+                                                  //| UELA ARGENTINIEN BRASILIEN , troops: 0, owner: 
 	Countries.country12                       //> res5: de.htwg.se.scala_risk.model.impl.Country = Name: ARGENTINIEN, Neigbors
-                                                  //| : PERU BRASILIEN , troops: 0, owner: Jaromir
+                                                  //| : PERU BRASILIEN , troops: 0, owner: 
 	Countries.country13                       //> res6: de.htwg.se.scala_risk.model.impl.Country = Name: BRASILIEN, Neigbors: 
-                                                  //| VENEZUELA PERU ARGENTINIEN NORDAFRIKA , troops: 0, owner: Jaromir
+                                                  //| VENEZUELA PERU ARGENTINIEN NORDAFRIKA , troops: 0, owner: 
 	Countries.country14                       //> res7: de.htwg.se.scala_risk.model.impl.Country = Name: NORDAFRIKA, Neigbors:
-                                                  //|  BRASILIEN ZENTRALAFRIKA OSTAFRIKA AEGYPTEN , troops: 0, owner: Jamal
+                                                  //|  BRASILIEN ZENTRALAFRIKA OSTAFRIKA AEGYPTEN , troops: 0, owner: 
 	Countries.country15                       //> res8: de.htwg.se.scala_risk.model.impl.Country = Name: ZENTRALAFRIKA, Neigbo
-                                                  //| rs: NORDAFRIKA SUEDAFRIKA OSTAFRIKA , troops: 0, owner: Jamal
+                                                  //| rs: NORDAFRIKA SUEDAFRIKA OSTAFRIKA , troops: 0, owner: 
 	Countries.country16                       //> res9: de.htwg.se.scala_risk.model.impl.Country = Name: SUEDAFRIKA, Neigbors:
-                                                  //|  ZENTRALAFRIKA MADAGASKAR OSTAFRIKA , troops: 0, owner: Jamal
+                                                  //|  ZENTRALAFRIKA MADAGASKAR OSTAFRIKA , troops: 0, owner: 
 	Countries.country17                       //> res10: de.htwg.se.scala_risk.model.impl.Country = Name: MADAGASKAR, Neigbors
-                                                  //| : SUEDAFRIKA OSTAFRIKA , troops: 0, owner: Jaromir
+                                                  //| : SUEDAFRIKA OSTAFRIKA , troops: 0, owner: 
 	Countries.country18                       //> res11: de.htwg.se.scala_risk.model.impl.Country = Name: OSTAFRIKA, Neigbors:
-                                                  //|  NORDAFRIKA SUEDAFRIKA AEGYPTEN ZENTRALAFRIKA MADAGASKAR , troops: 0, owner:
-                                                  //|  Jamal
+                                                  //|  SUEDAFRIKA MADAGASKAR ZENTRALAFRIKA NORDAFRIKA AEGYPTEN , troops: 0, owner:
+                                                  //|  
 	Countries.country19                       //> res12: de.htwg.se.scala_risk.model.impl.Country = Name: AEGYPTEN, Neigbors: 
-                                                  //| NORDAFRIKA OSTAFRIKA , troops: 0, owner: Jamal
-	Players.Player1                           //> res13: de.htwg.se.scala_risk.model.impl.Player = Player(Jaromir,RED)
+                                                  //| NORDAFRIKA OSTAFRIKA , troops: 0, owner: 
 	
 	val Player1 = Player("Pro", Colors.RED)   //> Player1  : de.htwg.se.scala_risk.model.impl.Player = Player(Pro,RED)
 	val Player2 = Player("Noob", Colors.BLUE) //> Player2  : de.htwg.se.scala_risk.model.impl.Player = Player(Noob,BLUE)
-	Players.PlayerList                        //> res14: List[de.htwg.se.scala_risk.model.impl.Player] = List(Player(Jaromir,R
-                                                  //| ED), Player(Jamal,BLUE), Player(Pro,RED), Player(Noob,BLUE))
-	
+	Players.PlayerList                        //> res13: List[de.htwg.se.scala_risk.model.impl.Player] = List(Player(,null), P
+                                                  //| layer(Pro,RED), Player(Noob,BLUE))
+	Player1 != Player2                        //> res14: Boolean = true
 	
 	
 
