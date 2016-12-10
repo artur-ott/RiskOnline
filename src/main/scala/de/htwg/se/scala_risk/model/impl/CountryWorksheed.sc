@@ -1,4 +1,6 @@
 package de.htwg.se.scala_risk.model.impl
+import de.htwg.se.scala_risk.model.Players
+import de.htwg.se.scala_risk.model.Countries
 
 object CountryWorksheed {
 	"hi"                                      //> res0: String("hi") = hi
@@ -28,10 +30,22 @@ object CountryWorksheed {
                                                   //| NORDAFRIKA OSTAFRIKA , troops: 0, owner: 
 	
 	val Player1 = Player("Pro", Colors.RED)   //> Player1  : de.htwg.se.scala_risk.model.impl.Player = Player(Pro,RED)
-	val Player2 = Player("Noob", Colors.BLUE) //> Player2  : de.htwg.se.scala_risk.model.impl.Player = Player(Noob,BLUE)
-	Players.PlayerList                        //> res13: List[de.htwg.se.scala_risk.model.impl.Player] = List(Player(,null), P
-                                                  //| layer(Pro,RED), Player(Noob,BLUE))
+	val Player2 = Player("Noob", Colors.RED)  //> Player2  : de.htwg.se.scala_risk.model.impl.Player = Player(Noob,RED)
+	Players.playerList                        //> res13: List[de.htwg.se.scala_risk.model.impl.Player] = List()
 	Player1 != Player2                        //> res14: Boolean = true
+	Players.addPlayers(List(("noob", Colors.RED), ("pro", Colors.BLUE)))
+                                                  //> YELLOW
+                                                  //| GREEN
+                                                  //| noob
+                                                  //| pro
+	Players.playerList.length                 //> res15: Int = 2
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
