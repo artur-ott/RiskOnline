@@ -1,6 +1,6 @@
 package de.htwg.se.scala_risk.model.impl
 import org.scalatest.WordSpec
-import de.htwg.se.scala_risk.model.Players
+import de.htwg.se.scala_risk.model.World.Players
 
 import org.scalatest.Matchers
 
@@ -44,6 +44,15 @@ class PlayerSpec extends WordSpec with Matchers {
     }
     "that are not equal" in {
       Players.playerList(0) != Players.playerList(1) shouldBe true
+      //Players.playerList.
+      // todo: ÄNDERN!
+    }
+  }
+  
+  "The player list after adding two players with the same color" should {
+    Players.addPlayers(List(("Julia", Colors.GREEN), ("Anna", Colors.YELLOW)))
+    "contain only the first player" in {
+      Players.playerList.length should be (1)
     }
   }
 

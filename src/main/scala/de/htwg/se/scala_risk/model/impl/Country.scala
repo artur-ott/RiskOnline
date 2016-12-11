@@ -1,5 +1,5 @@
 package de.htwg.se.scala_risk.model.impl
-import de.htwg.se.scala_risk.model.Players
+import de.htwg.se.scala_risk.model.World.Players
 
 case class Country(name: String, var neighboring_countries: Set[Country] = Set.empty,
     var troops: Int = 0, var owner: Player = Players.Default) {

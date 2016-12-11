@@ -3,7 +3,7 @@ import de.htwg.se.scala_risk.model.impl.Country
 import de.htwg.se.scala_risk.model.impl.Colors._
 import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
 
-class World {}
+object World {
   object Countries {
     //  val country1 = Country("ALASKA", Set.empty, 0, Player("Test", Colors.RED))
     //  val country2 = Country("NORDWEST-TERRITORIEN", Set.empty, 0,  Player("Test", Colors.RED))
@@ -154,4 +154,5 @@ object Players {
     playerList.foreach { p => println(p.name) }
 
   }
+}
 }
