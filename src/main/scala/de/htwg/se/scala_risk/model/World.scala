@@ -1,7 +1,10 @@
 package de.htwg.se.scala_risk.model
 import de.htwg.se.scala_risk.model.impl.Country
+
 import de.htwg.se.scala_risk.model.impl.Colors._
 import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
+import de.htwg.se.scala_risk.model.impl.Colors
+
 
 object World {
   object Countries {
@@ -136,23 +139,40 @@ object World {
     //  country41.neighboring_countries = n3
     //  country42.neighboring_countries = n4
   }
+  // Object to save all the players and colors.
+  object Players {
+    // List to hold the players.
+    var playerList: List[ImpPlayer] = List()
 
-object Players {
-  var playerList: List[ImpPlayer] = List()
-  var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
-  val Default = ImpPlayer("", null.asInstanceOf[Color])
-  def addPlayers(array: List[(String, Color)]) /*: String = */ {
-    for (tupel <- array) {
-      if (colorList.contains(tupel._2)) {
-        playerList = playerList ::: List(ImpPlayer(tupel._1, tupel._2))
-        colorList = colorList.filter { x => x != tupel._2 }
-      } else {
-        println("Color already taken!")
-      }
+    // List to hold the remaining colors.
+    var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
+
+    val Default = ImpPlayer("", null.asInstanceOf[Color])
+
+    // Function to add Players (defined by (String, String)) to the List
+    // and remove the taken colors from colorList.
+    def addPlayer(name : String, color : String) /*: String = */ {
+        var colorFromString: Color = null.asInstanceOf[Color]
+        try {
+          // Check if the string represents a valid color.
+          colorFromString = Colors.withName(color.toUpperCase())
+        } catch {
+          case _: NoSuchElementException => {
+            println("Invalid color!")
+            return
+          }
+        }
+
+        if (colorList.contains(colorFromString)) {
+          playerList = playerList ::: List(ImpPlayer(name, colorFromString))
+          colorList = colorList.filter { x => x != colorFromString }
+        } else {
+          println("Color already taken!")
+        }
+
+      //colorList.foreach { c => println(c) }
+      //PlayerList.foreach { p => println(p.name) }
+
     }
-    colorList.foreach { c => println(c) }
-    playerList.foreach { p => println(p.name) }
-
   }
-}
 }
