@@ -1,8 +1,8 @@
 package de.htwg.se.scala_risk.model
-import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
+import de.htwg.se.scala_risk.model.impl.Colors._
 
 trait Player {
-  def ==(that: ImpPlayer): Boolean
-  def !=(that: ImpPlayer): Boolean
-  def getName: String
+  def getName : String
+  def getColor : Color
+  def getOwnedCountries : List[Country]
 }

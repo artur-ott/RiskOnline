@@ -1,12 +1,23 @@
 package de.htwg.se.scala_risk.model.impl
-case class Continent(name: String, countries: Set[Country],
-  var ownedBy: Player, bonusTroups: Int) {}
+import de.htwg.se.scala_risk.model.{ Country => TCountry }
+import de.htwg.se.scala_risk.model.{ Player => TPlayer}
+import de.htwg.se.scala_risk.model.World.Continents
+import de.htwg.se.scala_risk.model.World.Countries
+import de.htwg.se.scala_risk.model.World.Players
+case class Continent(name: String, countries: Set[TCountry],
+                     val owner: TPlayer, bonusTroups: Int) extends de.htwg.se.scala_risk.model.Continent {
+  override def checkOwner() = {
+    val ownerCandidate = this.countries.head.getOwner
+    val allOwnedByOne : Boolean = this.countries.forall { x => x == ownerCandidate }
+    Continents.listContinents.filter { x => x != this }
+    if (allOwnedByOne) {
+      Continents.listContinents = this.copy(owner = ownerCandidate) :: Continents.listContinents      
+    } else {
+      Continents.listContinents = this.copy(owner = Players.Default) :: Continents.listContinents
+    }
 
-//import Countries._
-//object Continents {
-//  val countriesOfContinent1 = Set(country10, country11, country12, country13)
-//  val countriesOfContinent2 = Set(country14, country15, country16, country17, country18, country19);
-//  
-//  val continent1 = Continent("SUEDAMERIKA", countriesOfContinent1, null, 2) 
-//  val continent2 = Continent("AFRIKA", countriesOfContinent2, null, 3)
-//}
+  }
+  override def getOwner() : TPlayer = return this.owner
+  override def getName() : String = return this.name
+  override def getBonusTroops() : Int = return this.bonusTroups
+}
