@@ -1,5 +1,6 @@
 package de.htwg.se.scala_risk.controller.impl
 import de.htwg.se.scala_risk.controller.{ State => IState }
+import de.htwg.se.scala_risk.model.{ Player => IPlayer }
 import de.htwg.se.scala_risk.model.World.Players
 
 //TODO: durch traits ersetzen
@@ -13,7 +14,7 @@ object State {
 
   currentState = START_STATE
 
-  def getPlayer(): Player = currentPlayer
-  def getOpponents: List[Player] = Players.playerList.filterNot { x => x == currentPlayer }
+  def getPlayer(): IPlayer = currentPlayer
+  def getOpponents: List[IPlayer] = Players.playerList.filterNot { x => x == currentPlayer }
   def getCurrentState: IState = currentState
 }

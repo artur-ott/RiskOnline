@@ -1,8 +1,26 @@
 package de.htwg.se.scala_risk.model
 import de.htwg.se.scala_risk.model.impl.Colors._
-
+import scala.collection._
+/**
+ * Trait Player is the interface for players.
+ * @author Nico Lutz
+ */
 trait Player {
-  def getName : String
-  def getColor : Color
-  def getOwnedCountries : List[Country]
+  /**
+   * Returns the name of the player.
+   * @return Name of the player.
+   */
+  def getName: String
+  
+  /**
+   * Returns the color of the player.
+   * @return Color of the player.
+   */
+  def getColor: Color
+  
+  /**
+   * Returns all countries the player owns as a Set.
+   * @return Set of countries.
+   */
+  def getOwnedCountries: immutable.Set[Country]
 }

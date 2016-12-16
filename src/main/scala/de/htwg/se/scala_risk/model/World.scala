@@ -4,8 +4,16 @@ import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
 import de.htwg.se.scala_risk.model.impl.{ Country => ImpCountry }
 import de.htwg.se.scala_risk.model.impl.{ Continent => ImpContinent }
 import de.htwg.se.scala_risk.model.impl.Colors
-
+import jdk.nashorn.internal.ir.annotations.Immutable
+/**
+ * This object represents the whole world of ScalaRisk.
+ * @author Nico Lutz
+ */
 object World {
+  /**
+   * This object holds all the countries of ScalaRisk.
+   * @author Nico Lutz
+   */
   object Countries {
     //  val country1 = Country("ALASKA", Set.empty, 0, Player("Test", Colors.RED))
     //  val country2 = Country("NORDWEST-TERRITORIEN", Set.empty, 0,  Player("Test", Colors.RED))
@@ -148,41 +156,33 @@ object World {
     //  country41.neighboring_countries = n3
     //  country42.neighboring_countries = n4
 
-    var listCountries: List[Country] = List(country10, country11, country12, country13, country14,
+    import scala.collection._
+    var listCountries = mutable.Buffer(country10, country11, country12, country13, country14,
       country15, country16, country17, country18, country19)
-
-    def setTroops(country: Country, number: Int) {
-      // Downcast to type Country.
-      val c = country.asInstanceOf[ImpCountry]
-      if (listCountries.contains(c)) {
-        listCountries = listCountries.filter { x => x != c }
-        listCountries = c.copy(troops = number) :: listCountries
-      }
-    }
   }
-  // Object to save all the players and colors.
+  /**
+   * This object holds all the players of the current game.
+   * @author Nico Lutz
+   */
   object Players {
     // List to hold the players.
-    var playerList: List[ImpPlayer] = List()
+    var playerList: List[Player] = List()
 
     // List to hold the remaining colors.
     var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
-
+    // Default Player e.g. if a country or a continent is not occupied yet.
     val Default = ImpPlayer("", null.asInstanceOf[Color])
-
-    // Function to add Players (defined by (String, String)) to the List
-    // and remove the taken colors from colorList.
+    /**
+     * Function to add Players (defined by (String, String)) to the List
+     * and remove the taken colors from colorList. The players name and color
+     * are Strings because the controller passes them the way it receives input
+     * from the view layer.
+     * 
+     * @param name Name of the player as a String 
+     * @param color
+     */
     def addPlayer(name: String, color: String) /*: String = */ {
-      var colorFromString: Color = null.asInstanceOf[Color]
-      try {
-        // Check if the string represents a valid color.
-        colorFromString = Colors.withName(color.toUpperCase())
-      } catch {
-        case _: NoSuchElementException => {
-          println("Invalid color!")
-          return
-        }
-      }
+      var colorFromString: Color = stringToColor(color)
       if (colorList.contains(colorFromString)) {
         playerList = ImpPlayer(name, colorFromString) :: playerList
         colorList = colorList.filter { x => x != colorFromString }
@@ -190,15 +190,56 @@ object World {
         println("Color already taken!")
       }
     }
-  }
-  import de.htwg.se.scala_risk.model.World.Countries._
-  import de.htwg.se.scala_risk.model.impl.Continent
-  object Continents {
-    var listContinents : List[ImpContinent] = List()
-    val countriesOfContinent1 : Set[Country] = Set(country10, country11, country12, country13)
-    val countriesOfContinent2 : Set[Country] = Set(country14, country15, country16, country17, country18, country19);
+    /**
+     * This function transforms a String representation of a color into a player
+     * usint stringToColor(color : String) (the color is unique).
+     * 
+     * @param String representation of a color.
+     * @return Player associated with the color, default player if 
+     * color does not exist or is not taken.
+     */
+    def getPlayerFromColorString(color : String): Player = {
+      val playerInList = Players.playerList.filter { x => x.getColor == stringToColor(color) }
+      if (playerInList.length == 1) playerInList(0) else Players.Default
+    }
     
-    val continent1 = Continent("SUEDAMERIKA", countriesOfContinent1, null, 2) 
-    val continent2 = Continent("AFRIKA", countriesOfContinent2, null, 3) 
+    /**
+     * This function transforms a String representation of a color into a 
+     * color of type "Color".
+     * 
+     * @param String representation of a color.
+     * @return The corresponding color or an error code if the color does not exist.
+     */
+    private[Players] def stringToColor(color : String): Color = {
+      var colorFromString: Color = null.asInstanceOf[Color]
+      try {
+        // Check if the string represents a valid color.
+        colorFromString = Colors.withName(color.toUpperCase())
+      } catch {
+        case _: NoSuchElementException => {
+          println("Invalid color!")
+          return null
+        }
+      }
+      return colorFromString
+    }
+  }
+
+  import de.htwg.se.scala_risk.model.World.Countries
+  import de.htwg.se.scala_risk.model.impl.{ Continent => ImpContinent }
+  import scala.collection._
+
+  /**
+   * This objects holds all the continents of ScalaRisk.
+   * @author Nico Lutz
+   */
+  object Continents {
+    val countriesOfContinent1: immutable.Set[Int] = immutable.Set(0, 1, 2, 3)
+    val countriesOfContinent2: immutable.Set[Int] = immutable.Set(4, 5, 6, 7, 8, 9);
+
+    val continent1 = ImpContinent("SUEDAMERIKA", countriesOfContinent1, bonusTroops = 2)
+    val continent2 = ImpContinent("AFRIKA", countriesOfContinent2, bonusTroops = 3)
+
+    var listContinents: mutable.Buffer[Continent] = mutable.Buffer(continent1, continent2)
   }
 }
