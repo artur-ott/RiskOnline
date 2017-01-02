@@ -95,7 +95,7 @@ class PlayerSpec extends WordSpec with Matchers {
     val player3 = Player("Christian", YELLOW)
     "contain only the players with different colors" in {
       update()
-      
+
       Players.addPlayer("Julia", "GREEN")
       Players.addPlayer("Anna", "GREEN")
       Players.addPlayer("Christian", "YELLOW")
@@ -155,7 +155,7 @@ class PlayerSpec extends WordSpec with Matchers {
   "A player after assigning some countries to him it" should {
     "return these countries when asked for his owned countries" in {
       update()
-      
+
       Players.addPlayer("Carl", "GREEN")
       val player = Players.playerList(0)
       val idxcountry1 = 0
@@ -186,7 +186,7 @@ class PlayerSpec extends WordSpec with Matchers {
       returnPlayer should be(Players.playerList(0))
     }
   }
-  
+
   "After searching an existing player by a valid color with mixed upper-/lowercases it" should {
     "return this player" in {
       Players.addPlayer("Sandra", "YELLOW")
@@ -206,11 +206,11 @@ class PlayerSpec extends WordSpec with Matchers {
       returnPlayer should be(Players.Default)
     }
   }
-  
+
   def update() = {
     // Clean playerList and colorList.
-    Players.playerList = List()
-    Players.colorList = List(RED, YELLOW, GREEN, BLUE)    
+    Players.playerList = scala.collection.mutable.ArrayBuffer()
+    Players.colorList = List(RED, YELLOW, GREEN, BLUE)
   }
 
   // todo: Add tests for return values of the addPlayer function!

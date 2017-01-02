@@ -11,13 +11,13 @@ trait Player {
    * @return Name of the player.
    */
   def getName: String
-  
+
   /**
    * Returns the color of the player.
    * @return Color of the player.
    */
   def getColor: Color
-  
+
   /**
    * Returns all countries the player owns as a Set.
    * @return Set of countries.

@@ -11,7 +11,7 @@ import de.htwg.se.scala_risk.model.{ Player => TPlayer }
  */
 case class Country(name: String, neighboring_countries: Set[TCountry] = Set.empty,
     troops: Int = 0, owner: TPlayer = Players.Default) extends de.htwg.se.scala_risk.model.Country {
-  
+
   override def getName(): String = return this.name
   override def getTroops(): Int = return this.troops
   override def setTroops(number: Int) = if (number > 0) Countries.listCountries(Countries.listCountries.indexOf(this)) = this.copy(troops = number)

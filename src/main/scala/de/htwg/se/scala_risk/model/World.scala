@@ -4,7 +4,8 @@ import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
 import de.htwg.se.scala_risk.model.impl.{ Country => ImpCountry }
 import de.htwg.se.scala_risk.model.impl.{ Continent => ImpContinent }
 import de.htwg.se.scala_risk.model.impl.Colors
-import jdk.nashorn.internal.ir.annotations.Immutable
+import scala.collection.mutable.ArrayBuffer
+
 /**
  * This object represents the whole world of ScalaRisk.
  * @author Nico Lutz
@@ -157,7 +158,7 @@ object World {
     //  country42.neighboring_countries = n4
 
     import scala.collection._
-    var listCountries = mutable.Buffer(country10, country11, country12, country13, country14,
+    var listCountries = ArrayBuffer(country10, country11, country12, country13, country14,
       country15, country16, country17, country18, country19)
   }
   /**
@@ -166,25 +167,27 @@ object World {
    */
   object Players {
     // List to hold the players.
-    var playerList: List[Player] = List()
+    var playerList: ArrayBuffer[Player] = ArrayBuffer()
 
     // List to hold the remaining colors.
     var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
     // Default Player e.g. if a country or a continent is not occupied yet.
     val Default = ImpPlayer("", null.asInstanceOf[Color])
+    
+    var currentPlayer = -1
     /**
      * Function to add Players (defined by (String, String)) to the List
      * and remove the taken colors from colorList. The players name and color
      * are Strings because the controller passes them the way it receives input
      * from the view layer.
-     * 
-     * @param name Name of the player as a String 
+     *
+     * @param name Name of the player as a String
      * @param color
      */
     def addPlayer(name: String, color: String) /*: String = */ {
       var colorFromString: Color = stringToColor(color)
       if (colorList.contains(colorFromString)) {
-        playerList = ImpPlayer(name, colorFromString) :: playerList
+        playerList += ImpPlayer(name, colorFromString)
         colorList = colorList.filter { x => x != colorFromString }
       } else {
         println("Color already taken!")
@@ -193,24 +196,24 @@ object World {
     /**
      * This function transforms a String representation of a color into a player
      * usint stringToColor(color : String) (the color is unique).
-     * 
+     *
      * @param String representation of a color.
-     * @return Player associated with the color, default player if 
+     * @return Player associated with the color, default player if
      * color does not exist or is not taken.
      */
-    def getPlayerFromColorString(color : String): Player = {
+    def getPlayerFromColorString(color: String): Player = {
       val playerInList = Players.playerList.filter { x => x.getColor == stringToColor(color) }
       if (playerInList.length == 1) playerInList(0) else Players.Default
     }
-    
+
     /**
-     * This function transforms a String representation of a color into a 
+     * This function transforms a String representation of a color into a
      * color of type "Color".
-     * 
+     *
      * @param String representation of a color.
      * @return The corresponding color or an error code if the color does not exist.
      */
-    private[Players] def stringToColor(color : String): Color = {
+    private[Players] def stringToColor(color: String): Color = {
       var colorFromString: Color = null.asInstanceOf[Color]
       try {
         // Check if the string represents a valid color.
@@ -218,10 +221,17 @@ object World {
       } catch {
         case _: NoSuchElementException => {
           println("Invalid color!")
-          return null
+          null
         }
       }
-      return colorFromString
+      colorFromString
+    }
+    
+    def nextPlayer(): Player = {
+      currentPlayer += 1
+      if (currentPlayer >= playerList.length)
+        currentPlayer = 0
+      playerList(currentPlayer)
     }
   }
 

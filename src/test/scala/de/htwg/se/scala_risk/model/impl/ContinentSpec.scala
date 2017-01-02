@@ -8,7 +8,6 @@ import de.htwg.se.scala_risk.model.World.Countries
 import de.htwg.se.scala_risk.model.World.Players
 import de.htwg.se.scala_risk.model.impl.Colors._
 
-
 import scala.collection._
 
 class ContinentSpec extends WordSpec with Matchers {
@@ -40,24 +39,24 @@ class ContinentSpec extends WordSpec with Matchers {
       afrika.getOwner() should be(Players.playerList(0))
     }
   }
-  
+
   "After a player owning a continent loses one country of it,it" should {
     "not be the owner of the continent anymore" in {
       update()
-      
+
       Players.addPlayer("Rick", "YELLOW")
       Players.addPlayer("Rebecca", "BLUE")
       afrika.getIncludedCountries.foreach { x => x.setOwner(Players.playerList(0)) }
       afrika.getOwner() should be(Players.playerList(1))
-      
+
       afrika.getIncludedCountries().head.setOwner(Players.playerList(1))
-      afrika.getOwner() should be (Players.Default)
+      afrika.getOwner() should be(Players.Default)
     }
   }
-  
+
   def update() = {
     // Clean playerList and colorList.
-    Players.playerList = List()
-    Players.colorList = List(RED, YELLOW, GREEN, BLUE)    
+    Players.playerList = scala.collection.mutable.ArrayBuffer()
+    Players.colorList = List(RED, YELLOW, GREEN, BLUE)
   }
 }

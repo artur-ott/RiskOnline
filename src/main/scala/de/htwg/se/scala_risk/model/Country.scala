@@ -9,32 +9,32 @@ trait Country {
    * @return Name of the country.
    */
   def getName: String
-  
+
   /**
    * Returns the set of neighboring countries of a country.
    * @return Neighboring countries.
    */
   def getNeighboringCountries: Set[Country]
-  
+
   /**
    * Returns the amount of troops stationed in a country.
    * @return Number of troops.
    */
   def getTroops: Int
-  
+
   /**
-   * Sets the troops of a country to a specific value 
+   * Sets the troops of a country to a specific value
    * e.g. when reinfocing or when a player loses troops.
    * @param number new amount of troops of the country.
    */
   def setTroops(number: Int)
-  
+
   /**
    * Returns the player owning the country.
    * @return Owner.
    */
   def getOwner: Player
-  
+
   /**
    * Sets the owner of the country to the argument
    * e.g. when a player conquers a country or
