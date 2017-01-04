@@ -11,7 +11,8 @@ class GameLogicSpec extends WordSpec with Matchers {
   val gameLogic: GameLogic = new GameLogic
 
   "Created players \"Player1, Red\" and \"Player2, Blue\"" should {
-    gameLogic.setPlayers(("Player1", "RED") :: ("Player2", "BLUE") :: Nil)
+    gameLogic.setPlayer(("Player1", "RED"))
+    gameLogic.setPlayer(("Player2", "BLUE"))
     "be found in the player list" in {
       Players.playerList.length should be(2)
     }
