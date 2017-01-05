@@ -25,11 +25,11 @@ object World {
     //  val country7 = Country("WESTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
     //  val country8 = Country("OSTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
     //  val country9 = Country("MITTELAMERIKA", Set.empty, 0, Player("Test", Colors.RED))
-    var country10 = ImpCountry("VENEZUELA")
-    var country11 = ImpCountry("PERU")
-    var country12 = ImpCountry("ARGENTINIEN")
-    var country13 = ImpCountry("BRASILIEN")
-    var country14 = ImpCountry("NORDAFRIKA")
+    private[model] var country10 = ImpCountry("VENEZUELA")
+    private[model] var country11 = ImpCountry("PERU")
+    private[model] var country12 = ImpCountry("ARGENTINIEN")
+    private[model] var country13 = ImpCountry("BRASILIEN")
+    private[model] var country14 = ImpCountry("NORDAFRIKA")
     var country15 = ImpCountry("ZENTRALAFRIKA")
     var country16 = ImpCountry("SUEDAFRIKA")
     var country17 = ImpCountry("MADAGASKAR")
@@ -158,7 +158,7 @@ object World {
     //  country42.neighboring_countries = n4
 
     import scala.collection._
-    var listCountries = ArrayBuffer(country10, country11, country12, country13, country14,
+    val listCountries = ArrayBuffer(country10, country11, country12, country13, country14,
       country15, country16, country17, country18, country19)
   }
   /**
@@ -215,16 +215,11 @@ object World {
      */
     private[Players] def stringToColor(color: String): Color = {
       var colorFromString: Color = null.asInstanceOf[Color]
-      try {
+ 
         // Check if the string represents a valid color.
         colorFromString = Colors.withName(color.toUpperCase())
-      } catch {
-        case _: NoSuchElementException => {
-          println("Invalid color!")
-          null
-        }
-      }
-      colorFromString
+
+      return colorFromString
     }
     
     def nextPlayer(): Player = {
