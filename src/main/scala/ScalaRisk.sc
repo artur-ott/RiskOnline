@@ -6,9 +6,9 @@ import de.htwg.se.scala_risk.view.TUI
 import de.htwg.se.scala_risk.util.Statuses
 
 object ScalaRiskWorksheet {
-	ScalaRisk.getInstance()                   //> res0: SRisk = ScalaRisk$Risk@726f3b58
+	ScalaRisk.getInstance()                   //> res0: SRisk = ScalaRisk$Risk@ee7d9f1
 	val gl = new GameLogic                    //> gl  : de.htwg.se.scala_risk.controller.impl.GameLogic = de.htwg.se.scala_ris
-                                                  //| k.controller.impl.GameLogic@153f5a29
+                                                  //| k.controller.impl.GameLogic@69d9c55
 	/*gl.setPlayer(("Test2", "YELLOW"))*/
 	gl.getAvailableColors                     //> res1: List[String] = List(RED, YELLOW, GREEN, BLUE)
 	 Players.playerList                       //> res2: scala.collection.mutable.ArrayBuffer[de.htwg.se.scala_risk.model.Playe
@@ -22,8 +22,8 @@ object ScalaRiskWorksheet {
                                                   //| 
                                                   //| _______________________________________________________________________
                                                   //| 
-                                                  //| tui  : de.htwg.se.scala_risk.view.TUI = de.htwg.se.scala_risk.view.TUI@548e7
-                                                  //| 350
+                                                  //| tui  : de.htwg.se.scala_risk.view.TUI = de.htwg.se.scala_risk.view.TUI@4667a
+                                                  //| e56
 	gl.setStatus(Statuses.INITIALIZE_PLAYERS) //> -----------------------------------------------------------------------
                                                   //| Following colors are still available: RED, YELLOW, GREEN, BLUE
                                                   //| Pleas enter v to start the game or a name and color which is available (name
@@ -33,25 +33,25 @@ object ScalaRiskWorksheet {
   gl.initializeGame                               //> 
                                                   //| [Test]
                                                   //| 
-                                                  //| VENEZUELA:                 Test                             0
+                                                  //| VENEZUELA:                 Test                             3
                                                   //| 
-                                                  //| PERU:                     Test1                             0
+                                                  //| PERU:                     Test1                             3
                                                   //| 
-                                                  //| ARGENTINIEN:               Test                             0
+                                                  //| ARGENTINIEN:               Test                             3
                                                   //| 
-                                                  //| BRASILIEN:                Test1                             0
+                                                  //| BRASILIEN:                Test1                             3
                                                   //| 
-                                                  //| NORDAFRIKA:                Test                             0
+                                                  //| NORDAFRIKA:                Test                             3
                                                   //| 
-                                                  //| ZENTRALAFRIKA:            Test1                             0
+                                                  //| ZENTRALAFRIKA:            Test1                             3
                                                   //| 
-                                                  //| SUEDAFRIKA:                Test                             0
+                                                  //| SUEDAFRIKA:                Test                             3
                                                   //| 
-                                                  //| MADAGASKAR:               Test1                             0
+                                                  //| MADAGASKAR:               Test1                             3
                                                   //| 
-                                                  //| OSTAFRIKA:                 Test                             0
+                                                  //| OSTAFRIKA:                 Test                             3
                                                   //| 
-                                                  //| AEGYPTEN:                 Test1                             0
+                                                  //| AEGYPTEN:                 Test1                             3
                                                   //| 
                                                   //| 
                                                   //| _______________________________________________________________________
@@ -66,25 +66,25 @@ object ScalaRiskWorksheet {
                                                   //| 
                                                   //| [Test]
                                                   //| 
-                                                  //| VENEZUELA:                 Test                             0
+                                                  //| VENEZUELA:                 Test                             3
                                                   //| 
-                                                  //| PERU:                     Test1                             0
+                                                  //| PERU:                     Test1                             3
                                                   //| 
-                                                  //| ARGENTINIEN:               Test                             0
+                                                  //| ARGENTINIEN:               Test                             3
                                                   //| 
-                                                  //| BRASILIEN:                Test1                             0
+                                                  //| BRASILIEN:                Test1                             3
                                                   //| 
-                                                  //| NORDAFRIKA:                Test                             0
+                                                  //| NORDAFRIKA:                Test                             3
                                                   //| 
-                                                  //| ZENTRALAFRIKA:            Test1                             0
+                                                  //| ZENTRALAFRIKA:            Test1                             3
                                                   //| 
-                                                  //| SUEDAFRIKA:                Test                             0
+                                                  //| SUEDAFRIKA:                Test                             3
                                                   //| 
-                                                  //| MADAGASKAR:               Test1                             0
+                                                  //| MADAGASKAR:               Test1                             3
                                                   //| 
-                                                  //| OSTAFRIKA:                 Test                             0
+                                                  //| OSTAFRIKA:                 Test                             3
                                                   //| 
-                                                  //| AEGYPTEN:                 Test1                             0
+                                                  //| AEGYPTEN:                 Test1                             3
                                                   //| 
                                                   //| 
                                                   //| _______________________________________________________________________
@@ -94,15 +94,15 @@ object ScalaRiskWorksheet {
                                                   //| e:     end turn          country:                show candidates
                                                   //| _______________________________________________________________________
                                                   //| 
-  gl.getCandidates()                              //> res3: List[(String, String, Int)] = List((VENEZUELA,Test,0), (ARGENTINIEN,Te
-                                                  //| st,0), (NORDAFRIKA,Test,0), (SUEDAFRIKA,Test,0), (OSTAFRIKA,Test,0))
+  gl.getCandidates()                              //> res3: List[(String, String, Int)] = List((VENEZUELA,Test,3), (ARGENTINIEN,Te
+                                                  //| st,3), (NORDAFRIKA,Test,3), (SUEDAFRIKA,Test,3), (OSTAFRIKA,Test,3))
   gl.addTroops("VENEZUELA", 3)
   gl.getCandidates("VENEZUELA")                   //> res4: List[(String, String, Int)] = List((PERU,"",0), (BRASILIEN,"",0))
   gl.attack("VENEZUELA", "BRASILIEN")             //> -----------------------------------------------------------------------
                                                   //| Test Test1
-                                                  //| 4     6
-                                                  //| 1     4
-                                                  //| -     2
+                                                  //| 6     4
+                                                  //| 6     4
+                                                  //| 5     1
   gl.moveTroops(3)                                //> java.lang.ArrayIndexOutOfBoundsException: -1
                                                   //| 	at scala.collection.mutable.ResizableArray$class.apply(ResizableArray.sc
                                                   //| ala:44)

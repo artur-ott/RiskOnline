@@ -1,6 +1,7 @@
+import scala.swing._
 trait SRisk
 
-object ScalaRisk {
+object ScalaRisk extends SimpleSwingApplication {
   private[this] var risk: Risk = _
 
   private final class Risk extends SRisk {
@@ -16,6 +17,6 @@ object ScalaRisk {
     }
 
   def main(args: Array[String]): Unit = {
-    this.getInstance();
+    //this.getInstance();
   }
 }

@@ -14,3 +14,5 @@ libraryDependencies ++= {
     "org.scalamock" %% "scalamock-scalatest-support" % scalaMockV       % "test"
   )
 }
+
+libraryDependencies += "org.scala-lang" % "scala-swing" % "2.11+"
