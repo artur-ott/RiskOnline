@@ -31,5 +31,5 @@ case class Player(name: String, color: Color) extends de.htwg.se.scala_risk.mode
   }
   override def getName(): String = return this.name
   override def getColor(): Color = return this.color
-  
+
 }

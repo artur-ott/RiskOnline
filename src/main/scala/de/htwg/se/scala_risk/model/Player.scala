@@ -23,6 +23,6 @@ trait Player {
    * @return Set of countries.
    */
   def getOwnedCountries: immutable.Set[Country]
-  
+
   def equals(that: Any): Boolean
 }

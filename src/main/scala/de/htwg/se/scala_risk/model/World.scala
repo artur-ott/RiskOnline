@@ -173,7 +173,7 @@ object World {
     var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
     // Default Player e.g. if a country or a continent is not occupied yet.
     val Default = ImpPlayer("", null.asInstanceOf[Color])
-    
+
     var currentPlayer = -1
     /**
      * Function to add Players (defined by (String, String)) to the List
@@ -226,7 +226,7 @@ object World {
       }
       colorFromString
     }
-    
+
     def nextPlayer(): Player = {
       currentPlayer += 1
       if (currentPlayer >= playerList.length)
