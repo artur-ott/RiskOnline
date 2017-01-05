@@ -1,7 +1,6 @@
-import scala.swing._
 trait SRisk
 
-object ScalaRisk extends SimpleSwingApplication {
+object ScalaRisk {
   private[this] var risk: Risk = _
 
   private final class Risk extends SRisk {
