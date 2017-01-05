@@ -49,8 +49,8 @@ class PlayerSpec extends WordSpec with Matchers {
       Players.addPlayer("Hans", "RED")
       Players.addPlayer("Peter", "BLUE")
       Players.playerList.length should be(2)
-      Players.playerList(1) should be(player1)
-      Players.playerList(0) should be(player2)
+      Players.playerList(0) should be(player1)
+      Players.playerList(1) should be(player2)
     }
   }
 
@@ -189,6 +189,7 @@ class PlayerSpec extends WordSpec with Matchers {
 
   "After searching an existing player by a valid color with mixed upper-/lowercases it" should {
     "return this player" in {
+      update()
       Players.addPlayer("Sandra", "YELLOW")
       val returnPlayer = Players.getPlayerFromColorString("yElLOw")
       returnPlayer should be(Players.playerList(0))
@@ -213,6 +214,6 @@ class PlayerSpec extends WordSpec with Matchers {
     Players.colorList = List(RED, YELLOW, GREEN, BLUE)
   }
 
-  // todo: Add tests for return values of the addPlayer function!
+  // TODO: Add tests for return values of the addPlayer function!
 
 }

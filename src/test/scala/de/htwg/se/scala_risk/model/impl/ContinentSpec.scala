@@ -47,7 +47,7 @@ class ContinentSpec extends WordSpec with Matchers {
       Players.addPlayer("Rick", "YELLOW")
       Players.addPlayer("Rebecca", "BLUE")
       afrika.getIncludedCountries.foreach { x => x.setOwner(Players.playerList(0)) }
-      afrika.getOwner() should be(Players.playerList(1))
+      afrika.getOwner() should be(Players.playerList(0))
 
       afrika.getIncludedCountries().head.setOwner(Players.playerList(1))
       afrika.getOwner() should be(Players.Default)
