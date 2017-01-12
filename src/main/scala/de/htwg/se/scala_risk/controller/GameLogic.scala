@@ -2,6 +2,7 @@ package de.htwg.se.scala_risk.controller
 
 import de.htwg.se.scala_risk.util.observer.Obserable
 import de.htwg.se.scala_risk.util.Statuses
+import de.htwg.se.scala_risk.model.Country
 
 trait GameLogic extends Obserable with PlayerController with CountryController {
   def getCountries: scala.collection.mutable.ArrayBuffer[(String, String, Int)]
@@ -11,4 +12,5 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   def getRolledDieces: (List[Int], List[Int])
   def getAttackerDefenderIndex: (Int, Int)
   def endTurn
+  def getCurrentPlayerColor() : String 
 }
