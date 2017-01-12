@@ -8,6 +8,7 @@ import de.htwg.se.scala_risk.model.World.Countries
 import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 
+
 class GameLogic extends TGameLogic {
 
   private[this] var status: Statuses.Value = Statuses.CREATE_GAME
@@ -218,4 +219,19 @@ class GameLogic extends TGameLogic {
   }
   // Function to get dice values from 1 to 6
   def randomDice(): Int = ((Math.random() * 6) + 1).toInt
+  
+  def getCountryFromString(country:String) : Country = {
+    val index = Countries.listCountries.indexWhere { x => x.name.toUpperCase().equals(country.toUpperCase()) }
+    if (index > 0) {
+      return Countries.listCountries(index)
+    }
+    return null
+
+  }
+  
+  
+  def getCurrentPlayerColor() : String = {
+    return Players.playerList(Players.currentPlayer).getColor.toString()
+  }
+  
 }
