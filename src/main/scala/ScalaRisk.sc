@@ -58,21 +58,32 @@ object ScalaRiskWorksheet {
                                                   //| 
                                                   //| q:     quit              country1, country2:     attack
                                                   //| n:     new game          country, x:             recruit
-                                                  //| e:     end turn          country:                show candidates
-                                                  //| _______________________________________________________________________
-                                                  //| 
-                                                  //| -----------------------------------------------------------------------
+                                                  //| e:     end turn          country:                show cand
+                                                  //| Output exceeds cutoff limit.
+  gl.getCandidates()                              //> res3: List[(String, String, Int)] = List((VENEZUELA,Test,3), (ARGENTINIEN,Te
+                                                  //| st,3), (NORDAFRIKA,Test,3), (SUEDAFRIKA,Test,3), (OSTAFRIKA,Test,3))
+  gl.addTroops("VENEZUELA", 3)                    //> PLAYER_SPREAD_TROOPS
+  gl.getCandidates("VENEZUELA")                   //> res4: List[(String, String, Int)] = List((PERU,"",0), (BRASILIEN,"",0))
+  gl.attack("VENEZUELA", "BRASILIEN")             //> -----------------------------------------------------------------------
+                                                  //| Test Test1
+                                                  //| 6     5
+                                                  //| 6     5
+                                                  //| 6     5
+  gl.moveTroops(2)
+  gl.endTurn                                      //> PLAYER_ATTACK
+  gl.endTurn                                      //> PLAYER_MOVE_TROOPS----------------------------------------------------------
+                                                  //| -------------
                                                   //| Troops to spread: 3
                                                   //| 
-                                                  //| [Test]
+                                                  //| [Test1]
                                                   //| 
-                                                  //| VENEZUELA:                 Test                             3
+                                                  //| VENEZUELA:                 Test                             4
                                                   //| 
                                                   //| PERU:                     Test1                             3
                                                   //| 
                                                   //| ARGENTINIEN:               Test                             3
                                                   //| 
-                                                  //| BRASILIEN:                Test1                             3
+                                                  //| BRASILIEN:                 Test                             2
                                                   //| 
                                                   //| NORDAFRIKA:                Test                             3
                                                   //| 
@@ -90,35 +101,6 @@ object ScalaRiskWorksheet {
                                                   //| _______________________________________________________________________
                                                   //| 
                                                   //| q:     quit              country1, country2:     attack
-                                                  //| n:     new game          country, x:             recruit
-                                                  //| e:     end turn          country:                show candidates
-                                                  //| _______________________________________________________________________
-                                                  //| 
-  gl.getCandidates()                              //> res3: List[(String, String, Int)] = List((VENEZUELA,Test,3), (ARGENTINIEN,Te
-                                                  //| st,3), (NORDAFRIKA,Test,3), (SUEDAFRIKA,Test,3), (OSTAFRIKA,Test,3))
-  gl.addTroops("VENEZUELA", 3)
-  gl.getCandidates("VENEZUELA")                   //> res4: List[(String, String, Int)] = List((PERU,"",0), (BRASILIEN,"",0))
-  gl.attack("VENEZUELA", "BRASILIEN")             //> -----------------------------------------------------------------------
-                                                  //| Test Test1
-                                                  //| 6     4
-                                                  //| 6     4
-                                                  //| 5     1
-  gl.moveTroops(3)                                //> java.lang.ArrayIndexOutOfBoundsException: -1
-                                                  //| 	at scala.collection.mutable.ResizableArray$class.apply(ResizableArray.sc
-                                                  //| ala:44)
-                                                  //| 	at scala.collection.mutable.ArrayBuffer.apply(ArrayBuffer.scala:48)
-                                                  //| 	at de.htwg.se.scala_risk.controller.impl.GameLogic.moveTroops(GameLogic.
-                                                  //| scala:184)
-                                                  //| 	at ScalaRiskWorksheet$$anonfun$main$1.apply$mcV$sp(ScalaRiskWorksheet.sc
-                                                  //| ala:23)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$$anonfun$$exe
-                                                  //| cute$1.apply$mcV$sp(WorksheetSupport.scala:76)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.redirected(W
-                                                  //| orksheetSupport.scala:65)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.$execute(Wor
-                                                  //| ksheetSupport.scala:75)
-                                                  //| 	at ScalaRiskWorksheet$.main(ScalaRiskWorksheet.scala:8)
-                                                  //| 	at ScalaRiskWorksheet.main(ScalaRiskWorksheet.scala)
-  gl.setStatus(Statuses.GAME_INITIALIZED)
+                                                  //| Output exceeds cutoff limit.
 	 
 }

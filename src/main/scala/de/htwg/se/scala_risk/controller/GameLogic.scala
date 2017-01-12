@@ -10,4 +10,5 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   def getStatus: Statuses.Value
   def getRolledDieces: (List[Int], List[Int])
   def getAttackerDefenderIndex: (Int, Int)
+  def endTurn
 }

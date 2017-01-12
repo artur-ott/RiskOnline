@@ -40,14 +40,12 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     }
   }
 
-  def update() = printTui
-
-  private def printTui = {
+  def update() = {
     gameLogic.getStatus match {
       case Statuses.INITIALIZE_PLAYERS => this.printPlayerInitialisation
       case Statuses.GAME_INITIALIZED => printPitch
       case Statuses.PLAYER_SPREAD_TROOPS => printSpreadTroops
-      case Statuses.PLAYER_ATTACK =>
+      case Statuses.PLAYER_ATTACK => printAttack
       case Statuses.PLAYER_MOVE_TROOPS =>
       case Statuses.DIECES_ROLLED => printRolledDieces
       case Statuses.PLAYER_CONQUERED_A_COUNTRY =>
@@ -57,6 +55,10 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
       case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
     }
+  }
+  
+  def printAttack = {
+    
   }
 
   def printRolledDieces = {
