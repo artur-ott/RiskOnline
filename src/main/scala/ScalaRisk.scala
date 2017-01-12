@@ -1,3 +1,7 @@
+import de.htwg.se.scala_risk.controller.GameLogic
+import de.htwg.se.scala_risk.controller.impl.{GameLogic => ImplGameLogic}
+import de.htwg.se.scala_risk.view.TUI
+
 trait SRisk
 
 object ScalaRisk {
@@ -16,6 +20,8 @@ object ScalaRisk {
     }
 
   def main(args: Array[String]): Unit = {
-    //this.getInstance();
+    val gl: GameLogic = new ImplGameLogic
+    val tui: TUI = new TUI(gl)
+    while (tui.setNextInput(scala.io.StdIn.readLine())) {}
   }
 }

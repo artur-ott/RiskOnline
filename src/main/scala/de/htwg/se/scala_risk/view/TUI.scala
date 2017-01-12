@@ -9,6 +9,15 @@ class TUI(gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
 
   gameLogic.add(this)
+  
+  // TODO: REMOVE INIT
+  /*----------------HERE---------------------*/
+  gameLogic.setStatus(Statuses.INITIALIZE_PLAYERS)
+	gameLogic.setPlayer(("Test", "BLUE"))
+	gameLogic.setPlayer(("Test1", "RED"))
+  gameLogic.initializeGame 
+  /*----------------HERE---------------------*/
+  
   if (gameLogic.getStatus == Statuses.CREATE_GAME) {
     println("\n_______________________________________________________________________\n");
     println("\n______________________To start the game press s________________________\n");
@@ -19,24 +28,33 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     gameLogic.getStatus match {
       case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
       case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
+      case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
       case Statuses.GAME_INITIALIZED =>
+      case _ => println(gameLogic.getStatus)
     }
     if (!input.equals("q"))
       return true
     return false
   }
 
-  def parsePlayer(player: String) {
+  private def parsePlayer(player: String) {
     if (player.equals("v")) {
       gameLogic.initializeGame
     } else {
       val playerData = player.split(", ")
-      if (playerData.length != 2) {
-        if (playerData.length > 2)
-          gameLogic.setPlayer((playerData(0), playerData(1)))
-        else
-          gameLogic.setPlayer(("", ""))
-      }
+      if (playerData.length >= 2)
+        gameLogic.setPlayer((playerData(0), playerData(1)))
+      else
+        gameLogic.setPlayer(("", ""))
+    }
+  }
+  
+  private def parseSpreadTroops(input: String) {
+    val spreadTroops = input.split(", ")
+    spreadTroops.length match {
+      case 1 => this.showCandidates(gameLogic.getCandidates(spreadTroops(0)))
+      case x if x >= 2 => update
+      case _ =>
     }
   }
 
@@ -57,11 +75,11 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     }
   }
   
-  def printAttack = {
+  private def printAttack = {
     
   }
 
-  def printRolledDieces = {
+  private def printRolledDieces = {
     println("-----------------------------------------------------------------------");
     val dieces = gameLogic.getRolledDieces
     val max = Math.max(dieces._1.length, dieces._2.length)
@@ -83,17 +101,18 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     }
   }
 
-  def printPlayerInitialisation = {
+  private def printPlayerInitialisation = {
     println("-----------------------------------------------------------------------");
     val avColors = gameLogic.getAvailableColors.toString()
     println("Following colors are still available: " + avColors.substring(5, avColors.length() - 1));
     println("Pleas enter v to start the game or a name and color which is available (name, color) to create a player:");
   }
 
-  def printSpreadTroops = {
+  private def printSpreadTroops = {
     println("-----------------------------------------------------------------------");
     println("Troops to spread: " + gameLogic.getTroopsToSpread)
     printPitch
+    printMenu
   }
 
   private def printPitch = {
@@ -117,10 +136,36 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       println(text.format(s1, s2, s3));
 
     }
+  }
+  
+  private def showCandidates(candidates: List[(String, String, Int)]) = {
+    for (c: (String, String, Int) <- candidates) {
 
+      val s1 = c._1;
+
+      val s2 = c._2;
+
+      val s3 = c._3;
+
+      val p1 = LENGTH - s1.length();
+
+      val p2 = LENGTH;
+      val text: String = "%s:%" + p1 + "s%" + p2 + "d\n"
+
+      println(text.format(s1, s2, s3));
+
+    }
+  }
+  
+  private def printMenu = {
     println("\n_______________________________________________________________________\n");
+    
+    
+    gameLogic.getStatus match {
+      case Statuses.PLAYER_SPREAD_TROOPS => println("q:     quit           country, x:                spread\nn:     new game          country:                show candidates");
+    }
 
-    println("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");
+    //println("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");
 
     println("_______________________________________________________________________\n");
   }

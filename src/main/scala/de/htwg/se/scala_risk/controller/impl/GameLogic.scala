@@ -26,7 +26,7 @@ class GameLogic extends TGameLogic {
     val players = Players.playerList
 
     if (players.length >= 2) {
-      val countries = Countries.listCountries //util.Random.shuffle(Countries.listCountries)
+      val countries = Countries.listCountries // TODO: Remove comment: util.Random.shuffle(Countries.listCountries)
 
       countries.foreach { x => {
           x.setTroops(INIT_TROOPS)
@@ -120,7 +120,10 @@ class GameLogic extends TGameLogic {
 
   def getAvailableColors: List[String] = Players.colorList.map { x => x.toString() }
 
-  def setPlayer(player: (String, String)) = Players.addPlayer(player._1, player._2)
+  def setPlayer(player: (String, String)) = {
+    Players.addPlayer(player._1, player._2)
+    notifyObservers
+  }
 
   def getCurrentPlayer: (String, String) = (
     Players.playerList(Players.currentPlayer).getName,
