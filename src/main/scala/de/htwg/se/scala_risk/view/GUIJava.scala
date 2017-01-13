@@ -10,12 +10,16 @@ import java.awt.GridLayout
 import java.awt._
 import java.awt.event.MouseEvent
 import de.htwg.se.scala_risk.controller.GameLogic
-import de.htwg.se.scala_risk.controller.impl.{  GameLogic => ImpGameLogic }
 import java.awt.event.MouseAdapter
-import de.htwg.se.scala_risk.controller.impl.{GameLogic => ImpGameLogic}
+import java.awt.event.ActionListener
+import java.awt.event.ActionEvent
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+
 
 
 object GUIJava {
+    import de.htwg.se.scala_risk.controller.impl.{  GameLogic => ImpGameLogic }
     def main(args: Array[String]) {
     val welcome = new WelcomeScreen(new ImpGameLogic)
     welcome.setLocationRelativeTo(null)
@@ -25,7 +29,7 @@ object GUIJava {
 
 
 
-class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
+class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListener {
 
   /* Register the GUI as a subscriber in the gameLogic.
    * As something changes in the gameLogic, the GUI
@@ -36,10 +40,13 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
   var running = true
   /* Define the buttons and labels */
   val gameStatusLabel = new JLabel("GameStatus Label")
-  val endTurnButton = new JButton("Zug beenden") {/*TODO: what the button should do when clicked*/}
+  val endTurnButton = new JButton("Zug beenden")
+  endTurnButton.addActionListener(this)
+  
+  /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_grey.jpg")),
                                 1238, 810)
-  /* Map to be displayed (BufferedImage) */
+  /* Map to be displayed as legend */
   val map_legend = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_legend.png")),
                   1238, 810)
                
@@ -272,11 +279,28 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
     
   }
   
+  override def actionPerformed(e : ActionEvent) {
+    if (e.getSource == endTurnButton) {
+      this.setEnabled(false)
+      val parent = this
+      val dices = new Dices(gameLogic) {
+        this.addWindowListener(new WindowAdapter() {
+          override def windowClosing(e : WindowEvent)  {
+            parent.setEnabled(true)
+          }
+        })
+      }
+      dices.setVisible(true)
+    }
+  }
+  
   def update() = updateGUI
   
   def updateGUI() {
     
   }
+  
+  
 }
 
 

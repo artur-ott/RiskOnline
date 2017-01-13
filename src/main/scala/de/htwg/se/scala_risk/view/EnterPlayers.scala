@@ -115,10 +115,10 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
           this.setVisible(false)
           Players.addPlayer(player1Name.getText, player1Color.getSelectedItem.toString())
           Players.addPlayer(player2Name.getText, player2Color.getSelectedItem.toString())
-          if (player3Check.isSelected()) {Players.addPlayer(player3Name.getText, player3Color.getSelectedItem.toString())}
-          if (player4Check.isSelected()) {Players.addPlayer(player4Name.getText, player4Color.getSelectedItem.toString())}
-          if (player5Check.isSelected()) {Players.addPlayer(player5Name.getText, player5Color.getSelectedItem.toString())}
-          if (player6Check.isSelected()) {Players.addPlayer(player6Name.getText, player6Color.getSelectedItem.toString())}
+          if (player3Check.isSelected()) {gameLogic.setPlayer(player3Name.getText, player3Color.getSelectedItem.toString())}
+          if (player4Check.isSelected()) {gameLogic.setPlayer(player4Name.getText, player4Color.getSelectedItem.toString())}
+          if (player5Check.isSelected()) {gameLogic.setPlayer(player5Name.getText, player5Color.getSelectedItem.toString())}
+          if (player6Check.isSelected()) {gameLogic.setPlayer(player6Name.getText, player6Color.getSelectedItem.toString())}
           new GUI(gameLogic)         
           
           
