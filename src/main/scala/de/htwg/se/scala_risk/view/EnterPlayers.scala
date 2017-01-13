@@ -11,7 +11,7 @@ import java.awt.event.ItemEvent
 import java.awt.event.ActionEvent
 import java.awt.event.ItemEvent
 import de.htwg.se.scala_risk.controller.GameLogic
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Players
 
 
 class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener with ItemListener {

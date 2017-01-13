@@ -1,12 +1,12 @@
 package de.htwg.se.scala_risk.model.impl
 
-import de.htwg.se.scala_risk.model.World.Countries
+import de.htwg.se.scala_risk.model.impl.World.Countries
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import de.htwg.se.scala_risk.model.impl.Colors._
 import scala.util.control.Breaks._
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Players
 class CountrySpec extends WordSpec with Matchers {
   "listCountries" should {
     "contain 10 countries" in {

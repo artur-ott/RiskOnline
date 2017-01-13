@@ -1,8 +1,8 @@
 package de.htwg.se.scala_risk.model.impl
 import org.scalatest.WordSpec
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Players
 import de.htwg.se.scala_risk.model.impl.Colors._
-import de.htwg.se.scala_risk.model.World.Countries
+import de.htwg.se.scala_risk.model.impl.World.Countries
 import org.scalatest.Matchers
 
 class PlayerSpec extends WordSpec with Matchers {
