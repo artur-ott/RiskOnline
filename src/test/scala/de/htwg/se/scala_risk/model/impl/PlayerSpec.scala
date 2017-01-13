@@ -1,14 +1,11 @@
 package de.htwg.se.scala_risk.model.impl
 import org.scalatest.WordSpec
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Players
 import de.htwg.se.scala_risk.model.impl.Colors._
-import de.htwg.se.scala_risk.model.World.Countries
-import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
-import org.junit.runner.RunWith
+import de.htwg.se.scala_risk.model.impl.World.Countries
+import org.scalatest.Matchers
 
-@RunWith(classOf[JUnitRunner])
-class PlayerSpec extends WordSpec {
+class PlayerSpec extends WordSpec with Matchers {
   "A Player" should {
     val player1 = Player("Peter", RED)
     "have a name" in {
@@ -31,19 +28,9 @@ class PlayerSpec extends WordSpec {
     "not be equal" in {
       val player1 = Player("Hans", BLUE)
       val player2 = Player("Hans", RED)
-      player1.equals(player2) should be (false)
-      
+      player1 != player2 should be(true)
     }
   }
-  
-  "Two players with different instances" should {
-    val player1 = Player("Hans", BLUE)
-    val player2 = "Hans"
-    "not be equal" in {
-    player1.equals(player2) should be (false)
-    }
-  }
-
   "The Default Player" should {
     "have no name" in {
       Players.Default.name should be("")
