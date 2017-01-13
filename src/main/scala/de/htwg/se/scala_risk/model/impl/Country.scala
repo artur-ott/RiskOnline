@@ -9,7 +9,7 @@ import de.htwg.se.scala_risk.model.{ Player => TPlayer }
  * Class to create country objects.
  * @author Nico Lutz
  */
-case class Country(name: String, neighboring_countries: Set[TCountry] = Set.empty,
+case class Country(name: String, var neighboring_countries: Set[TCountry] = Set.empty,
     var troops: Int = 0, var owner: TPlayer = Players.Default) extends de.htwg.se.scala_risk.model.Country {
 
   override def getName(): String = return this.name

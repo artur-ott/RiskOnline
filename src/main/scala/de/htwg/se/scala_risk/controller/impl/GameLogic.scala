@@ -42,7 +42,6 @@ class GameLogic extends TGameLogic {
   }
 
   def logic = {
-    print(this.status)
     this.status match {
       case Statuses.GAME_INITIALIZED => this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
       case Statuses.PLAYER_SPREAD_TROOPS => this.setStatus(Statuses.PLAYER_ATTACK)
@@ -141,7 +140,10 @@ class GameLogic extends TGameLogic {
           troopsToSpread -= troops
           if (troopsToSpread == 0) logic
           else notifyObservers
-        } else this.setStatus(Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD)
+        } else {
+          this.setStatus(Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD)
+          this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
+        }
       } else this.setStatus(Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER)
     } else this.setStatus(Statuses.COUNTRY_NOT_FOUND)
   }
@@ -241,7 +243,7 @@ class GameLogic extends TGameLogic {
     val toopsDefender = defender.getTroops
     var dicesAttacker: List[Int] = Nil
     var dicesDefender: List[Int] = Nil
-    return (6 :: 6 :: 6 :: Nil, 5 :: 5 :: 5 :: Nil)
+    // TODO: for testing remove comment return (6 :: 6 :: 6 :: Nil, 5 :: 5 :: 5 :: Nil)
     if (troopsAttacker > 1) {
       troopsAttacker match {
         case 2 => dicesAttacker = List.fill(1)(randomDice())

@@ -25,16 +25,36 @@ class TUI(gameLogic: GameLogic) extends TObserver {
   }
 
   def setNextInput(input: String): Boolean = {
+    if (input.equals("q"))
+      System.exit(0)
     gameLogic.getStatus match {
       case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
       case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
       case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
+      case Statuses.PLAYER_ATTACK => parseAttack(input)
+      case Statuses.PLAYER_MOVE_TROOPS => parseMoveTroops(input)
       case Statuses.GAME_INITIALIZED =>
       case _ => println(gameLogic.getStatus)
     }
-    if (!input.equals("q"))
-      return true
-    return false
+    
+    return true
+  }
+  
+  def update() = {
+    gameLogic.getStatus match {
+      case Statuses.INITIALIZE_PLAYERS => this.printPlayerInitialisation
+      case Statuses.GAME_INITIALIZED => printPitch
+      case Statuses.PLAYER_SPREAD_TROOPS => printSpreadTroops
+      case Statuses.PLAYER_ATTACK => printAttack
+      case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
+      case Statuses.DIECES_ROLLED => printRolledDieces
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY =>
+
+      // Errors
+      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
+      case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
+    }
   }
 
   private def parsePlayer(player: String) {
@@ -50,33 +70,72 @@ class TUI(gameLogic: GameLogic) extends TObserver {
   }
   
   private def parseSpreadTroops(input: String) {
-    val spreadTroops = input.split(", ")
-    spreadTroops.length match {
-      case 1 => this.showCandidates(gameLogic.getCandidates(spreadTroops(0)))
-      case x if x >= 2 => update
+    val splitInput = input.split(", ")
+    splitInput.length match {
+      case 1 => {
+        if (input.equals("b")) {
+          printSpreadTroops
+        } else if (input.equals("show")) {
+          println("-----------------------------------------------------------------------");
+          this.showCandidates(gameLogic.getCandidates())
+          println("\n_______________________________________________________________________\n");
+          println("b:     back");
+          println("_______________________________________________________________________\n");
+        }
+      }
+      case x if x >= 2 => gameLogic.addTroops(splitInput(0), splitInput(1).toInt)
       case _ =>
     }
   }
 
-  def update() = {
-    gameLogic.getStatus match {
-      case Statuses.INITIALIZE_PLAYERS => this.printPlayerInitialisation
-      case Statuses.GAME_INITIALIZED => printPitch
-      case Statuses.PLAYER_SPREAD_TROOPS => printSpreadTroops
-      case Statuses.PLAYER_ATTACK => printAttack
-      case Statuses.PLAYER_MOVE_TROOPS =>
-      case Statuses.DIECES_ROLLED => printRolledDieces
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY =>
-
-      // Errors
-      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
-      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
-      case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
+  private def parseAttack(input: String) {
+    val splitInput = input.split(", ")
+    splitInput.length match {
+      case 1 => {
+        if (input.equals("b")) {
+          printAttack
+        } else if (input.equals("e"))
+            this.gameLogic.endTurn
+        else {
+          println("-----------------------------------------------------------------------");
+          this.showCandidates(gameLogic.getCandidates(splitInput(0)))
+          println("\n_______________________________________________________________________\n");
+          println("b:     back");
+          println("_______________________________________________________________________\n");
+        }
+      }
+      case x if x >= 2 => gameLogic.attack(splitInput(0), splitInput(1))
+      case _ =>
+    }
+  }
+  
+  private def parseMoveTroops(input: String) {
+    val splitInput = input.split(", ")
+    splitInput.length match {
+      case 1 => {
+        if (input.equals("b")) {
+          printMoveTroops
+        } else {
+          println("-----------------------------------------------------------------------");
+          this.showCandidates(gameLogic.getCandidates(splitInput(0)))
+          println("\n_______________________________________________________________________\n");
+          println("b:     back");
+          println("_______________________________________________________________________\n");
+        }
+      }
+      case  x if x >= 3 => gameLogic.dragTroops(splitInput(0), splitInput(1), splitInput(2).toInt)
+      case _ =>
     }
   }
   
   private def printAttack = {
-    
+    printPitch
+    printMenu
+  }
+  
+  private def printMoveTroops = {
+    printPitch
+    printMenu
   }
 
   private def printRolledDieces = {
@@ -162,7 +221,9 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     
     
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => println("q:     quit           country, x:                spread\nn:     new game          country:                show candidates");
+      case Statuses.PLAYER_SPREAD_TROOPS => println("q:     quit           country, x:                spread\nn:     new game             show:                show candidates");
+      case Statuses.PLAYER_ATTACK => println("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn");
+      case Statuses.PLAYER_MOVE_TROOPS => println("q:     quit                  country, x:                move\nn:     new game              show:                show candidates\ne      end turn");
     }
 
     //println("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");

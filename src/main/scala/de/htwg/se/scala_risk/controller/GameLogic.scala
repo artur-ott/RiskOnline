@@ -12,7 +12,9 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   def getRolledDieces: (List[Int], List[Int])
   def getAttackerDefenderIndex: (Int, Int)
   def endTurn
-  def getCandidates(country: String): List[(String, String, Int)]
+  def getCandidates(country: String = ""): List[(String, String, Int)]
+  def dragTroops(countryFrom: String, countryTo: String, troops: Int)
+  def attack(countryAttacker: String, countryDefender: String)
   def getCurrentPlayerColor() : String
   
   def setStatus(status: Statuses.Value)// TODO: REMOVE setStatus

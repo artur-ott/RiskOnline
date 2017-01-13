@@ -113,16 +113,16 @@ object World {
     //  country7.neighboring_countries = n3
     //  country8.neighboring_countries = n4
     //  country9.neighboring_countries = n1
-    country10 = country10.copy(neighboring_countries = n10)
-    country11 = country11.copy(neighboring_countries = n11)
-    country12 = country12.copy(neighboring_countries = n12)
-    country13 = country13.copy(neighboring_countries = n13)
-    country14 = country14.copy(neighboring_countries = n14)
-    country15 = country15.copy(neighboring_countries = n15)
-    country16 = country16.copy(neighboring_countries = n16)
-    country17 = country17.copy(neighboring_countries = n17)
-    country18 = country18.copy(neighboring_countries = n18)
-    country19 = country19.copy(neighboring_countries = n19)
+    country10.neighboring_countries = n10
+    country11.neighboring_countries = n11
+    country12.neighboring_countries = n12
+    country13.neighboring_countries = n13
+    country14.neighboring_countries = n14
+    country15.neighboring_countries = n15
+    country16.neighboring_countries = n16
+    country17.neighboring_countries = n17
+    country18.neighboring_countries = n18
+    country19.neighboring_countries = n19
     //    country10.neighboring_countries = n10
     //    country11.neighboring_countries = n11
     //    country12.neighboring_countries = n12
