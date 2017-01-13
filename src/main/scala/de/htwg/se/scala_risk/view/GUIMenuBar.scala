@@ -1,14 +1,15 @@
-package test
+package de.htwg.se.scala_risk.view
 
 import javax.swing._
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener
+import java.awt.event.ActionEvent
 import java.awt.event.KeyEvent;
+
 
 class GUIMenuBar(parent:GUI) extends JMenuBar with ActionListener {
 	/* Create menu. */
 	val menu = new JMenu("Spiel");
-	menu.setMnemonic(KeyEvent.VK_D);
+	menu.setMnemonic(KeyEvent.VK_S);
 		
 	/* Create item1. */
 	val item1 = new JMenuItem("Zeige Kontinente");

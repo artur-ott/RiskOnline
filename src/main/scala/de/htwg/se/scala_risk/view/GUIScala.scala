@@ -19,10 +19,10 @@ import java.net.URL
 
 import java.awt.event.MouseAdapter
 
-object GUI extends MainFrame{
+object GUIScala extends MainFrame{
     def main(args: Array[String]) {
       println("bla")
-    val gui = new GUI(null)
+    val gui = new GUIS(null)
     gui.visible = true
 
   }
@@ -30,7 +30,7 @@ object GUI extends MainFrame{
 
 
 
-class GUI (gameLogic : GameLogic) extends MainFrame with TObserver {
+class GUIS (gameLogic : GameLogic) extends MainFrame with TObserver {
   /* Register the GUI as a subscriber in the gameLogic.
    * As something changes in the gameLogic, the GUI
    * will be notified.

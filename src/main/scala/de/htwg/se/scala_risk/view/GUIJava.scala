@@ -1,38 +1,32 @@
-package test
+package de.htwg.se.scala_risk.view
 
 import java.awt.Color
-import de.htwg.se.scala_risk.controller.GameLogic
 import de.htwg.se.scala_risk.util.observer.TObserver
-import de.htwg.se.scala_risk.util.Statuses
 import javax.swing.ImageIcon
 import javax.imageio.ImageIO
-import java.awt.image.BufferedImage
-import java.awt.Graphics2D
-import java.awt.RenderingHints
 import java.io.File
-import java.awt.Robot
 import javax.swing._
 import java.awt.GridLayout
-import java.net.URL
 import java.awt._
 import java.awt.event.MouseEvent
 import de.htwg.se.scala_risk.controller.GameLogic
-import de.htwg.se.scala_risk.model.World.Countries
-
+import de.htwg.se.scala_risk.controller.impl.{  GameLogic => ImpGameLogic }
 import java.awt.event.MouseAdapter
+import de.htwg.se.scala_risk.controller.impl.{GameLogic => ImpGameLogic}
 
 
 object GUIJava {
     def main(args: Array[String]) {
-    val gui = new GUI(null)
-    gui.setVisible(true)
-
+    val welcome = new WelcomeScreen(new ImpGameLogic)
+    welcome.setLocationRelativeTo(null)
+    welcome.setVisible(true)
   }
 }
 
 
 
 class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
+
   /* Register the GUI as a subscriber in the gameLogic.
    * As something changes in the gameLogic, the GUI
    * will be notified.
@@ -43,26 +37,26 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
   /* Define the buttons and labels */
   val gameStatusLabel = new JLabel("GameStatus Label")
   val endTurnButton = new JButton("Zug beenden") {/*TODO: what the button should do when clicked*/}
-  val map_grey = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_grey.jpg")),
+  val map_grey = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_grey.jpg")),
                                 1238, 810)
   /* Map to be displayed (BufferedImage) */
-  val map_legend = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_legend.png")),
+  val map_legend = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_legend.png")),
                   1238, 810)
                
   /* Reference map (BufferedImage) with different color for each country to determine
    * the country the player selected.
    */
-  val map_ref = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_ref.png")),
+  val map_ref = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_ref.png")),
                                1238, 810)
   /* Map as a Label (Component) */
   val map = getMap()
   
   /* Build the frame */
-  this.setTitle("Risiko")
+  this.setTitle("SCALA_RISK")
   this.setPreferredSize(new Dimension(1238,950))
   this.setResizable(false)
   this.setJMenuBar(new GUIMenuBar(this))
-  val x0 = new JPanel()
+  
   
   /* County labels */
   /* Nordamerika */
@@ -120,6 +114,8 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
                            skandinavien, russland, mittosten, afghanistan, ural, sibirien, jakutien,
                            kamtschaka, japan, mongolei, irkutsk, china, indien, suedostasien, indonesien,
                            neuguinea, westaustr, ostaustr)
+                           
+  val x0 = new JPanel()
   x0.setLayout(new BorderLayout())
 
   val x1 = new JPanel()
@@ -274,17 +270,6 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver {
       //this.map.setIcon(new ImageIcon(map_legend))
    
     
-  }
-  
-  def  getScaledImage(srcImg:Image, w:Int, h:Int) : BufferedImage = {
-    val resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-    val g2 = resizedImg.createGraphics();
-
-    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-    g2.drawImage(srcImg, 0, 0, w, h, null);
-    g2.dispose();
-
-    return resizedImg;
   }
   
   def update() = updateGUI
