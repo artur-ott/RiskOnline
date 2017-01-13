@@ -11,7 +11,6 @@ import java.awt.event.ItemEvent
 import java.awt.event.ActionEvent
 import java.awt.event.ItemEvent
 import de.htwg.se.scala_risk.controller.GameLogic
-import de.htwg.se.scala_risk.model.impl.World.Players
 
 
 class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener with ItemListener {
@@ -113,8 +112,8 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
                                         "Spieler unvollständig", JOptionPane.ERROR_MESSAGE)
         } else {
           this.setVisible(false)
-          Players.addPlayer(player1Name.getText, player1Color.getSelectedItem.toString())
-          Players.addPlayer(player2Name.getText, player2Color.getSelectedItem.toString())
+          gameLogic.setPlayer(player1Name.getText, player1Color.getSelectedItem.toString())
+          gameLogic.setPlayer(player2Name.getText, player2Color.getSelectedItem.toString())
           if (player3Check.isSelected()) {gameLogic.setPlayer(player3Name.getText, player3Color.getSelectedItem.toString())}
           if (player4Check.isSelected()) {gameLogic.setPlayer(player4Name.getText, player4Color.getSelectedItem.toString())}
           if (player5Check.isSelected()) {gameLogic.setPlayer(player5Name.getText, player5Color.getSelectedItem.toString())}

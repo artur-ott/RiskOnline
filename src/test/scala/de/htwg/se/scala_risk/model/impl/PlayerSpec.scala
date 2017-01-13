@@ -1,8 +1,7 @@
 package de.htwg.se.scala_risk.model.impl
 import org.scalatest.WordSpec
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World
 import de.htwg.se.scala_risk.model.impl.Colors._
-import de.htwg.se.scala_risk.model.World.Countries
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
