@@ -5,10 +5,7 @@ import de.htwg.se.scala_risk.model.{Country => TCountry}
 import de.htwg.se.scala_risk.model.{World => TWorld}
 import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
 import de.htwg.se.scala_risk.model.impl.{ Country => ImpCountry }
-import de.htwg.se.scala_risk.model.impl.Colors
 import scala.collection.mutable.ArrayBuffer
-import de.htwg.se.scala_risk.model.Country
-import de.htwg.se.scala_risk.model.Player
 
 /**
  * This object represents the whole world of ScalaRisk.
