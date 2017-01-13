@@ -3,9 +3,9 @@ package de.htwg.se.scala_risk.model.impl
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-import de.htwg.se.scala_risk.model.World.Continents
-import de.htwg.se.scala_risk.model.World.Countries
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Continents
+import de.htwg.se.scala_risk.model.impl.World.Countries
+import de.htwg.se.scala_risk.model.impl.World.Players
 import de.htwg.se.scala_risk.model.impl.Colors._
 
 import scala.collection._

@@ -7,7 +7,7 @@ object Colors extends Enumeration {
 }
 
 import Colors._
-import de.htwg.se.scala_risk.model.World.Countries
+import de.htwg.se.scala_risk.model.{World => TWorld}
 import de.htwg.se.scala_risk.model.{ Player => TPlayer }
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import scala.collection._
@@ -16,7 +16,7 @@ import scala.collection._
  * Class to create Player objects.
  * @author Nico Lutz
  */
-case class Player(name: String, color: Color) extends de.htwg.se.scala_risk.model.Player {
+case class Player(name: String, color: Color, world: TWorld) extends de.htwg.se.scala_risk.model.Player {
   override def equals(that: Any): Boolean = {
     if (!that.isInstanceOf[TPlayer]) false
     var p = that.asInstanceOf[TPlayer]
@@ -25,7 +25,7 @@ case class Player(name: String, color: Color) extends de.htwg.se.scala_risk.mode
   }
   override def getOwnedCountries(): immutable.Set[TCountry] = {
     var countriesOfPlayer: immutable.Set[TCountry] = immutable.Set()
-    Countries.listCountries.foreach { x => if (x.getOwner == this) { countriesOfPlayer += x } }
+    world.getCountriesList.foreach { x => if (x.getOwner == this) { countriesOfPlayer += x } }
     return countriesOfPlayer
 
   }

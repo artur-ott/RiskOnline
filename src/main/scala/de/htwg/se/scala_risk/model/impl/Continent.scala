@@ -2,9 +2,7 @@ package de.htwg.se.scala_risk.model.impl
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import de.htwg.se.scala_risk.model.{ Player => TPlayer }
 import de.htwg.se.scala_risk.model.{ Continent => TContinent }
-import de.htwg.se.scala_risk.model.World.Continents
-import de.htwg.se.scala_risk.model.World.Countries
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.{ World => TWorld }
 import scala.collection._
 
 /**
@@ -12,18 +10,18 @@ import scala.collection._
  * @author Nico Lutz
  */
 case class Continent(name: String, countries: immutable.Set[Int],
-    bonusTroops: Int) extends de.htwg.se.scala_risk.model.Continent {
+    bonusTroops: Int, world: TWorld) extends de.htwg.se.scala_risk.model.Continent {
 
   override def getOwner(): TPlayer = {
     val ownerCandidate: TPlayer = this.getIncludedCountries.head.getOwner
     val allOwnedByOne: Boolean = this.getIncludedCountries.forall { x => x.getOwner == ownerCandidate }
     if (allOwnedByOne) ownerCandidate
-    else Players.Default
+    else world.getDefaultPlayer
   }
 
   override def getIncludedCountries(): immutable.Set[TCountry] = {
     var includedCountries: immutable.Set[TCountry] = immutable.Set()
-    for (x <- this.countries) includedCountries += Countries.listCountries(x)
+    for (x <- this.countries) includedCountries += world.getCountriesList(x)
     return includedCountries
   }
   override def getName(): String = return this.name

@@ -5,7 +5,7 @@ import org.scalatest.WordSpec
 
 import scala.collection._
 import de.htwg.se.scala_risk.controller.impl._
-import de.htwg.se.scala_risk.model.World.Players
+import de.htwg.se.scala_risk.model.impl.World.Players
 
 class GameLogicSpec extends WordSpec with Matchers {
   val gameLogic: GameLogic = new GameLogic

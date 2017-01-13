@@ -3,7 +3,6 @@ package de.htwg.se.scala_risk.view
 import de.htwg.se.scala_risk.controller.GameLogic
 import de.htwg.se.scala_risk.util.observer.TObserver
 import de.htwg.se.scala_risk.util.Statuses
-import de.htwg.se.scala_risk.model.World.Countries
 
 class TUI(gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
@@ -12,10 +11,14 @@ class TUI(gameLogic: GameLogic) extends TObserver {
   
   // TODO: REMOVE INIT
   /*----------------HERE---------------------*/
-  gameLogic.setStatus(Statuses.INITIALIZE_PLAYERS)
-	gameLogic.setPlayer(("Test", "BLUE"))
-	gameLogic.setPlayer(("Test1", "RED"))
-  gameLogic.initializeGame 
+//  gameLogic.setStatus(Statuses.INITIALIZE_PLAYERS)
+//	gameLogic.setPlayer(("Test", "BLUE"))
+//	gameLogic.setPlayer(("Test1", "RED"))
+//  gameLogic.initializeGame 
+//  this.parseSpreadTroops("VENEZUELA, 3")
+//  this.parseAttack("VENEZUELA, PERU")
+  //this.parseAttack("e")
+  //this.parseMoveTroops("NORDAFRIKA, OSTAFRIKA, 2")
   /*----------------HERE---------------------*/
   
   if (gameLogic.getStatus == Statuses.CREATE_GAME) {
@@ -31,8 +34,9 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
       case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
       case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
-      case Statuses.PLAYER_ATTACK => parseAttack(input)
-      case Statuses.PLAYER_MOVE_TROOPS => parseMoveTroops(input)
+      case Statuses.PLAYER_ATTACK => this.parseAttack(input)
+      case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
       case Statuses.GAME_INITIALIZED =>
       case _ => println(gameLogic.getStatus)
     }
@@ -48,12 +52,14 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_ATTACK => printAttack
       case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
       case Statuses.DIECES_ROLLED => printRolledDieces
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY =>
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
 
       // Errors
       case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
       case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
       case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
+      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
+      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
     }
   }
 
@@ -115,7 +121,9 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       case 1 => {
         if (input.equals("b")) {
           printMoveTroops
-        } else {
+        } else if (input.equals("e"))
+            this.gameLogic.endTurn
+        else {
           println("-----------------------------------------------------------------------");
           this.showCandidates(gameLogic.getCandidates(splitInput(0)))
           println("\n_______________________________________________________________________\n");
@@ -133,6 +141,12 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     printMenu
   }
   
+  private def printConquered = {
+    println("-----------------------------------------------------------------------");
+    println("You have " + (this.gameLogic.getAttackerDefenderCountries._1._3 - 1) + " troops to move.");
+    printMenu
+  }
+  
   private def printMoveTroops = {
     printPitch
     printMenu
@@ -142,9 +156,8 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     println("-----------------------------------------------------------------------");
     val dieces = gameLogic.getRolledDieces
     val max = Math.max(dieces._1.length, dieces._2.length)
-    val attackerDefenderIndex = gameLogic.getAttackerDefenderIndex
-    val attackerName = Countries.listCountries(attackerDefenderIndex._1).getOwner.getName
-    val defenderName = Countries.listCountries(attackerDefenderIndex._2).getOwner.getName
+    val attackerName = this.gameLogic.getAttackerDefenderCountries._1._2
+    val defenderName = this.gameLogic.getAttackerDefenderCountries._2._2
     val maxSpace = attackerName.length + 2
     val text: String = "%s%" + maxSpace + "s"
     println(text.format(attackerName, defenderName))
@@ -223,7 +236,8 @@ class TUI(gameLogic: GameLogic) extends TObserver {
     gameLogic.getStatus match {
       case Statuses.PLAYER_SPREAD_TROOPS => println("q:     quit           country, x:                spread\nn:     new game             show:                show candidates");
       case Statuses.PLAYER_ATTACK => println("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn");
-      case Statuses.PLAYER_MOVE_TROOPS => println("q:     quit                  country, x:                move\nn:     new game              show:                show candidates\ne      end turn");
+      case Statuses.PLAYER_MOVE_TROOPS => println("q:     quit                  country, country, x:                move\nn:     new game                          country:                show candidates\ne      end turn");
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => println("q:     quit                  x:                move\nn:     new game");
     }
 
     //println("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");
