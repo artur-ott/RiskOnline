@@ -16,9 +16,10 @@ class GameLogic extends TGameLogic {
 
   private[this] var attackerDefenderIndex = (-1, -1)
   private[this] var rolledDieces: (List[Int], List[Int]) = (Nil, Nil)
-  private[this] val world: World = null
+  private[this] val world: World = new de.htwg.se.scala_risk.model.impl.World // Changed to test GUI
 
   def startGame = {
+    println("start")
     this.setStatus(Statuses.INITIALIZE_PLAYERS)
   }
 
@@ -91,8 +92,8 @@ class GameLogic extends TGameLogic {
   def getRolledDieces: (List[Int], List[Int]) = this.rolledDieces
 
   /* Country operations */
-  def getCountries: scala.collection.mutable.ArrayBuffer[(String, String, Int)] =
-    world.getCountriesList.map { x => (x.getName, x.getOwner.getName, x.getTroops) }
+  def getCountries: scala.collection.mutable.ArrayBuffer[(String, String, Int, Int)] =
+    world.getCountriesList.map { x => (x.getName, x.getOwner.getName, x.getTroops, x.getRefColor()) }
 
   def getCandidates(country: String = ""): List[(String, String, Int)] = {
     this.status match {

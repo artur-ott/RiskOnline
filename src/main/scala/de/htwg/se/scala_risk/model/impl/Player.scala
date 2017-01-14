@@ -3,7 +3,7 @@ package de.htwg.se.scala_risk.model.impl
 // Color enumeration with all legit colors.
 object Colors extends Enumeration {
   type Color = Value
-  val RED, YELLOW, GREEN, BLUE = Value
+  val RED, YELLOW, GREEN, BLUE, PINK, ORANGE = Value
 }
 
 import Colors._

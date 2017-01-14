@@ -17,150 +17,159 @@ class World extends TWorld {
    * @author Nico Lutz
    */
   class Countries (world: TWorld) {
-    //  val country1 = Country("ALASKA", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country2 = Country("NORDWEST-TERRITORIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country3 = Country("ALBERTA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country4 = Country("ONTARIO", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country5 = Country("GROENLAND", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country6 = Country("OSTKANADA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country7 = Country("WESTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country8 = Country("OSTSTAATEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country9 = Country("MITTELAMERIKA", Set.empty, 0, Player("Test", Colors.RED))
-    private[model] var country10 = Country("VENEZUELA", world)
-    private[model] var country11 = Country("PERU", world)
-    private[model] var country12 = Country("ARGENTINIEN", world)
-    private[model] var country13 = Country("BRASILIEN", world)
-    private[model] var country14 = Country("NORDAFRIKA", world)
-    var country15 = Country("ZENTRALAFRIKA", world)
-    var country16 = Country("SUEDAFRIKA", world)
-    var country17 = Country("MADAGASKAR", world)
-    var country18 = Country("OSTAFRIKA", world)
-    var country19 = Country("AEGYPTEN", world)
-    //  val country20 = Country("SUEDEUROPA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country21 = Country("WESTEUROPA", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country22 = Country("NORDEUROPA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country23 = Country("GROSSBRITANNIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country24 = Country("ISLAND", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country25 = Country("SKANDINAVIEN", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country26 = Country("RUSSLAND", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country27 = Country("URAL", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country28 = Country("SIBIRIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country29 = Country("JAKUTIEN", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country30 = Country("IRKUTSK", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country31 = Country("KAMTSCHAKA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country32 = Country("JAPAN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country33 = Country("MONGOLEI", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country34 = Country("CHINA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country35 = Country("AFGHANISTAN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country36 = Country("MITTLERER-OSTEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country37 = Country("INDIEN", Set.empty, 0, Player("Test", Colors.RED))
-    //  val country38 = Country("SUEDOSTASIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country39 = Country("INDONESIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country40 = Country("NEUGUINEA", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country41 = Country("OSTAUSTRALIEN", Set.empty, 0,  Player("Test", Colors.RED))
-    //  val country42 = Country("WESTAUSTRALIEN", Set.empty, 0,  Player("Test", Colors.RED))
+      /* NORDAMERIKA */
+      var alaska = Country("ALASKA", world, color = -3993841)
+      var nordwestterritorien = Country("NORDWEST-TERRITORIEN", world, color = -772811)
+      var alberta = Country("ALBERTA", world, color = -1245184)
+      var ontario = Country("ONTARIO", world, color = -3459787)
+      var groenland = Country("GROENLAND", world, color = -41635)
+      var ostkanada = Country("OSTKANADA", world, color = -4390912)
+      var weststaaten = Country("WESTSTAATEN", world, color = -5373952)
+      var oststaaten = Country("OSTSTAATEN", world, color = -57312)
+      var mittelamerika = Country("MITTELAMERIKA", world, color = -196608)
+      
+      /* SUEDAMERIKA */
+      var venezuela = Country("VENEZUELA", world, color = -923904)
+      var peru = Country("PERU", world, color = -164)
+      var argentinien = Country("ARGENTINIEN", world, color = -5888)
+      var brasilien = Country("BRASILIEN", world, color = -256)
+      
+      /* AFRIKA */
+      var nordafrika = Country("NORDAFRIKA", world, color = -2987746)
+      var zentralafrika = Country("ZENTRALAFRIKA", world, color = -7650029)
+      var suedafrika = Country("SUEDAFRIKA", world, color = -3308234)
+      var madagaskar = Country("MADAGASKAR", world, color = -3316195)
+      var ostafrika = Country("OSTAFRIKA", world, color = -32988)
+      var aegypten = Country("AEGYPTEN", world, color = -8834304)
+      
+      /* EUROPA */
+      var suedeuropa = Country("SUEDEUROPA", world, color = -16761601)
+      var westeuropa = Country("WESTEUROPA", world, color = -16771449)
+      var nordeuropa = Country("NORDEUROPA", world, color = -16775425)
+      var grossbritannien = Country("GROSSBRITANNIEN", world, color = -16775517)
+      var island = Country("ISLAND", world, color = -16772762)
+      var skandinavien = Country("SKANDINAVIEN", world, color = -8350209)
+      var russland = Country("RUSSLAND", world, color = -12690973)
+      
+      /* ASIEN */
+      var ural = Country("URAL", world, color = -16729574)
+      var sibirien = Country("SIBIRIEN", world, color = -10420362)
+      var jakutien = Country("JAKUTIEN", world, color = -14962127)
+      var irkutsk = Country("IRKUTSK", world, color = -16711900)
+      var kamtschatka = Country("KAMTSCHATKA", world, color = -15103447)
+      var japan = Country("JAPAN", world, color = -13831608)
+      var mongolei = Country("MONGOLEI", world, color = -11941285)
+      var china = Country("CHINA", world, color = -11615650)
+      var afghanistan = Country("AFGHANISTAN", world, color = -14878917)
+      var mittlererosten = Country("MITTLERER-OSTEN", world, color = -15559131)
+      var indien = Country("INDIEN", world, color = -13708987)
+      var suedostasien = Country("SUEDOSTASIEN", world, color = -13318071)
+      
+      /* AUSTRALIEN */
+      var indonesien = Country("INDONESIEN", world, color = -29696)
+      var neuguinea = Country("NEUGUINEA", world, color = -37888)
+      var ostaustralien = Country("OSTAUSTRALIEN", world, color = -17612)
+      var westaustralien = Country("WESTAUSTRALIEN", world, color = -23296)
 
-    //  val n1 = Set(country2, country3, country4)
-    //  val n2 = Set(country1, country3, country4)
-    //  val n3 = Set(country1, country2)
-    //  val n4 = Set(country1, country2)
-    //  val n5 = Set(country2, country3, country4)
-    //  val n6 = Set(country1, country3, country4)
-    //  val n7 = Set(country1, country2)
-    //  val n8 = Set(country1, country2)
-    //  val n9 = Set(country2, country3, country4)
-    val n10: Set[TCountry] = Set(country11, country13)
-    val n11: Set[TCountry] = Set(country10, country12, country13)
-    val n12: Set[TCountry] = Set(country11, country13)
-    val n13: Set[TCountry] = Set(country10, country11, country12, country14)
-    val n14: Set[TCountry] = Set(country13, country15, country18, country19)
-    val n15: Set[TCountry] = Set(country14, country16, country18)
-    val n16: Set[TCountry] = Set(country15, country17, country18)
-    val n17: Set[TCountry] = Set(country16, country18)
-    val n18: Set[TCountry] = Set(country14, country15, country16, country17, country19)
-    val n19: Set[TCountry] = Set(country14, country18)
-    //  val n20 = Set(country1, country2)
-    //  val n21 = Set(country2, country3, country4)
-    //  val n22 = Set(country1, country3, country4)
-    //  val n23 = Set(country1, country2)
-    //  val n24 = Set(country1, country2)
-    //  val n25 = Set(country2, country3, country4)
-    //  val n26 = Set(country1, country3, country4)
-    //  val n27 = Set(country1, country2)
-    //  val n28 = Set(country1, country2)
-    //  val n29 = Set(country2, country3, country4)
-    //  val n30 = Set(country1, country3, country4)
-    //  val n31 = Set(country1, country2)
-    //  val n32 = Set(country1, country2)
-    //  val n33 = Set(country2, country3, country4)
-    //  val n34 = Set(country1, country3, country4)
-    //  val n35 = Set(country1, country2)
-    //  val n36 = Set(country1, country2)
-    //  val n37 = Set(country2, country3, country4)
-    //  val n38 = Set(country1, country3, country4)
-    //  val n39 = Set(country1, country2)
-    //  val n40 = Set(country1, country2)
-    //  val n39 = Set(country1, country2)
-    //  val n40 = Set(country1, country2)
-    //  val n41 = Set(country1, country2)
-    //  val n42 = Set(country1, country2)
+      val alaska_n: Set[TCountry] = Set(kamtschatka, nordwestterritorien, alberta)
+      val nordwestterritorien_n: Set[TCountry] = Set(alaska, alberta, ontario, groenland)
+      val alberta_n: Set[TCountry] = Set(alaska, nordwestterritorien, ontario, weststaaten)
+      val ontario_n: Set[TCountry] = Set(nordwestterritorien, alberta, groenland, ostkanada, weststaaten, oststaaten)
+      val groenland_n: Set[TCountry] = Set(nordwestterritorien, ontario, ostkanada, island)
+      val ostkanada_n: Set[TCountry] = Set(ontario, groenland, oststaaten)
+      val weststaaten_n: Set[TCountry] = Set(alberta, ontario, oststaaten, mittelamerika)
+      val oststaaten_n: Set[TCountry] = Set(ontario, ostkanada, weststaaten, mittelamerika)
+      val mittelamerika_n: Set[TCountry] = Set(weststaaten, oststaaten, venezuela)
+      val venezuela_n: Set[TCountry] = Set(mittelamerika, peru, brasilien)
+      val peru_n: Set[TCountry] = Set(venezuela, argentinien, brasilien)
+      val argentinien_n: Set[TCountry] = Set(peru, brasilien)
+      val brasilien_n: Set[TCountry] = Set(venezuela, peru, argentinien, nordafrika)
+      val nordafrika_n: Set[TCountry] = Set(brasilien, zentralafrika, ostafrika, aegypten, suedeuropa, westeuropa)
+      val zentralafrika_n: Set[TCountry] = Set(nordafrika, suedafrika, ostafrika)
+      val suedafrika_n: Set[TCountry] = Set(zentralafrika, madagaskar, ostafrika)
+      val madagaskar_n: Set[TCountry] = Set(suedafrika, ostafrika)
+      val ostafrika_n: Set[TCountry] = Set(nordafrika, zentralafrika, suedafrika, madagaskar, aegypten, mittlererosten)
+      val aegypten_n: Set[TCountry] = Set(nordafrika, ostafrika, suedeuropa, mittlererosten)
+      val suedeuropa_n: Set[TCountry] = Set(nordafrika, aegypten, westeuropa, nordeuropa, russland, mittlererosten)
+      val westeuropa_n: Set[TCountry] = Set(nordafrika, suedeuropa, nordeuropa, grossbritannien)
+      val nordeuropa_n: Set[TCountry] = Set(suedeuropa, westeuropa, grossbritannien, skandinavien, russland)
+      val grossbritannien_n: Set[TCountry] = Set(westeuropa, nordeuropa, island, skandinavien)
+      val island_n: Set[TCountry] = Set(groenland, grossbritannien, skandinavien)
+      val skandinavien_n: Set[TCountry] = Set(nordeuropa, grossbritannien, island, russland)
+      val russland_n: Set[TCountry] = Set(suedeuropa, nordeuropa, skandinavien, ural, afghanistan, mittlererosten)
+      val ural_n: Set[TCountry] = Set(russland, sibirien, china, afghanistan)
+      val sibirien_n: Set[TCountry] = Set(ural, jakutien, irkutsk, mongolei, china) 
+      val jakutien_n: Set[TCountry] = Set(sibirien, irkutsk, kamtschatka)
+      val irkutsk_n: Set[TCountry] = Set(sibirien, jakutien, kamtschatka, mongolei)
+      val kamtschatka_n: Set[TCountry] = Set(alaska, jakutien, irkutsk, japan, mongolei)
+      val japan_n: Set[TCountry] = Set(kamtschatka, mongolei)
+      val mongolei_n: Set[TCountry] = Set(sibirien, irkutsk, kamtschatka, japan, china)
+      val china_n: Set[TCountry] = Set(ural, sibirien, mongolei, afghanistan, indien, suedostasien)
+      val afghanistan_n: Set[TCountry] = Set(russland, mittlererosten, indien, china, ural)
+      val mittlererosten_n: Set[TCountry] = Set(russland, suedeuropa, aegypten, ostafrika, indien, afghanistan)
+      val indien_n: Set[TCountry] = Set(afghanistan, mittlererosten, suedostasien, china)
+      val suedostasien_n: Set[TCountry] = Set(china, indien, indonesien)
+      val indonesien_n: Set[TCountry] = Set(suedostasien, neuguinea, westaustralien)
+      val neuguinea_n: Set[TCountry] = Set(indonesien, ostaustralien, westaustralien)
+      val ostaustralien_n: Set[TCountry] = Set(westaustralien, neuguinea)
+      val westaustralien_n: Set[TCountry] = Set(indonesien, neuguinea, ostaustralien)
 
-    //  country1.neighboring_countries = n1
-    //  country2.neighboring_countries = n2
-    //  country3.neighboring_countries = n3
-    //  country4.neighboring_countries = n4
-    //  country5.neighboring_countries = n1
-    //  country6.neighboring_countries = n2
-    //  country7.neighboring_countries = n3
-    //  country8.neighboring_countries = n4
-    //  country9.neighboring_countries = n1
-    country10.neighboring_countries = n10
-    country11.neighboring_countries = n11
-    country12.neighboring_countries = n12
-    country13.neighboring_countries = n13
-    country14.neighboring_countries = n14
-    country15.neighboring_countries = n15
-    country16.neighboring_countries = n16
-    country17.neighboring_countries = n17
-    country18.neighboring_countries = n18
-    country19.neighboring_countries = n19
-    //    country10.neighboring_countries = n10
-    //    country11.neighboring_countries = n11
-    //    country12.neighboring_countries = n12
-    //    country13.neighboring_countries = n13
-    //    country14.neighboring_countries = n14
-    //    country15.neighboring_countries = n15
-    //    country16.neighboring_countries = n16
-    //    country17.neighboring_countries = n17
-    //    country18.neighboring_countries = n18
-    //    country19.neighboring_countries = n19
-    //  country20.neighboring_countries = n4
-    //  country21.neighboring_countries = n1
-    //  country22.neighboring_countries = n2
-    //  country23.neighboring_countries = n3
-    //  country24.neighboring_countries = n4
-    //  country25.neighboring_countries = n1
-    //  country26.neighboring_countries = n2
-    //  country27.neighboring_countries = n3
-    //  country28.neighboring_countries = n4
-    //  country29.neighboring_countries = n1
-    //  country30.neighboring_countries = n2
-    //  country31.neighboring_countries = n3
-    //  country32.neighboring_countries = n4
-    //  country33.neighboring_countries = n1
-    //  country34.neighboring_countries = n2
-    //  country35.neighboring_countries = n3
-    //  country36.neighboring_countries = n4
-    //  country37.neighboring_countries = n1
-    //  country38.neighboring_countries = n2
-    //  country39.neighboring_countries = n3
-    //  country40.neighboring_countries = n4
-    //  country41.neighboring_countries = n3
-    //  country42.neighboring_countries = n4
+      alaska.neighboring_countries = alaska_n
+      nordwestterritorien.neighboring_countries = nordwestterritorien_n
+      alberta.neighboring_countries = alberta_n
+      ontario.neighboring_countries = ontario_n
+      groenland.neighboring_countries = groenland_n
+      ostkanada.neighboring_countries = ostkanada_n
+      weststaaten.neighboring_countries = weststaaten_n
+      oststaaten.neighboring_countries = oststaaten_n
+      mittelamerika.neighboring_countries = mittelamerika_n
+      venezuela.neighboring_countries = venezuela_n
+      peru.neighboring_countries = peru_n
+      argentinien.neighboring_countries = argentinien_n
+      brasilien.neighboring_countries = brasilien_n
+      nordafrika.neighboring_countries = nordafrika_n
+      zentralafrika.neighboring_countries = zentralafrika_n
+      suedafrika.neighboring_countries = suedafrika_n
+      madagaskar.neighboring_countries = madagaskar_n
+      ostafrika.neighboring_countries = ostafrika_n
+      aegypten.neighboring_countries = aegypten_n
+      suedeuropa.neighboring_countries = suedeuropa_n
+      westeuropa.neighboring_countries = westeuropa_n
+      nordeuropa.neighboring_countries = nordeuropa_n
+      grossbritannien.neighboring_countries = grossbritannien_n
+      island.neighboring_countries = island_n
+      skandinavien.neighboring_countries = skandinavien_n
+      russland.neighboring_countries = russland_n
+      ural.neighboring_countries = ural_n
+      sibirien.neighboring_countries = sibirien_n
+      jakutien.neighboring_countries = jakutien_n
+      irkutsk.neighboring_countries = irkutsk_n
+      kamtschatka.neighboring_countries = kamtschatka_n
+      japan.neighboring_countries = japan_n
+      mongolei.neighboring_countries = mongolei_n
+      china.neighboring_countries = china_n
+      afghanistan.neighboring_countries = afghanistan_n
+      mittlererosten.neighboring_countries = mittlererosten_n
+      indien.neighboring_countries = indien_n
+      suedostasien.neighboring_countries = suedostasien_n
+      indonesien.neighboring_countries = indonesien_n
+      neuguinea.neighboring_countries = neuguinea_n
+      ostaustralien.neighboring_countries = ostaustralien_n
+      westaustralien.neighboring_countries = westaustralien_n
+
 
     import scala.collection._
-    val listCountries = ArrayBuffer[TCountry](country10, country11, country12, country13, country14,
-      country15, country16, country17, country18, country19)
+    val listCountries = ArrayBuffer[TCountry](alaska, nordwestterritorien, alberta, ontario, groenland,
+      ostkanada, weststaaten, oststaaten, mittelamerika, venezuela, peru, argentinien, brasilien, nordafrika, zentralafrika, suedafrika,
+      madagaskar, ostafrika, aegypten, suedeuropa, westeuropa, nordeuropa, grossbritannien, island, skandinavien, russland, ural,
+      sibirien, jakutien, irkutsk, kamtschatka, japan, mongolei, china, afghanistan, mittlererosten, indien, suedostasien,
+      indonesien, neuguinea, ostaustralien, westaustralien)
+      
+    def  getColor(name: String) : Integer = {
+      var country = null.asInstanceOf[TCountry]
+      listCountries.foreach { x => if (x.getName.toUpperCase().equals(name.toUpperCase())) {country = x} }
+      return country.getRefColor()
+    }
   }
   /**
    * This object holds all the players of the current game.
@@ -171,7 +180,7 @@ class World extends TWorld {
     var playerList: ArrayBuffer[TPlayer] = ArrayBuffer()
 
     // List to hold the remaining colors.
-    var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE)
+    var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE, PINK, ORANGE)
     // Default Player e.g. if a country or a continent is not occupied yet.
     val Default = Player("", null.asInstanceOf[Color], world)
 

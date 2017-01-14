@@ -11,9 +11,12 @@ import java.awt.event.ItemEvent
 import java.awt.event.ActionEvent
 import java.awt.event.ItemEvent
 import de.htwg.se.scala_risk.controller.GameLogic
+import de.htwg.se.scala_risk.util.observer.TObserver
+import de.htwg.se.scala_risk.util.Statuses
 
-
-class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener with ItemListener {
+class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener with ItemListener with TObserver {
+  gameLogic.add(this)
+  var listenToUpdates = true
   this.setTitle("Spieler eingeben")
   this.setResizable(false)
   val backgroundImage = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/enter_player.PNG")),
@@ -48,14 +51,14 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
   val player6Name = new JTextField("") {this.setVisible(false)}
   
   val colors = gameLogic.getAvailableColors.toArray
-  var test = Array("", "RED", "YELLOW", "GREEN", "BLUE", "PINK", "ORANGE")
+
   
-  val player1Color = new JComboBox(test)
-  val player2Color = new JComboBox(test)
-  val player3Color = new JComboBox(test) {this.setVisible(false)}
-  val player4Color = new JComboBox(test) {this.setVisible(false)}
-  val player5Color = new JComboBox(test) {this.setVisible(false)}
-  val player6Color = new JComboBox(test) {this.setVisible(false)}
+  val player1Color = new JComboBox(colors)
+  val player2Color = new JComboBox(colors)
+  val player3Color = new JComboBox(colors) {this.setVisible(false)}
+  val player4Color = new JComboBox(colors) {this.setVisible(false)}
+  val player5Color = new JComboBox(colors) {this.setVisible(false)}
+  val player6Color = new JComboBox(colors) {this.setVisible(false)}
   
   val comboArray = Array(player1Color, player2Color, player3Color, 
                          player4Color, player5Color, player6Color) 
@@ -90,7 +93,6 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
         this.actionListenerActive = false
 
         val selectedItem = e.getSource().asInstanceOf[JComboBox[Array[String]]].getSelectedItem().toString()
-        println("Selected item:" , selectedItem)
         var li = scala.collection.immutable.List[String]()
         
         comboArray.foreach { x => if (x.getSelectedItem != "" && !li.contains(x.getSelectedItem)) {li = li.::(x.getSelectedItem.toString())} }
@@ -98,7 +100,7 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
         comboArray.foreach { x => {
                                     val src = x.getSelectedItem.toString()
                                     x.removeAllItems()
-                                    test.foreach { y => if(!li.contains(y)) {x.addItem(y)}}
+                                    colors.foreach { y => if(!li.contains(y)) {x.addItem(y)}}
                                     if(src != "") {x.addItem(src); x.setSelectedItem(src)}
                                     }
                                   }
@@ -111,21 +113,17 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
           JOptionPane.showMessageDialog(this, "Bitte für mindestens 2 Spieler Name und Farbe eingeben!",
                                         "Spieler unvollständig", JOptionPane.ERROR_MESSAGE)
         } else {
-          this.setVisible(false)
           gameLogic.setPlayer(player1Name.getText, player1Color.getSelectedItem.toString())
           gameLogic.setPlayer(player2Name.getText, player2Color.getSelectedItem.toString())
           if (player3Check.isSelected()) {gameLogic.setPlayer(player3Name.getText, player3Color.getSelectedItem.toString())}
           if (player4Check.isSelected()) {gameLogic.setPlayer(player4Name.getText, player4Color.getSelectedItem.toString())}
           if (player5Check.isSelected()) {gameLogic.setPlayer(player5Name.getText, player5Color.getSelectedItem.toString())}
           if (player6Check.isSelected()) {gameLogic.setPlayer(player6Name.getText, player6Color.getSelectedItem.toString())}
-          new GUI(gameLogic)         
+          gameLogic.initializeGame
           
-          
-          
+                   
+    
         }
-
-      
-
       }
     }
   }
@@ -147,6 +145,37 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
       if (e.getStateChange == ItemEvent.SELECTED) {player6Name.setVisible(true); player6Color.setVisible(true)}
       else {player6Name.setVisible(false); player6Color.setVisible(false); player6Color.setSelectedItem("")}
     }
-     
   }
+    
+    
+  def update() {
+    if (listenToUpdates) {
+      gameLogic.getStatus match {
+        case Statuses.INITIALIZE_PLAYERS => {}
+        case Statuses.GAME_INITIALIZED => continue()
+    //      case Statuses.PLAYER_SPREAD_TROOPS => printSpreadTroops
+    //      case Statuses.PLAYER_ATTACK => printAttack
+    //      case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
+    //      case Statuses.DIECES_ROLLED => printRolledDieces
+    //      case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
+    
+          // Errors
+          case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+          case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
+          case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
+          case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
+          case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
+      }     
+      }
+
+  }
+  
+  
+  def continue() {
+    this.listenToUpdates = false
+    this.setVisible(false)
+    new GUI(gameLogic)
+  }
+     
+  
 }

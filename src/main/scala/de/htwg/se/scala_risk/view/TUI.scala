@@ -192,7 +192,7 @@ class TUI(gameLogic: GameLogic) extends TObserver {
 
     val countries = gameLogic.getCountries
 
-    for (c: (String, String, Int) <- countries) {
+    for (c: (String, String, Int, Int) <- countries) {
 
       val s1 = c._1;
 

@@ -41,4 +41,10 @@ trait Country {
    * when initializing the game.
    */
   def setOwner(player: Player)
+  
+  /**
+   * Returns the unique color of the country.
+   * @return color as integer.
+   */
+  def getRefColor() : Int
 }

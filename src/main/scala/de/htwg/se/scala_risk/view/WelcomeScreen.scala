@@ -8,10 +8,12 @@ import java.awt._
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
 import de.htwg.se.scala_risk.controller.GameLogic
+import de.htwg.se.scala_risk.util.observer.TObserver
+import de.htwg.se.scala_risk.util.Statuses
 
-
-class WelcomeScreen(gameLogic : GameLogic) extends JFrame with ActionListener {
-   
+class WelcomeScreen(gameLogic : GameLogic) extends JFrame with ActionListener with TObserver {
+  gameLogic.add(this)
+  var listenToUpdates = true
   this.setTitle("SCALA_RISK")
   this.setResizable(false)
   val backgroundImage = Scale.getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/welcome_screen.PNG")),
@@ -34,9 +36,7 @@ class WelcomeScreen(gameLogic : GameLogic) extends JFrame with ActionListener {
 
   
   override def actionPerformed(e:ActionEvent) {
-    this.setVisible(false)
-    val ep = new EnterPlayers(gameLogic)
-    ep.setVisible(true)
+    gameLogic.startGame
   }
 
 
@@ -50,9 +50,28 @@ class WelcomeScreen(gameLogic : GameLogic) extends JFrame with ActionListener {
   this.setContentPane(x0)
   this.pack()
   
+  def continue() {
+    this.listenToUpdates = false
+    this.setVisible(false)
+    val ep = new EnterPlayers(gameLogic)
+    ep.setVisible(true)
+  }
   
-  
- 
+  def update() {
+    if (this.listenToUpdates) {
+     gameLogic.getStatus match {
+      case Statuses.INITIALIZE_PLAYERS => continue()
+
+      // Errors
+      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
+      case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
+      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
+      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
+    }     
+    }
+
+  }
   
                                  
 }
