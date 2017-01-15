@@ -176,7 +176,7 @@ class GameLogic extends TGameLogic {
       /* Check, if the country to attack is a neighboring country of the
        * attacker country was missing!
        */
-      if (!this.getNeighbours(countryAttacker).map { x => x.getName }.contains(countryDefender)) {
+      if (!this.getNeighbours(countryAttacker).map { x => x.getName.toUpperCase() }.contains(countryDefender.toUpperCase())) {
         this.setErrorStatus(Statuses.NOT_A_NEIGHBORING_COUNTRY)        
         
       } else {
@@ -187,6 +187,7 @@ class GameLogic extends TGameLogic {
               world.getCountriesList(attackerDefenderIndex._1),
               world.getCountriesList(attackerDefenderIndex._2)
             )
+            println(this.status)
             this.setStatus(Statuses.DIECES_ROLLED)
             val min = Math.min(this.rolledDieces._1.length, this.rolledDieces._2.length)
             var extantTroopsAttacker = world.getCountriesList(attackerDefenderIndex._1).getTroops

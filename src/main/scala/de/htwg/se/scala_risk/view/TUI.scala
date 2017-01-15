@@ -61,6 +61,7 @@ class TUI(gameLogic: GameLogic) extends TObserver {
       case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
       case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
       case Statuses.NOT_A_NEIGHBORING_COUNTRY => {/*TODO: implement*/}
+      case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => {/*TODO: implement*/}
     }
   }
 

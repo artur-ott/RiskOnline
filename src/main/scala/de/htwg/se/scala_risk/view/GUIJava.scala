@@ -46,8 +46,8 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   /* Define the buttons and labels */
   val gameStatusLabel = new JLabel("GameStatus Label", SwingConstants.CENTER)
   val currentPlayer = new JLabel("Current Player")
-  val selectedCountry1 = new JLabel("hi", SwingConstants.CENTER)
-  val selectedCountry2 = new JLabel("bla", SwingConstants.CENTER)
+  val selectedCountry1 = new JLabel("", SwingConstants.CENTER)
+  val selectedCountry2 = new JLabel("", SwingConstants.CENTER)
   val endTurnButton = new JButton("Zug beenden")
   
   val leftGrid = new JPanel() {
@@ -74,8 +74,6 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   /* Map as a Label (Component) */
   val map = getMap()
   
-  
-
   
   /* Create county labels */
   /* Nordamerika */
@@ -183,12 +181,9 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
              parent.status match {
                case Statuses.PLAYER_SPREAD_TROOPS => println(gameLogic.getTroopsToSpread);spreadTroops(country)
                case Statuses.PLAYER_ATTACK => {attack(country)}
-             }
-//             val country = getSelectedCountry(i)
-//             updateTroopCount(country._1, 1)
-//             repaintCountry(country._1, -57312)             
+               case Statuses.PLAYER_MOVE_TROOPS => moveTroopsEnd(country)
+             }        
            }
-
          }
        })
      }
@@ -278,7 +273,6 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
         }          
       }
     }
-    
     map.repaint()
       //this.map.setIcon(new ImageIcon(map_legend))
    
@@ -300,16 +294,14 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   
   override def actionPerformed(e : ActionEvent) {
     if (e.getSource == endTurnButton) {
-      this.setEnabled(false)
-      val parent = this
-      val dices = new Dices(gameLogic) {
-        this.addWindowListener(new WindowAdapter() {
-          override def windowClosing(e : WindowEvent)  {
-            parent.setEnabled(true)
-          }
-        })
-      }
-      dices.setVisible(true)
+	    val c = JOptionPane.showConfirmDialog(
+	              this, 
+	              "Wollen Sie Ihren Zug beenden?",
+	              "Beenden?",
+	              JOptionPane.YES_NO_OPTION)
+	    if (c == JOptionPane.YES_OPTION) {
+	      gameLogic.endTurn
+	    }
     }
   }
   
@@ -317,13 +309,16 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   
   def update() {
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => updatePlayerLabel(); this.status = Statuses.PLAYER_SPREAD_TROOPS
-      case Statuses.PLAYER_ATTACK => this.updateLabels()
+      case Statuses.PLAYER_SPREAD_TROOPS => setStatusText("Rearm")
+                                            updatePlayerLabel()
+                                            this.status = Statuses.PLAYER_SPREAD_TROOPS
+      case Statuses.PLAYER_ATTACK => setStatusText("Attack")
+                                     this.updateLabels()
                                      this.status = Statuses.PLAYER_ATTACK
-      case Statuses.PLAYER_MOVE_TROOPS => 
+      case Statuses.PLAYER_MOVE_TROOPS => setStatusText("Move")
+                                          this.status = Statuses.PLAYER_MOVE_TROOPS
       case Statuses.DIECES_ROLLED => rollDices()
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => if (this.running) {
-                                                  println("bliblablubbeldiblub")
                                                   updateLabels()
                                                   repaintCountry(gameLogic.getAttackerDefenderCountries._2._4,
                                                                  gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))            
@@ -331,6 +326,7 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
                                                   }
 
       // Errors
+      case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => {}
       case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => notYourCountry()
       case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
       case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
@@ -341,22 +337,22 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   }
   
   /* List of countries (name, unique color) to operate with (attack, add troops, ...) */
-  var actionCountries = scala.List[(String, Int, String)]()
+  var actionCountries = scala.List[(String, String, Int, Int)]() /* Countryname, ownername, troops, refcolor */
   
   def spreadTroops(country: Int) {
     var countryName = ""
-    gameLogic.getCountries.foreach { x => if (x._4 == country) {actionCountries = actionCountries.:+(x._1, x._4, x._2); countryName = x._1}}
+    gameLogic.getCountries.foreach { x => if (x._4 == country) {actionCountries = actionCountries.:+(x); countryName = x._1}}
     if (actionCountries.length == 1 && gameLogic.getTroopsToSpread > 0) {
       gameLogic.addTroops(countryName, 1)
       updateLabels()
-      actionCountries = scala.List[(String, Int, String)]()
+      actionCountries = scala.List[(String, String, Int, Int)]()
     }
   }
   
   def attack(country: Int) {
-    gameLogic.getCountries.foreach { x => if (x._4 == country) { actionCountries = actionCountries.:+(x._1, x._4, x._2)} }
+    gameLogic.getCountries.foreach { x => if (x._4 == country) { actionCountries = actionCountries.:+(x)} }
     if (actionCountries.length == 1) {
-      if (actionCountries(0)._3 == gameLogic.getCurrentPlayer._1) {
+      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
         this.selectedCountry1.setText(actionCountries(0)._1)
       }   
     }
@@ -368,7 +364,7 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
         clearCountryLabels()
       }
       
-      actionCountries = scala.List[(String, Int, String)]()      
+      actionCountries = scala.List[(String, String, Int, Int)]()      
     }
   }
   
@@ -400,10 +396,9 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
     this.selectedCountry2.setText("")
   }
   
-  def rollDices() {
-    println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
-    this.setEnabled(false)
-    if (running) {
+  def rollDices() {  
+    if (running && !gameLogic.getRolledDieces._1.isEmpty) {
+      this.setEnabled(false)
       this.running = false
       val parent = this
       val dices = new Dices(gameLogic) {
@@ -413,15 +408,18 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
             parent.running = true
             parent.clearCountryLabels()
             parent.updateLabels()
-            println("----STATUS: " + gameLogic.getStatus)
-            println(parent.running)
             parent.update()
           }
         })
       }
       dices.setVisible(true)       
+    } else {
+      if (gameLogic.getRolledDieces._1.isEmpty) {
+        this.toFront()
+      }
+      
     }
-   
+    
   }
   
   def moveTroops() {
@@ -434,6 +432,36 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
     val choiceAsInt = Integer.valueOf(choice.toString())
     gameLogic.moveTroops(choiceAsInt)
     
+  }
+  
+  def moveTroopsEnd(country: Int) {
+    gameLogic.getCountries.foreach { x => if (x._4 == country) { actionCountries = actionCountries.:+(x)} }
+    if (actionCountries.length == 1) {
+      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
+        this.selectedCountry1.setText(actionCountries(0)._1)
+      }   
+    }
+    if (actionCountries.length == 2) {
+      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
+        val t = scala.Array.range(0, actionCountries(0)._3)
+        val troopsToMove = t.map { x => x.asInstanceOf[Object] }
+        val choice = JOptionPane.showInputDialog(this, "Wie viele Truppen möchten Sie verschieben?",
+                                             "Verschiebe Truppen...", JOptionPane.PLAIN_MESSAGE,
+                                             null, troopsToMove,
+                                             "0")        
+        this.selectedCountry2.setText(actionCountries(1)._1)
+        val choiceAsInt = Integer.valueOf(choice.toString())
+        gameLogic.dragTroops(actionCountries(0)._1, actionCountries(1)._1, choiceAsInt)
+        updateLabels()
+      }
+
+      
+      actionCountries = scala.List[(String, String, Int, Int)]()      
+    }    
+  }
+  
+  def setStatusText(text: String) {
+    this.gameStatusLabel.setText(text)
   }
 
   

@@ -139,10 +139,6 @@ class Dices(gameLogic : GameLogic) extends JFrame with ActionListener with TObse
   val diceArray = Array(dice_1, dice_2, dice_3, dice_4, dice_5, dice_6)
   diceArray.foreach { x => dices_background.add(x)}
   dices_background.add(roll_dice)
- 
-//  panelName.add(new JLabel(""))
-//  panelName.add(player2Name)
-//  panelName.add(new JLabel("dsafasdf"))
   dices_background.add(panelName)
   
   
@@ -167,17 +163,13 @@ class Dices(gameLogic : GameLogic) extends JFrame with ActionListener with TObse
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => conquered()
       case Statuses.PLAYER_ATTACK => 
 //      // Errors
-//      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => notYourCountry()
-//      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
-//      case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
-//      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
-//      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => yourOwnCountry()
+      case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => {notEnoughTroops()}
+
     }
   }  
   
   def rollAgain() {
     this.diceStatus = gameLogic.getRolledDieces
-    println("aaaaaaaaaaaaaaaaaaa" + this.diceStatus)
     updateAttackerDices()
     updateDefenderDices()    
   }
@@ -188,12 +180,18 @@ class Dices(gameLogic : GameLogic) extends JFrame with ActionListener with TObse
       this.running = false
       JOptionPane.showMessageDialog(this, "Land erfolgreich erobert!",
                                     "SIEG!", JOptionPane.INFORMATION_MESSAGE) 
-      this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-      this.dispose()      
+      this.setVisible(false)
+      gameLogic.remove(this)
+      this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));        
     }
-
-    
-
+  }
+  
+  def notEnoughTroops() {
+    JOptionPane.showMessageDialog(this, "Nicht genügend Truppen zum Angreifen!",
+                                  "Nicht genügend Truppen...", JOptionPane.ERROR_MESSAGE) 
+    this.setVisible(false)
+    gameLogic.remove(this)
+    this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
   }
   
 }
