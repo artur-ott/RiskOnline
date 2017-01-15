@@ -6,19 +6,21 @@ import de.htwg.se.scala_risk.controller.{ GameLogic => TGameLogic }
 import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GameLogic extends TGameLogic {
+@Singleton
+class GameLogic @Inject() (world: World) extends TGameLogic {
 
   private[this] var status: Statuses.Value = Statuses.CREATE_GAME
 
-  private[this] val INIT_TROOPS: Int = 20
+  private[this] val INIT_TROOPS: Int = 3
 
   private[this] var attackerDefenderIndex = (-1, -1)
   private[this] var rolledDieces: (List[Int], List[Int]) = (Nil, Nil)
-  private[this] val world: World = new de.htwg.se.scala_risk.model.impl.World // Changed to test GUI
+  //private[this] val world: World = new de.htwg.se.scala_risk.model.impl.World // Changed to test GUI
 
   def startGame = {
-    println("start")
     this.setStatus(Statuses.INITIALIZE_PLAYERS)
   }
 

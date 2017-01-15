@@ -10,6 +10,7 @@ import java.awt.GridLayout
 import java.awt._
 import java.awt.event.MouseEvent
 import de.htwg.se.scala_risk.controller.GameLogic
+import de.htwg.se.scala_risk.controller.impl.{GameLogic => ImpGameLogic}
 import java.awt.event.MouseAdapter
 import java.awt.event.ActionListener
 import java.awt.event.ActionEvent
@@ -23,7 +24,7 @@ object GUIJava {
     import de.htwg.se.scala_risk.controller.impl.{  GameLogic => ImpGameLogic }
     def main(args: Array[String]) {
       
-    val welcome = new WelcomeScreen(new ImpGameLogic)
+    val welcome = new WelcomeScreen(new ImpGameLogic(null))
     welcome.setLocationRelativeTo(null)
     welcome.setVisible(true)
   }
