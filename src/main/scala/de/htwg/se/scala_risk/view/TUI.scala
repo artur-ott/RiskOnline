@@ -3,8 +3,10 @@ package de.htwg.se.scala_risk.view
 import de.htwg.se.scala_risk.controller.GameLogic
 import de.htwg.se.scala_risk.util.observer.TObserver
 import de.htwg.se.scala_risk.util.Statuses
+import javax.inject.Inject
 
-class TUI(gameLogic: GameLogic) extends TObserver {
+
+class TUI  @Inject() (gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
 
   gameLogic.add(this)

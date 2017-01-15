@@ -10,8 +10,9 @@ import java.awt.event.ActionEvent
 import de.htwg.se.scala_risk.controller.GameLogic
 import de.htwg.se.scala_risk.util.observer.TObserver
 import de.htwg.se.scala_risk.util.Statuses
+import javax.inject.Inject
 
-class WelcomeScreen(gameLogic : GameLogic) extends JFrame with ActionListener with TObserver {
+class WelcomeScreen @Inject() (gameLogic : GameLogic) extends JFrame with ActionListener with TObserver {
   gameLogic.add(this)
   var listenToUpdates = true
   this.setTitle("SCALA_RISK")
