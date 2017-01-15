@@ -7,12 +7,11 @@ import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
 
-
 class GameLogic extends TGameLogic {
 
   private[this] var status: Statuses.Value = Statuses.CREATE_GAME
 
-  private[this] val INIT_TROOPS: Int = 3
+  private[this] val INIT_TROOPS: Int = 20
 
   private[this] var attackerDefenderIndex = (-1, -1)
   private[this] var rolledDieces: (List[Int], List[Int]) = (Nil, Nil)
@@ -113,7 +112,7 @@ class GameLogic extends TGameLogic {
     }
   }
   
-  def getAttackerDefenderCountries : ((String, String, Int), (String, String, Int)) = {
+  def getAttackerDefenderCountries : ((String, String, Int, Int), (String, String, Int, Int)) = {
     if (this.attackerDefenderIndex._1 < 0 || this.attackerDefenderIndex._2 < 0) {
       this.setErrorStatus(Statuses.COUNTRY_NOT_FOUND)
       return null
@@ -122,9 +121,9 @@ class GameLogic extends TGameLogic {
     return (getCountryAsString(this.attackerDefenderIndex._1), getCountryAsString(this.attackerDefenderIndex._2))
   }
   
-  private def getCountryAsString(index: Int): (String, String, Int) = {
+  private def getCountryAsString(index: Int): (String, String, Int, Int) = {
     val country: Country = world.getCountriesList(index)
-    return (country.getName, country.getOwner.getName, country.getTroops)
+    return (country.getName, country.getOwner.getName, country.getTroops, country.getRefColor())
   }
 
   private def getNeighbours(country: String): List[Country] = {
@@ -170,38 +169,50 @@ class GameLogic extends TGameLogic {
   } 
 
   def attack(countryAttacker: String, countryDefender: String) = {
-    if (this.status == Statuses.PLAYER_ATTACK) {
-      this.attackerDefenderIndex = getAttackIndexes(countryAttacker, countryDefender);
-      if (attackerDefenderIndex._1 != -1) {
-        this.rolledDieces = this.rollDice(
-          world.getCountriesList(attackerDefenderIndex._1),
-          world.getCountriesList(attackerDefenderIndex._2)
-        )
-        this.setStatus(Statuses.DIECES_ROLLED)
-        val min = Math.min(this.rolledDieces._1.length, this.rolledDieces._2.length)
-        var extantTroopsAttacker = world.getCountriesList(attackerDefenderIndex._1).getTroops
-        var extantTroopsDefender = world.getCountriesList(attackerDefenderIndex._2).getTroops
-        var i = 0
-        for (i <- 0 to min - 1) {
-          if (this.rolledDieces._1(i) > this.rolledDieces._2(i)) {
-            extantTroopsDefender -= 1
-          } else {
-            extantTroopsAttacker -= 1
+    /* Make check if the player attacks his own country easier */
+    if (this.getCurrentPlayer._1.toUpperCase().equals(this.getOwnerName(countryDefender))) {
+      this.setErrorStatus(Statuses.PLAYER_ATTACKING_HIS_COUNTRY)
+    } else {
+      /* Check, if the country to attack is a neighboring country of the
+       * attacker country was missing!
+       */
+      if (!this.getNeighbours(countryAttacker).map { x => x.getName }.contains(countryDefender)) {
+        this.setErrorStatus(Statuses.NOT_A_NEIGHBORING_COUNTRY)        
+        
+      } else {
+        if (this.status == Statuses.PLAYER_ATTACK) {
+          this.attackerDefenderIndex = getAttackIndexes(countryAttacker, countryDefender);
+          if (attackerDefenderIndex._1 != -1) {
+            this.rolledDieces = this.rollDice(
+              world.getCountriesList(attackerDefenderIndex._1),
+              world.getCountriesList(attackerDefenderIndex._2)
+            )
+            this.setStatus(Statuses.DIECES_ROLLED)
+            val min = Math.min(this.rolledDieces._1.length, this.rolledDieces._2.length)
+            var extantTroopsAttacker = world.getCountriesList(attackerDefenderIndex._1).getTroops
+            var extantTroopsDefender = world.getCountriesList(attackerDefenderIndex._2).getTroops
+            var i = 0
+            for (i <- 0 to min - 1) {
+              if (this.rolledDieces._1(i) > this.rolledDieces._2(i)) {
+                extantTroopsDefender -= 1
+              } else {
+                extantTroopsAttacker -= 1
+              }
+            }
+            world.getCountriesList(attackerDefenderIndex._1).setTroops(extantTroopsAttacker)
+            world.getCountriesList(attackerDefenderIndex._2).setTroops(extantTroopsDefender)
+            if (extantTroopsDefender == 0) {
+              world.getCountriesList(attackerDefenderIndex._2).setOwner(world.getCountriesList(attackerDefenderIndex._1).getOwner)
+              this.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
+            } else {
+              this.clearAttack
+              this.setStatus(Statuses.PLAYER_ATTACK)
+            }
           }
-        }
-        world.getCountriesList(attackerDefenderIndex._1).setTroops(extantTroopsAttacker)
-        world.getCountriesList(attackerDefenderIndex._2).setTroops(extantTroopsDefender)
-        if (extantTroopsDefender == 0) {
-          world.getCountriesList(attackerDefenderIndex._2).setOwner(world.getCountriesList(attackerDefenderIndex._1).getOwner)
-          this.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
-        } else {
-          this.clearAttack
-          this.setStatus(Statuses.PLAYER_ATTACK)
         }
       }
     }
   }
-
   private[this] def getAttackIndexes(countryAttacker: String, countryDefender: String): (Int, Int) = {
     val indexAttacker = this.getCountryIndexByString(countryAttacker)
     val indexDefender = this.getCountryIndexByString(countryDefender)
@@ -274,8 +285,8 @@ class GameLogic extends TGameLogic {
       }
       toopsDefender match {
         case 1 => dicesDefender = List.fill(1)(randomDice())
-        case 2 => dicesDefender = List.fill(2)(randomDice())
-        case _ => dicesDefender = List.fill(3)(randomDice())
+        case _ => dicesDefender = List.fill(2)(randomDice())
+        //case _ => dicesDefender = List.fill(3)(randomDice())
       }
       return (dicesAttacker.sortWith(_ > _), dicesDefender.sortWith(_ > _))
     } else {
@@ -290,5 +301,31 @@ class GameLogic extends TGameLogic {
   def getCurrentPlayerColor() : String = {
     return world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString()
   }
+  
+  def getOwnerColor(owner: String) : Int = {
+    val playerList = world.getPlayerList
+    var intcolor = 0
+    var color = ""
+    playerList.foreach { x => if (x.getName.toUpperCase().equals(owner.toUpperCase())) {color = x.getColor.toString().toUpperCase()} }
+
+    color match {
+      case "RED" => intcolor = -57312
+      case "YELLOW" => intcolor = -5888
+      case "GREEN" => intcolor = -10420362
+      case "BLUE" => intcolor = -8350209
+      case "PINK" => intcolor = -563473
+      case "ORANGE" => intcolor = -355265
+    }
+    return intcolor
+  }
+  
+  def getOwnerName(country: String) : String = {
+    val countryList = world.getCountriesList
+    var ownerName = ""
+    countryList.foreach { x => if (x.getName.toUpperCase().equals(country.toUpperCase())) {ownerName = x.getOwner.getName.toUpperCase()} }
+    return ownerName
+  }
+  
+
   
 }

@@ -22,6 +22,7 @@ import de.htwg.se.scala_risk.util.Statuses
 object GUIJava {
     import de.htwg.se.scala_risk.controller.impl.{  GameLogic => ImpGameLogic }
     def main(args: Array[String]) {
+      
     val welcome = new WelcomeScreen(new ImpGameLogic)
     welcome.setLocationRelativeTo(null)
     welcome.setVisible(true)
@@ -31,7 +32,6 @@ object GUIJava {
 
 
 class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListener {
-
   /* Register the GUI as a subscriber in the gameLogic.
    * As something changes in the gameLogic, the GUI
    * will be notified.
@@ -39,9 +39,24 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   gameLogic.add(this)
   /* Boolean that determines if the game is stopped */
   var running = true
+  
+  /* Current status of the game */
+  var status = null.asInstanceOf[Statuses.Value]
+  
   /* Define the buttons and labels */
-  val gameStatusLabel = new JLabel("GameStatus Label")
+  val gameStatusLabel = new JLabel("GameStatus Label", SwingConstants.CENTER)
+  val currentPlayer = new JLabel("Current Player")
+  val selectedCountry1 = new JLabel("hi", SwingConstants.CENTER)
+  val selectedCountry2 = new JLabel("bla", SwingConstants.CENTER)
   val endTurnButton = new JButton("Zug beenden")
+  
+  val leftGrid = new JPanel() {
+    this.setLayout(new GridLayout(1,4))
+    this.add(currentPlayer)
+    this.add(gameStatusLabel)
+    this.add(selectedCountry1)
+    this.add(selectedCountry2)
+  }
   endTurnButton.addActionListener(this)
   
   /* Plane map (grey) */
@@ -59,17 +74,10 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   /* Map as a Label (Component) */
   val map = getMap()
   
-  /* List with all the countries */
-  val countryList = gameLogic.getCountries
   
-  /* Build the frame */
-  this.setTitle("SCALA_RISK")
-  this.setPreferredSize(new Dimension(1238,950))
-  this.setResizable(false)
-  this.setJMenuBar(new GUIMenuBar(this))
+
   
-  
-  /* County labels */
+  /* Create county labels */
   /* Nordamerika */
   val alaska       = new JLabel("0", SwingConstants.CENTER) {this.setBounds(73-15, 126-15, 30, 30)}
   val nwt          = new JLabel("0", SwingConstants.CENTER) {this.setBounds(187-15, 128-15, 30, 30)}
@@ -126,6 +134,14 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
                            kamtschatka, japan, mongolei, irkutsk, china, indien, suedostasien, indonesien,
                            neuguinea, westaustr, ostaustr)
                            
+
+  
+  /* Build the frame */
+  this.setTitle("SCALA_RISK")
+  this.setPreferredSize(new Dimension(1238,950))
+  this.setResizable(false)
+  this.setJMenuBar(new GUIMenuBar(this))
+
   val x0 = new JPanel()
   x0.setLayout(new BorderLayout())
 
@@ -137,7 +153,7 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   
   val x2 = new JPanel()
   x2.setLayout(new GridLayout(1,4))
-  x2.add(gameStatusLabel)
+  x2.add(leftGrid)
   x2.add(endTurnButton)
   
   x0.add(x1, BorderLayout.NORTH)
@@ -149,24 +165,28 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
   
   
   def getMap() : JLabel = {
+    val parent = this
      val map = new JLabel {
        this.setIcon(new ImageIcon(map_grey))
-        //this.icon = new ImageIcon(map_)
        this.addMouseListener(new MouseAdapter() {
+         
          override def mouseClicked(e:MouseEvent) {
            if (running) {
              /* Determine the color of the country in the reference map */
-             val i = map_ref.getRGB(e.getPoint.x, e.getPoint.y)
-             println(map_ref.getRGB(e.getPoint.x, e.getPoint.y))
-             val c = new Color(i)
+             val country = map_ref.getRGB(e.getPoint.x, e.getPoint.y)
+             //println(map_ref.getRGB(e.getPoint.x, e.getPoint.y))
+             val c = new Color(country)
              val r = c.getRed
              val g = c.getGreen
              val b = c.getBlue
-             println(r,g,b) 
-              
-             val country = getSelectedCountry(i)
-             updateTroopCount(country)
-             repaintCountry(country, "RED")             
+             //println(r,g,b)
+             parent.status match {
+               case Statuses.PLAYER_SPREAD_TROOPS => println(gameLogic.getTroopsToSpread);spreadTroops(country)
+               case Statuses.PLAYER_ATTACK => {attack(country)}
+             }
+//             val country = getSelectedCountry(i)
+//             updateTroopCount(country._1, 1)
+//             repaintCountry(country._1, -57312)             
            }
 
          }
@@ -176,162 +196,83 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
      return map
   }   
   
-  def updateTroopCount(country:JLabel) {
-    if (country != null) {
-      country.setText((Integer.valueOf(country.getText())+1).toString())
+
+  def updateTroopCount(country: Int, troops: Int) {
+    val selectedCountry = getSelectedCountry(country)
+    val countryLabel = selectedCountry._2
+    if (country != 0) {
+      countryLabel.setText((Integer.valueOf(countryLabel.getText())+ troops).toString())
     }
     
   }
   
-  def getSelectedCountry(c:Int) : JLabel = {
-    var selectedCountry = null.asInstanceOf[JLabel]
+  def getSelectedCountry(c:Int) : (Int, JLabel) = {
+    var selectedCountryLabel = null.asInstanceOf[JLabel]
+    var selectedCountry = 0
+    var country = ""
+    gameLogic.getCountries.foreach { x => if (c == x._4) {country = x._1.toUpperCase()}}
+    country match {
+      case "ALASKA" => {selectedCountryLabel = alaska}
+      case "NORDWEST-TERRITORIEN" => {selectedCountryLabel = nwt}
+      case "GROENLAND" => {selectedCountryLabel = groenland}
+      case "ALBERTA" => {selectedCountryLabel = alberta}
+      case "ONTARIO" => {selectedCountryLabel = ontario}
+      case "OSTKANADA" => {selectedCountryLabel = ostkanada}
+      case "WESTSTAATEN" => {selectedCountryLabel = weststaaten}
+      case "OSTSTAATEN" => {selectedCountryLabel = oststaaten}
+      case "MITTELAMERIKA" => {selectedCountryLabel = mittelamerika}
+      case "VENEZUELA" => {selectedCountryLabel = venezuela}
+      case "PERU" => {selectedCountryLabel = peru}
+      case "BRASILIEN" => {selectedCountryLabel = brasilien}
+      case "ARGENTINIEN" => {selectedCountryLabel = argentinien}
+      case "NORDAFRIKA" => {selectedCountryLabel = nordafrika}
+      case "AEGYPTEN" => {selectedCountryLabel = aegypten}
+      case "ZENTRALAFRIKA" => {selectedCountryLabel = zentralafrika}
+      case "OSTAFRIKA" => {selectedCountryLabel = ostafrika}
+      case "SUEDAFRIKA" => {selectedCountryLabel = suedafrika}
+      case "MADAGASKAR" => {selectedCountryLabel = madagaskar}
+      case "WESTEUROPA" => {selectedCountryLabel = westeuropa} 
+      case "GROSSBRITANNIEN" => {selectedCountryLabel = grossbrit}
+      case "ISLAND" => {selectedCountryLabel = island}
+      case "SUEDEUROPA" => {selectedCountryLabel = suedeuropa}
+      case "NORDEUROPA" => {selectedCountryLabel = nordeuropa}
+      case "SKANDINAVIEN" => {selectedCountryLabel = skandinavien}
+      case "RUSSLAND" => {selectedCountryLabel = russland}
+      case "MITTLERER-OSTEN" => {selectedCountryLabel = mittosten}
+      case "AFGHANISTAN" => {selectedCountryLabel = afghanistan}  
+      case "URAL" => {selectedCountryLabel = ural}
+      case "SIBIRIEN" => {selectedCountryLabel = sibirien}
+      case "JAKUTIEN" => {selectedCountryLabel = jakutien}
+      case "KAMTSCHATKA" => {selectedCountryLabel = kamtschatka}
+      case "JAPAN" => {selectedCountryLabel = japan}
+      case "IRKUTSK" => {selectedCountryLabel = irkutsk}
+      case "MONGOLEI" => {selectedCountryLabel = mongolei}
+      case "CHINA" => {selectedCountryLabel = china}  
+      case "INDIEN" => {selectedCountryLabel = indien}
+      case "SUEDOSTASIEN" => {selectedCountryLabel = suedostasien}
+      case "INDONESIEN" => {selectedCountryLabel = indonesien}
+      case "NEUGUINEA" => {selectedCountryLabel = neuguinea}
+      case "WESTAUSTRALIEN" => {selectedCountryLabel = westaustr}
+      case "OSTAUSTRALIEN" => {selectedCountryLabel = ostaustr}
     
-    /* Nordamerika */
-    if (c == getRefColor("alaska")) {selectedCountry = alaska}
-    else if (c == getRefColor("nordwest-territorien")) {selectedCountry = nwt}
-    else if (c == getRefColor("groenland")) {selectedCountry = groenland}
-    else if (c == getRefColor("alberta")) {selectedCountry = alberta}
-    else if (c == getRefColor("ontario")) {selectedCountry = ontario}
-    else if (c == getRefColor("ostkanada")) {selectedCountry = ostkanada}
-    else if (c == getRefColor("weststaaten")) {selectedCountry = weststaaten}
-    else if (c == getRefColor("oststaaten")) {selectedCountry = oststaaten}
-    else if (c == getRefColor("mittelamerika")) {selectedCountry = mittelamerika}
-    /* Suedamerika */
-    else if (c == getRefColor("venezuela")) {selectedCountry = venezuela} // -923904
-    else if (c == getRefColor("peru")) {selectedCountry = peru}
-    else if (c == getRefColor("brasilien")) {selectedCountry = brasilien}
-    else if (c == getRefColor("argentinien")) {selectedCountry = argentinien}
-    /* Afrika */
-    else if (c == getRefColor("nordafrika")) {selectedCountry = nordafrika}
-    else if (c == getRefColor("aegypten")) {selectedCountry = aegypten}
-    else if (c == getRefColor("zentralafrika")) {selectedCountry = zentralafrika}
-    else if (c == getRefColor("ostafrika")) {selectedCountry = ostafrika}
-    else if (c == getRefColor("suedafrika")) {selectedCountry = suedafrika}
-    else if (c == getRefColor("madagaskar")) {selectedCountry = madagaskar}
-    /* Europa */
-    else if (c == getRefColor("westeuropa")) {selectedCountry = westeuropa}
-    else if (c == getRefColor("grossbritannien")) {selectedCountry = grossbrit}
-    else if (c == getRefColor("island")) {selectedCountry = island}
-    else if (c == getRefColor("suedeuropa")) {selectedCountry = suedeuropa}
-    else if (c == getRefColor("nordeuropa")) {selectedCountry = nordeuropa}
-    else if (c == getRefColor("skandinavien")) {selectedCountry = skandinavien}
-    else if (c == getRefColor("russland")) {selectedCountry = russland}
-    /* Asien */
-    else if (c == getRefColor("mittlerer-osten")) {selectedCountry = mittosten}
-    else if (c == getRefColor("afghanistan")) {selectedCountry = afghanistan}
-    else if (c == getRefColor("ural")) {selectedCountry = ural}
-    else if (c == getRefColor("sibirien")) {selectedCountry = sibirien}
-    else if (c == getRefColor("jakutien")) {selectedCountry = jakutien}
-    else if (c == getRefColor("kamtschatka")) {selectedCountry = kamtschatka}
-    else if (c == getRefColor("japan")) {selectedCountry = japan}
-    else if (c == getRefColor("irkutsk")) {selectedCountry = irkutsk}
-    else if (c == getRefColor("mongolei")) {selectedCountry = mongolei}
-    else if (c == getRefColor("china")) {selectedCountry = china}
-    else if (c == getRefColor("indien")) {selectedCountry = indien}
-    else if (c == getRefColor("suedostasien")) {selectedCountry = suedostasien}
-    /* Australien */
-    else if (c == getRefColor("indonesien")) {selectedCountry = indonesien}
-    else if (c == getRefColor("neuguinea")) {selectedCountry = neuguinea}
-    else if (c == getRefColor("westaustralien")) {selectedCountry = westaustr}
-    else if (c == getRefColor("ostaustralien")) {selectedCountry = ostaustr}
+    }
     
-    return selectedCountry
+    selectedCountry = c
+    return (selectedCountry, selectedCountryLabel)
   }  
-//  def getSelectedCountry(c:Int) : JLabel = {
-//    var selectedCountry = null.asInstanceOf[JLabel]
-//    
-//    /* Nordamerika */
-//    if (c == -3993841) {selectedCountry = alaska}
-//    else if (c == -772811) {selectedCountry = nwt}
-//    else if (c == -41635) {selectedCountry = groenland}
-//    else if (c == -1245184) {selectedCountry = alberta}
-//    else if (c == -3459787) {selectedCountry = ontario}
-//    else if (c == -4390912) {selectedCountry = ostkanada}
-//    else if (c == -5373952) {selectedCountry = weststaaten}
-//    else if (c == -57312) {selectedCountry = oststaaten}
-//    else if (c == -196608) {selectedCountry = mittelamerika}
-//    /* Suedamerika */
-//    else if (c == getRefColor("venezuela")) {selectedCountry = venezuela} // -923904
-//    else if (c == -164) {selectedCountry = peru}
-//    else if (c == -256) {selectedCountry = brasilien}
-//    else if (c == -5888) {selectedCountry = argentinien}
-//    /* Afrika */
-//    else if (c == -2987746) {selectedCountry = nordafrika}
-//    else if (c == -8834304) {selectedCountry = aegypten}
-//    else if (c == -7650029) {selectedCountry = zentralafrika}
-//    else if (c == -32988) {selectedCountry = ostafrika}
-//    else if (c == -3308234) {selectedCountry = suedafrika}
-//    else if (c == -3316195) {selectedCountry = madagaskar}
-//    /* Europa */
-//    else if (c == -16771449) {selectedCountry = westeuropa}
-//    else if (c == -16775517) {selectedCountry = grossbrit}
-//    else if (c == -16772762) {selectedCountry = island}
-//    else if (c == -16761601) {selectedCountry = suedeuropa}
-//    else if (c == -16775425) {selectedCountry = nordeuropa}
-//    else if (c == -8350209) {selectedCountry = skandinavien}
-//    else if (c == -12690973) {selectedCountry = russland}
-//    /* Asien */
-//    else if (c == -15559131) {selectedCountry = mittosten}
-//    else if (c == -14878917) {selectedCountry = afghanistan}
-//    else if (c == -16729574) {selectedCountry = ural}
-//    else if (c == -10420362) {selectedCountry = sibirien}
-//    else if (c == -14962127) {selectedCountry = jakutien}
-//    else if (c == -15103447) {selectedCountry = kamtschatka}
-//    else if (c == -13831608) {selectedCountry = japan}
-//    else if (c == -16711900) {selectedCountry = irkutsk}
-//    else if (c == -11941285) {selectedCountry = mongolei}
-//    else if (c == -11615650) {selectedCountry = china}
-//    else if (c == -13708987) {selectedCountry = indien}
-//    else if (c == -13318071) {selectedCountry = suedostasien}
-//    /* Australien */
-//    else if (c == -29696) {selectedCountry = indonesien}
-//    else if (c == -37888) {selectedCountry = neuguinea}
-//    else if (c == -23296) {selectedCountry = westaustr}
-//    else if (c == -17612) {selectedCountry = ostaustr}
-//    
-//    return selectedCountry
-//  }
   
-  def getRefColor(name: String) : Int = {
-    var color = 0
-    countryList.foreach { x => if (x._1.toUpperCase().equals(name.toUpperCase())) {color = x._4}}
-    return color
-  }
-  
-  
+
   
   var counter = 0
-  def repaintCountry(country:JLabel, color:String) {
-
-    if (country != null) {
-      var intcolor = 0
-      counter match {
-        case 0 => intcolor = -57312
-        case 1 => intcolor = -5888
-        case 2 => intcolor =  -10420362
-        case 3 => intcolor = -8350209
-        case _ => intcolor = 0
-      }
-      counter += 1
-      counter %= 4
-//      color match {
-//        case "RED" => intcolor = -57312
-//        case "YELLOW" => intcolor = -5888
-//        case "GREEN" => intcolor =  -10420362
-//        case "BLUE" => intcolor = -8350209
-//        case _ => intcolor = 0
-//      }
-      println("Color: " + color)
-      if (intcolor != 0) {
-        println("not null")
-        val xloc = country.getLocation().getX.toInt+15
-        val yloc = country.getLocation().getY.toInt+15
-        val c = map_ref.getRGB(xloc, yloc)
-        println(c)
+  def repaintCountry(country: Int, color: Int) {
+    if (country != 0) {
+      //println("Color: " + color)
+      if (color != 0) {
+        //println("not null")
         for (y <- 0 to map_grey.getHeight-1) {
           for (x <- 0 to map_grey.getWidth-1) {       
-            if (map_ref.getRGB(x, y) == c) {
-              map_grey.setRGB(x, y, intcolor)
+            if (map_ref.getRGB(x, y) == country) {
+              map_grey.setRGB(x, y, color)
             }
           }
         }          
@@ -343,6 +284,19 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
    
     
   }
+  
+   /* Colorize all countries according to the color of the owner. */
+  initialize() 
+  def initialize() {
+    gameLogic.getCountries.foreach { x => repaintCountry(x._4, gameLogic.getOwnerColor(x._2))}
+    updateLabels()
+  }
+  
+  def getCountryFromColor(color: Int) : String = {
+    var country = ""
+    gameLogic.getCountries.foreach { x => if (x._4 == color) {country = x._1}}
+    return country
+  }  
   
   override def actionPerformed(e : ActionEvent) {
     if (e.getSource == endTurnButton) {
@@ -359,26 +313,130 @@ class GUI (gameLogic : GameLogic) extends JFrame with TObserver with ActionListe
     }
   }
   
+  
+  
   def update() {
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => spreadTroops()
-//      case Statuses.PLAYER_ATTACK => printAttack
-//      case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
-//      case Statuses.DIECES_ROLLED => printRolledDieces
-//      case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
+      case Statuses.PLAYER_SPREAD_TROOPS => updatePlayerLabel(); this.status = Statuses.PLAYER_SPREAD_TROOPS
+      case Statuses.PLAYER_ATTACK => this.updateLabels()
+                                     this.status = Statuses.PLAYER_ATTACK
+      case Statuses.PLAYER_MOVE_TROOPS => 
+      case Statuses.DIECES_ROLLED => rollDices()
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => if (this.running) {
+                                                  println("bliblablubbeldiblub")
+                                                  updateLabels()
+                                                  repaintCountry(gameLogic.getAttackerDefenderCountries._2._4,
+                                                                 gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))            
+                                                  moveTroops() 
+                                                  }
 
       // Errors
-      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => notYourCountry()
       case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
       case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
       case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
-      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
+      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => yourOwnCountry()
+      case Statuses.NOT_A_NEIGHBORING_COUNTRY => notANeighboringCountry()
     }
   }
   
-  def spreadTroops() {
+  /* List of countries (name, unique color) to operate with (attack, add troops, ...) */
+  var actionCountries = scala.List[(String, Int, String)]()
+  
+  def spreadTroops(country: Int) {
+    var countryName = ""
+    gameLogic.getCountries.foreach { x => if (x._4 == country) {actionCountries = actionCountries.:+(x._1, x._4, x._2); countryName = x._1}}
+    if (actionCountries.length == 1 && gameLogic.getTroopsToSpread > 0) {
+      gameLogic.addTroops(countryName, 1)
+      updateLabels()
+      actionCountries = scala.List[(String, Int, String)]()
+    }
+  }
+  
+  def attack(country: Int) {
+    gameLogic.getCountries.foreach { x => if (x._4 == country) { actionCountries = actionCountries.:+(x._1, x._4, x._2)} }
+    if (actionCountries.length == 1) {
+      if (actionCountries(0)._3 == gameLogic.getCurrentPlayer._1) {
+        this.selectedCountry1.setText(actionCountries(0)._1)
+      }   
+    }
+    if (actionCountries.length == 2) {
+      this.selectedCountry2.setText(actionCountries(1)._1)
+      gameLogic.attack(actionCountries(0)._1, actionCountries(1)._1)
+      updateLabels()
+      if (this.running) {
+        clearCountryLabels()
+      }
+      
+      actionCountries = scala.List[(String, Int, String)]()      
+    }
+  }
+  
+  def notYourCountry() {
+    JOptionPane.showMessageDialog(this, "Dieses Land gehört Dir (noch) nicht!",
+                                  "Nicht dein Land!", JOptionPane.ERROR_MESSAGE)    
+  }
+  
+  def yourOwnCountry() {
+    JOptionPane.showMessageDialog(this, "Dieses Land gehört Dir selbst!",
+                                  "Dein eigenes Land!", JOptionPane.ERROR_MESSAGE)     
+  }
+  
+  def notANeighboringCountry() {
+    JOptionPane.showMessageDialog(this, "Dieses Land ist kein Nachbarland!",
+                                  "Kein Nachbarland!", JOptionPane.ERROR_MESSAGE)     
+  }
+  
+  def updateLabels() {
+    gameLogic.getCountries.foreach { x => getSelectedCountry(x._4)._2.setText(x._3.toString())}
+  }
+  
+  def updatePlayerLabel() {
+    this.currentPlayer.setText("" + gameLogic.getCurrentPlayer._1 + "," + gameLogic.getCurrentPlayer._2)
+  }
+  
+  def clearCountryLabels() {
+    this.selectedCountry1.setText("")
+    this.selectedCountry2.setText("")
+  }
+  
+  def rollDices() {
+    println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+    this.setEnabled(false)
+    if (running) {
+      this.running = false
+      val parent = this
+      val dices = new Dices(gameLogic) {
+        this.addWindowListener(new WindowAdapter() {
+          override def windowClosing(e : WindowEvent)  {
+            parent.setEnabled(true)
+            parent.running = true
+            parent.clearCountryLabels()
+            parent.updateLabels()
+            println("----STATUS: " + gameLogic.getStatus)
+            println(parent.running)
+            parent.update()
+          }
+        })
+      }
+      dices.setVisible(true)       
+    }
+   
+  }
+  
+  def moveTroops() {
+    val t = scala.Array.range(1, gameLogic.getAttackerDefenderCountries._1._3)
+    val troopsToMove = t.map { x => x.asInstanceOf[Object] }
+    val choice = JOptionPane.showInputDialog(this, "Wie viele Truppen sollen im neu eroberten Land stationiert werden?",
+                                             "Stationiere Truppen...", JOptionPane.PLAIN_MESSAGE,
+                                             null, troopsToMove,
+                                             "1")
+    val choiceAsInt = Integer.valueOf(choice.toString())
+    gameLogic.moveTroops(choiceAsInt)
     
   }
+
+  
   
   
   

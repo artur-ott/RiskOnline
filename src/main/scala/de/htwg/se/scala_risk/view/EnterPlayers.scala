@@ -50,10 +50,11 @@ class EnterPlayers(gameLogic : GameLogic) extends JFrame with ActionListener wit
   val player5Name = new JTextField("") {this.setVisible(false)}
   val player6Name = new JTextField("") {this.setVisible(false)}
   
-  val colors = gameLogic.getAvailableColors.toArray
+  val colorstemp = gameLogic.getAvailableColors.toArray
+  val colors = colorstemp.+:("")
 
   
-  val player1Color = new JComboBox(colors)
+  val player1Color = new JComboBox(colors) 
   val player2Color = new JComboBox(colors)
   val player3Color = new JComboBox(colors) {this.setVisible(false)}
   val player4Color = new JComboBox(colors) {this.setVisible(false)}
