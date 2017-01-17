@@ -8,11 +8,11 @@ import de.htwg.se.scala_risk.model.{ Player => TPlayer }
  * @author Nico Lutz
  */
 case class Country(name: String, world: TWorld, var neighboring_countries: Set[TCountry] = Set.empty,
-    var troops: Int = 0, var owner: TPlayer = null, color: Int) extends de.htwg.se.scala_risk.model.Country {
+    var troops: Int = 0, var owner: TPlayer = null, color: Int = 0) extends de.htwg.se.scala_risk.model.Country {
   if (this.owner == null) this.owner = world.getDefaultPlayer
   override def getName(): String = return this.name
   override def getTroops(): Int = return this.troops
-  override def setTroops(number: Int) = this.troops = number
+  override def setTroops(number: Int) = if(number > 0) this.troops = number
   override def getNeighboringCountries(): Set[TCountry] = neighboring_countries
   override def toString(): String = {
     var neighbors: String = ""
@@ -27,4 +27,5 @@ case class Country(name: String, world: TWorld, var neighboring_countries: Set[T
     var p = that.asInstanceOf[TCountry]
     return if (this.name.equals(p.getName)) true else false
   }
+
 }

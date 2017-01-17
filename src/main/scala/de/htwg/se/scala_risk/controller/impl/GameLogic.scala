@@ -3,6 +3,7 @@ package de.htwg.se.scala_risk.controller.impl
 import de.htwg.se.scala_risk.util.Statuses
 
 import de.htwg.se.scala_risk.controller.{ GameLogic => TGameLogic }
+import de.htwg.se.scala_risk.model.Continent
 import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
@@ -45,18 +46,21 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   def logic = {
     this.status match {
-      case Statuses.GAME_INITIALIZED => this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
+      case Statuses.GAME_INITIALIZED => checkContinents(); this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
       case Statuses.PLAYER_SPREAD_TROOPS => this.setStatus(Statuses.PLAYER_ATTACK)
       case Statuses.PLAYER_ATTACK => this.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       case Statuses.PLAYER_MOVE_TROOPS => {
         val oldPlayer = world.getCurrentPlayerIndex
-        world.nextPlayer
-        if (oldPlayer != -1 && world.getCurrentPlayerIndex == 0) {
-          this.checkGame
-        } else {
-          this.troopsToSpread = 3
-          this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
-        }
+        val nextPlayer = world.nextPlayer
+//        if (oldPlayer != -1 && world.getCurrentPlayerIndex == 0) {
+//          this.checkGame
+//        } else {
+//          this.troopsToSpread = nextPlayer.getTroops()
+//          this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
+//        }
+        checkContinents();
+        this.troopsToSpread = nextPlayer.getTroops()
+        this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
       }
     }
   }
@@ -206,7 +210,12 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
             world.getCountriesList(attackerDefenderIndex._2).setTroops(extantTroopsDefender)
             if (extantTroopsDefender == 0) {
               world.getCountriesList(attackerDefenderIndex._2).setOwner(world.getCountriesList(attackerDefenderIndex._1).getOwner)
-              this.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
+              
+              if (this.getContinentOwner(countryDefender).toUpperCase().equals(this.getOwnerName(countryDefender).toUpperCase())) {
+                this.setStatus(Statuses.PLAYER_CONQUERED_A_CONTINENT)
+              } else {
+                this.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
+              }
             } else {
               this.clearAttack
               this.setStatus(Statuses.PLAYER_ATTACK)
@@ -239,11 +248,11 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
   }
 
   def moveTroops(count: Int) = {
-    if (this.status == Statuses.PLAYER_CONQUERED_A_COUNTRY || this.status == Statuses.PLAYER_MOVE_TROOPS) {
+    if (this.status == Statuses.PLAYER_CONQUERED_A_COUNTRY || this.status == Statuses.PLAYER_CONQUERED_A_CONTINENT || this.status == Statuses.PLAYER_MOVE_TROOPS) {
       val currentTroops = world.getCountriesList(this.attackerDefenderIndex._1).getTroops
       if (count < 1 || count >= currentTroops)
         this.setErrorStatus(Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE)
-      else if(this.status == Statuses.PLAYER_CONQUERED_A_COUNTRY) {
+      else if(this.status == Statuses.PLAYER_CONQUERED_A_COUNTRY || this.status == Statuses.PLAYER_CONQUERED_A_CONTINENT) {
         world.getCountriesList(this.attackerDefenderIndex._1).setTroops(currentTroops - count)
         world.getCountriesList(this.attackerDefenderIndex._2).setTroops(count)
         this.clearAttack
@@ -328,6 +337,24 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     countryList.foreach { x => if (x.getName.toUpperCase().equals(country.toUpperCase())) {ownerName = x.getOwner.getName.toUpperCase()} }
     return ownerName
   }
+  
+  def checkContinents() {
+    val playerList = world.getPlayerList
+    val countryList = world.getCountriesList
+    val continentList = world.getContinentList
+    
+    playerList.foreach { x => x.setTroops(this.INIT_TROOPS); continentList.foreach { c => if (c.getOwner() == x) {x.setTroops(x.getTroops() + c.getBonusTroops())}}}
+    
+  }
+  
+  def getContinentOwner(countryName: String) : String = {
+    val continentList = world.getContinentList
+    var continentName = ""
+    continentList.foreach {x => if (x.getIncludedCountries().map { y => y.getName }.contains(countryName)) {continentName = x.getOwner().getName}}
+    return continentName
+  }
+  
+  
   
 
   

@@ -164,7 +164,7 @@ class Dices(gameLogic : GameLogic) extends JFrame with ActionListener with TObse
       case Statuses.PLAYER_ATTACK => 
 //      // Errors
       case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => {notEnoughTroops()}
-
+      case Statuses.PLAYER_CONQUERED_A_CONTINENT => conquered()
     }
   }  
   

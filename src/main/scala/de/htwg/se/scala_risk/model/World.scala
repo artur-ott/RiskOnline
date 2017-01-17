@@ -12,4 +12,6 @@ trait World {
   def getCurrentPlayerIndex: Int
   def addPlayer(name: String, color: String)
   def getPlayerColorList: List[Color]
+  
+  def getContinentList : ArrayBuffer[Continent]
 }

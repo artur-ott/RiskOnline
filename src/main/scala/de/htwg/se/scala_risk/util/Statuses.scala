@@ -13,6 +13,7 @@ object Statuses extends Enumeration {
   PLAYER_ATTACK,
   PLAYER_MOVE_TROOPS,
   PLAYER_CONQUERED_A_COUNTRY,
+  PLAYER_CONQUERED_A_CONTINENT,
   
   // Error statuses
   NOT_ENOUGH_PLAYERS,

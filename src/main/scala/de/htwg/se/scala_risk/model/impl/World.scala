@@ -2,10 +2,13 @@ package de.htwg.se.scala_risk.model.impl
 import de.htwg.se.scala_risk.model.impl.Colors._
 import de.htwg.se.scala_risk.model.{Player => TPlayer}
 import de.htwg.se.scala_risk.model.{Country => TCountry}
+import de.htwg.se.scala_risk.model.{Continent => TContinent}
 import de.htwg.se.scala_risk.model.{World => TWorld}
 import de.htwg.se.scala_risk.model.impl.{ Player => ImpPlayer }
 import de.htwg.se.scala_risk.model.impl.{ Country => ImpCountry }
 import scala.collection.mutable.ArrayBuffer
+import scala.collection.immutable.Set
+
 
 /**
  * This object represents the whole world of ScalaRisk.
@@ -164,12 +167,29 @@ class World extends TWorld {
       madagaskar, ostafrika, aegypten, suedeuropa, westeuropa, nordeuropa, grossbritannien, island, skandinavien, russland, ural,
       sibirien, jakutien, irkutsk, kamtschatka, japan, mongolei, china, afghanistan, mittlererosten, indien, suedostasien,
       indonesien, neuguinea, ostaustralien, westaustralien)
-      
+    val test : ArrayBuffer[TCountry] = ArrayBuffer[TCountry](alaska, nordwestterritorien, alberta, ontario, groenland, ostkanada)  
     def  getColor(name: String) : Integer = {
       var country = null.asInstanceOf[TCountry]
       listCountries.foreach { x => if (x.getName.toUpperCase().equals(name.toUpperCase())) {country = x} }
       return country.getRefColor()
     }
+      
+    val nordamerikaCountries = ArrayBuffer[TCountry](alaska, nordwestterritorien, alberta, ontario, groenland, ostkanada, weststaaten, oststaaten, mittelamerika)
+    val suedamerikaCountries = ArrayBuffer[TCountry](venezuela, peru, argentinien, brasilien)
+    val afrikaCountries = ArrayBuffer[TCountry](nordafrika, zentralafrika, suedafrika, madagaskar, ostafrika, aegypten)
+    val europaCountries = ArrayBuffer[TCountry](suedeuropa, westeuropa, nordeuropa, grossbritannien, island, skandinavien, russland)
+    val asienCountries = ArrayBuffer[TCountry](ural, sibirien, jakutien, irkutsk, kamtschatka, japan, mongolei, china, afghanistan,
+                                     mittlererosten, indien, suedostasien)                                  
+    val australienCountries = ArrayBuffer[TCountry](indonesien, neuguinea, ostaustralien, westaustralien)
+    
+    val nordamerika = Continent("Nordamerika", nordamerikaCountries, 5, world)
+    val suedamerika = Continent("Südamerika", suedamerikaCountries, 2, world)
+    val afrika = Continent("Afrika", afrikaCountries, 3, world)
+    val europa = Continent("Europa", europaCountries, 5, world)
+    val asien = Continent("Asien", asienCountries, 7, world)
+    val australien = Continent("Australien", australienCountries, 2, world)
+    
+    val listContinents = ArrayBuffer[TContinent](nordamerika, suedamerika, afrika, europa, asien, australien)
   }
   /**
    * This object holds all the players of the current game.
@@ -182,7 +202,7 @@ class World extends TWorld {
     // List to hold the remaining colors.
     var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE, PINK, ORANGE)
     // Default Player e.g. if a country or a continent is not occupied yet.
-    val Default = Player("", null.asInstanceOf[Color], world)
+    val Default = Player("", null.asInstanceOf[Color], 0, world)
 
     var currentPlayer = -1
     /**
@@ -197,7 +217,7 @@ class World extends TWorld {
     def addPlayer(name: String, color: String) /*: String = */ {
       var colorFromString: Color = stringToColor(color)
       if (colorList.contains(colorFromString)) {
-        playerList += Player(name, colorFromString, world)
+        playerList += Player(name, colorFromString, 3, world)
         colorList = colorList.filter { x => x != colorFromString }
       } else {
         println("Color already taken!")
@@ -227,22 +247,32 @@ class World extends TWorld {
       var colorFromString: Color = null.asInstanceOf[Color]
  
         // Check if the string represents a valid color.
+      try {
         colorFromString = Colors.withName(color.toUpperCase())
+      } catch {
+        case nosuchelement: scala.NoSuchElementException => colorFromString = null
+      }
+        
 
       return colorFromString
     }
 
     def nextPlayer(): TPlayer = {
+      
       currentPlayer += 1
+      println(currentPlayer)
       if (currentPlayer >= playerList.length)
         currentPlayer = 0
       playerList(currentPlayer)
     }
   }
   
-  val players = new Players(this)
-  val countries = new Countries(this)
   
+
+  
+  val players = new Players(this)
+  val countries = new Countries(this) 
+ 
   def getCountriesList :  ArrayBuffer[TCountry] = this.countries.listCountries
   
   def getPlayerList: ArrayBuffer[TPlayer] = this.players.playerList
@@ -251,4 +281,7 @@ class World extends TWorld {
   def getCurrentPlayerIndex: Int = this.players.currentPlayer
   def addPlayer(name: String, color: String) = this.players.addPlayer(name, color)
   def getPlayerColorList: List[Color] = this.players.colorList
+  def getAllCountries : Countries = this.countries
+  
+  def getContinentList : ArrayBuffer[TContinent] = this.countries.listContinents
 }

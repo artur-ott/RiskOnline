@@ -42,12 +42,12 @@ class GUIS (gameLogic : GameLogic) extends MainFrame with TObserver {
   val gameStatusLabel = new Label("GameStatus Label")
   val endTurnButton = Button("Zug beenden") {/*TODO: what the button should do when clicked*/}
   /* Map to be displayed (BufferedImage) */
-  val image_map = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_final.png")),
+  val image_map = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_grey.jpg")),
                   1238, 810)
   /* Reference map (BufferedImage) with different color for each country to determine
    * the country the player selected.
    */
-  val map_ref = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_ref_final.png")),
+  val map_ref = getScaledImage(ImageIO.read(new File("src/main/scala/de/htwg/se/scala_risk/view/map_ref.png")),
                                1238, 810)
   /* Map as a Label (Component) */
   val mapLabel = getMap()
@@ -57,20 +57,20 @@ class GUIS (gameLogic : GameLogic) extends MainFrame with TObserver {
   this.resizable = false
   contents = new BorderPanel() {
     this.add(new BoxPanel(Orientation.Vertical) {
-      //this.contents += mapLabel
-      val ip = new ImagePanel(4,4)
-      ip.preferredSize = new Dimension(1238, 810)
-      ip.imagePath = "https://blog.flavia-it.de/wp-content/uploads/2013/10/scala-logo.png"
-      ip.contents ++= Seq.tabulate(ip.rows * ip.columns)(i => new Label((i + 1).toString))
-//      this.contents += new BorderPanel() {        
-//        add(mapLabel, BorderPanel.Position.Center)
-//      }
-      contents+=ip
+      this.contents += mapLabel
+//      val ip = new ImagePanel(4,4)
+//      ip.preferredSize = new Dimension(1238, 810)
+//      ip.imagePath = "https://blog.flavia-it.de/wp-content/uploads/2013/10/scala-logo.png"
+//      ip.contents ++= Seq.tabulate(ip.rows * ip.columns)(i => new Label((i + 1).toString))
+      this.contents += new BorderPanel() {        
+        add(mapLabel, BorderPanel.Position.Center)
+      }
+//      contents+=ip
     }, BorderPanel.Position.North)
-//    this.add(new GridPanel(1,4) {
-//               contents += gameStatusLabel
-//               contents += endTurnButton
-//             }, BorderPanel.Position.Center)      
+    this.add(new GridPanel(1,4) {
+               contents += gameStatusLabel
+               contents += endTurnButton
+             }, BorderPanel.Position.Center)      
   }
 
   
@@ -120,23 +120,23 @@ class GUIS (gameLogic : GameLogic) extends MainFrame with TObserver {
 }
 
 
-class ImagePanel(rows0: Int, cols0: Int) extends GridPanel(rows0, cols0) {
-  private var _imagePath = ""                                                 
-  private var buf = Option.empty[BufferedImage]
-
-  def imagePath = _imagePath
-  def imagePath_=(value: String): Unit = {
-    _imagePath = value
-    buf.foreach(_.flush()); buf = None
-    buf = Some(ImageIO.read(new URL(value)))
-    repaint()
-  }
-
-  override def paintComponent(g: Graphics2D): Unit = {
-    super.paintComponent(g)
-    buf.foreach(g.drawImage(_, 0, 0, null))
-  }
-}
+//class ImagePanel(rows0: Int, cols0: Int) extends GridPanel(rows0, cols0) {
+//  private var _imagePath = ""                                                 
+//  private var buf = Option.empty[BufferedImage]
+//
+//  def imagePath = _imagePath
+//  def imagePath_=(value: String): Unit = {
+//    _imagePath = value
+//    buf.foreach(_.flush()); buf = None
+//    buf = Some(ImageIO.read(new URL(value)))
+//    repaint()
+//  }
+//
+//  override def paintComponent(g: Graphics2D): Unit = {
+//    super.paintComponent(g)
+//    buf.foreach(g.drawImage(_, 0, 0, null))
+//  }
+//}
                                                                         
 
 

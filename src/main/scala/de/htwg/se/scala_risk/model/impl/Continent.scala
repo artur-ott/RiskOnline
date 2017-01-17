@@ -4,12 +4,14 @@ import de.htwg.se.scala_risk.model.{ Player => TPlayer }
 import de.htwg.se.scala_risk.model.{ Continent => TContinent }
 import de.htwg.se.scala_risk.model.{ World => TWorld }
 import scala.collection._
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * Class to create continents.
  * @author Nico Lutz
  */
-case class Continent(name: String, countries: immutable.Set[Int],
+
+case class Continent(name: String, countries: ArrayBuffer[TCountry],
     bonusTroops: Int, world: TWorld) extends de.htwg.se.scala_risk.model.Continent {
 
   override def getOwner(): TPlayer = {
@@ -19,10 +21,11 @@ case class Continent(name: String, countries: immutable.Set[Int],
     else world.getDefaultPlayer
   }
 
-  override def getIncludedCountries(): immutable.Set[TCountry] = {
-    var includedCountries: immutable.Set[TCountry] = immutable.Set()
-    for (x <- this.countries) includedCountries += world.getCountriesList(x)
-    return includedCountries
+  override def getIncludedCountries(): ArrayBuffer[TCountry] = {
+//    var includedCountries: immutable.Set[TCountry] = immutable.Set()
+//    for (x <- this.countries) includedCountries += world.getCountriesList(x)
+//    return includedCountries
+    return this.countries
   }
   override def getName(): String = return this.name
   override def getBonusTroops(): Int = return this.bonusTroops

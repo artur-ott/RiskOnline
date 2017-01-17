@@ -25,4 +25,8 @@ trait Player {
   def getOwnedCountries: immutable.Set[Country]
 
   def equals(that: Any): Boolean
+  
+  def getTroops() : Int
+  
+  def setTroops(troops: Int)
 }

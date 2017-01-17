@@ -40,6 +40,7 @@ class TUI  @Inject() (gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
       case Statuses.GAME_INITIALIZED =>
+      case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
       case _ => println(gameLogic.getStatus)
     }
     
@@ -55,6 +56,7 @@ class TUI  @Inject() (gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
       case Statuses.DIECES_ROLLED => printRolledDieces
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
+      case Statuses.PLAYER_CONQUERED_A_CONTINENT => println("juchu")
 
       // Errors
       case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")

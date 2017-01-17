@@ -1,6 +1,7 @@
 package de.htwg.se.scala_risk.model
 
 import scala.collection._
+import scala.collection.mutable.ArrayBuffer
 /**
  * Trait Continent is the interface for Continents.
  * @author Nico Lutz
@@ -30,5 +31,5 @@ trait Continent {
    * Returns all the countries in this continent.
    * @return Countries of this continent.
    */
-  def getIncludedCountries(): immutable.Set[Country]
+  def getIncludedCountries(): ArrayBuffer[Country]
 }
