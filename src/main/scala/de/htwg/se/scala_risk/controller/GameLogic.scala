@@ -18,7 +18,7 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   def attack(countryAttacker: String, countryDefender: String)
   def getCurrentPlayerColor() : String
   
-  def setStatus(status: Statuses.Value)// TODO: REMOVE setStatus
+  //def setStatus(status: Statuses.Value)// TODO: REMOVE setStatus
   
   def getOwnerColor(owner: String) : Int
   def getOwnerName(country: String) : String
