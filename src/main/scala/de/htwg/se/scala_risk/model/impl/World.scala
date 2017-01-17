@@ -190,6 +190,10 @@ class World extends TWorld {
     val australien = Continent("Australien", australienCountries, 2, world)
     
     val listContinents = ArrayBuffer[TContinent](nordamerika, suedamerika, afrika, europa, asien, australien)
+    
+    def toXml = {
+      
+    }
   }
   /**
    * This object holds all the players of the current game.
@@ -265,6 +269,10 @@ class World extends TWorld {
         currentPlayer = 0
       playerList(currentPlayer)
     }
+    
+    def toXml = {
+      
+    }
   }
   
   
@@ -284,4 +292,15 @@ class World extends TWorld {
   def getAllCountries : Countries = this.countries
   
   def getContinentList : ArrayBuffer[TContinent] = this.countries.listContinents
+  
+  def toXml:scala.xml.Elem = {
+    <world>
+      <players>{this.players.toXml}</players>
+      <countries>{this.countries.toXml}</countries>
+		</world>
+  }
+  
+  def fromXml(node: scala.xml.Node) = {
+    
+  }
 }

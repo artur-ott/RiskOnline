@@ -27,4 +27,12 @@ object Statuses extends Enumeration {
   
   
   = Value
+  
+  def toXml : String = {
+    this.toString()
+  }
+  
+  def fromXml (node: scala.xml.Node) : Statuses.Value = {
+    Statuses.Value((node \ "status").text.toUpperCase())
+  }
 }

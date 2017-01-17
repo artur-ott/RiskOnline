@@ -17,7 +17,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   private[this] val INIT_TROOPS: Int = 3
 
-  private[impl] var attackerDefenderIndex = (-1, -1)
+  private[impl] var attackerDefenderIndex: (Int, Int) = (-1, -1)
   private[impl] var rolledDieces: (List[Int], List[Int]) = (Nil, Nil)
   //private[this] val world: World = new de.htwg.se.scala_risk.model.impl.World // Changed to test GUI
 
@@ -211,11 +211,11 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
       }
     }
   }
-  
+
   private[impl] def getExtantTroops(troopsAttacker: Int, troopsDefender: Int, min: Int): (Int, Int) = {
     var extantTroopsAttacker = troopsAttacker
     var extantTroopsDefender = troopsDefender
-            var i = 0
+    var i = 0
     for (i <- 0 to min - 1) {
       if (this.rolledDieces._1(i) > this.rolledDieces._2(i)) {
         extantTroopsDefender -= 1
@@ -225,7 +225,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     }
     return (extantTroopsAttacker, extantTroopsDefender)
   }
-    
+
   private[impl] def checkConquered(extantTroopsDefender: Int, countryDefender: String) = {
     if (extantTroopsDefender == 0) {
       world.getCountriesList(attackerDefenderIndex._2).setOwner(world.getCountriesList(attackerDefenderIndex._1).getOwner)
@@ -240,7 +240,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
       this.setStatus(Statuses.PLAYER_ATTACK)
     }
   }
-  
+
   private[impl] def getAttackIndexes(countryAttacker: String, countryDefender: String): (Int, Int) = {
     val indexAttacker = this.getCountryIndexByString(countryAttacker)
     val indexDefender = this.getCountryIndexByString(countryDefender)
@@ -366,6 +366,65 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     var continentName = ""
     continentList.foreach { x => if (x.getIncludedCountries().map { y => y.getName }.contains(countryName)) { continentName = x.getOwner().getName } }
     return continentName
+  }
+
+  def saveGame() {
+
+  }
+
+  def toXml = {
+    <GameLogic>
+      <status>{ this.status.toString() }</status>
+      <attackerDefenderIndex>{ this.getAttackerDefenderIndexXml(this.attackerDefenderIndex) }</attackerDefenderIndex>
+      <rolledDieces>{ this.getRolledDiecesXml(this.rolledDieces) }</rolledDieces>
+      <troopsToSpread>{ this.troopsToSpread }</troopsToSpread>
+      <world>{ world.toXml }</world>
+    </GameLogic>
+  }
+
+  def getRolledDiecesXml(node: (List[Int], List[Int])): scala.xml.Elem = {
+    val xml = <tuple></tuple>
+    var firstList = <list id="first"></list>
+    var secondList = <list id="second"></list>
+    node._1.foreach(x => {
+      val xmlEl = <listEl>{ x }</listEl>
+      firstList = addXmlChild(firstList, xmlEl)
+    })
+    node._2.foreach(x => {
+      val xmlEl = <listEl>{ x }</listEl>
+      secondList = addXmlChild(secondList, xmlEl)
+    })
+    return addXmlChild(addXmlChild(xml, firstList), secondList)
+  }
+
+  def getAttackerDefenderIndexXml(node: (Int, Int)): scala.xml.Elem = {
+    val xml = <tuple></tuple>
+    val first = <element id="first">{ node._1 }</element>
+    val second = <element id="second">{ node._2 }</element>
+    return addXmlChild(addXmlChild(xml, first), second)
+  }
+
+  def addXmlChild(n: scala.xml.Node, newChild: scala.xml.Node) = n match {
+    case scala.xml.Elem(prefix, label, attribs, scope, child @ _*) =>
+      scala.xml.Elem(prefix, label, attribs, scope, child ++ newChild: _*)
+    case _ => error("Can only add children to elements!")
+  }
+
+  def fromXml(node: scala.xml.Node) = {
+    // get status
+    this.status = Statuses.fromXml(node)
+    // get attackerDefenderIndex
+    this.attackerDefenderIndex = ((node \ "attackerDefenderIndex")(0).child.head.child.head.text.toInt, (node \ "attackerDefenderIndex")(0).child.head.child.last.text.toInt)
+    // get rolledDieces
+    var first = List[Int]()
+    var second = List[Int]()
+    (node \ "rolledDieces")(0).child.head.child.head.child.foreach(x => first = x.text.toInt :: first)
+    (node \ "rolledDieces")(0).child.head.child.last.child.foreach(x => second = x.text.toInt :: second)
+    this.rolledDieces = (first.sortWith(_ > _), second.sortWith(_ > _))
+    // get troops to spreed
+    this.troopsToSpread = (node \ "troopsToSpread").text.toInt
+    this.world.fromXml((node \ "world")(0))
+    this.setStatus(this.status)
   }
 
 }
