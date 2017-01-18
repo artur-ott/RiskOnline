@@ -13,14 +13,10 @@ class TUI  @Inject() (gameLogic: GameLogic) extends TObserver {
   
   // TODO: REMOVE INIT
   /*----------------HERE---------------------*/
-//  gameLogic.setStatus(Statuses.INITIALIZE_PLAYERS)
-//	gameLogic.setPlayer(("Test", "BLUE"))
-//	gameLogic.setPlayer(("Test1", "RED"))
-//  gameLogic.initializeGame 
-//  this.parseSpreadTroops("VENEZUELA, 3")
-//  this.parseAttack("VENEZUELA, PERU")
-  //this.parseAttack("e")
-  //this.parseMoveTroops("NORDAFRIKA, OSTAFRIKA, 2")
+  gameLogic.startGame
+	gameLogic.setPlayer(("Test", "BLUE"))
+	gameLogic.setPlayer(("Test1", "RED"))
+  gameLogic.initializeGame
   /*----------------HERE---------------------*/
   
   if (gameLogic.getStatus == Statuses.CREATE_GAME) {
@@ -32,17 +28,22 @@ class TUI  @Inject() (gameLogic: GameLogic) extends TObserver {
   def setNextInput(input: String): Boolean = {
     if (input.equals("q"))
       System.exit(0)
-    gameLogic.getStatus match {
-      case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
-      case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
-      case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
-      case Statuses.PLAYER_ATTACK => this.parseAttack(input)
-      case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
-      case Statuses.GAME_INITIALIZED =>
-      case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
-      case _ => println(gameLogic.getStatus)
-    }
+    if (input.equals("n"))
+      gameLogic.startGame
+    else if (input.equals("s")) {
+      gameLogic.fromXml(gameLogic.toXml)
+    } else
+      gameLogic.getStatus match {
+        case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
+        case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
+        case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
+        case Statuses.PLAYER_ATTACK => this.parseAttack(input)
+        case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
+        case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
+        case Statuses.GAME_INITIALIZED =>
+        case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
+        case _ => println(gameLogic.getStatus)
+      }
     
     return true
   }

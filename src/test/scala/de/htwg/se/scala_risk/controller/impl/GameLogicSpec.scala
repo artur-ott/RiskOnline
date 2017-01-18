@@ -180,14 +180,14 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "attack" should { 
-    "own country" in {
+  "On player attacking" should { 
+    "his own country troops should stay the same" in {
       world.getCountriesList(0).setOwner(world.getPlayerList(world.getCurrentPlayerIndex))
       val troops = world.getCountriesList(0).getTroops
       gameLogic.attack(world.getCountriesList(0).getName, world.getCountriesList(0).getName)
       world.getCountriesList(0).getTroops should be (troops)
     }
-    "not neigbour" in {
+    "not his neigbour troops should stay the same" in {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       val troops = world.getCountriesList(0).getTroops
       val index = world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) && !world.getCountriesList(0).getNeighboringCountries.contains(x) }
@@ -195,7 +195,7 @@ class GameLogicSpec extends WordSpec {
       world.getCountriesList(0).getTroops should be (troops)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
-    "normal" in {
+    "succeeded status should be PLAYER_ATTACK or PLAYER_CONQUERED_A_COUNTRY" in {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       val troops = world.getCountriesList(0).getTroops
       val index = world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) && world.getCountriesList(0).getNeighboringCountries.contains(x) }
@@ -204,8 +204,8 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "getExtantTroops" should  {
-    "bla" in {
+  "Get extant troops" should  {
+    "be (2,2) on the following dieces (6, 5) and (5, 5)" in {
       val troopsAtt = 3
       val troopsDef = 3
       gameLogic.rolledDieces = (6::5::Nil, 5::5::Nil)
@@ -213,20 +213,20 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "checkConquered" should  {
-    "extantTroopsDefender = 0" in {
+  "Check conquered country" should  {
+    "extantTroopsDefender = 0 and an empty country leads to PLAYER_CONQUERED_A_CONTINENT" in {
       val pIndex = world.getCurrentPlayerIndex
       gameLogic.attackerDefenderIndex = (pIndex, pIndex)
       gameLogic.checkConquered(0, "")
       gameLogic.getStatus should be (Statuses.PLAYER_CONQUERED_A_CONTINENT)
     }
-    "extantTroopsDefender = 0 with a country" in {
+    "extantTroopsDefender = 0 with a country leads to PLAYER_CONQUERED_A_COUNTRY" in {
       val pIndex = world.getCurrentPlayerIndex
       gameLogic.attackerDefenderIndex = (pIndex, pIndex)
       gameLogic.checkConquered(0, world.getCountriesList(0).getName)
       gameLogic.getStatus should be (Statuses.PLAYER_CONQUERED_A_COUNTRY)
     }
-    "extantTroopsDefender = 1 with a country" in {
+    "extantTroopsDefender = 1 lead to the same status" in {
       val pIndex = world.getCurrentPlayerIndex
       gameLogic.attackerDefenderIndex = (pIndex, pIndex)
       gameLogic.checkConquered(1, world.getCountriesList(0).getName)
@@ -234,48 +234,48 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "getAttackIndexes" should {
-    "no countries found" in {
+  "Attacker country and defender country indices" should {
+    "be (-1, -1) with empty countries" in {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       world.getCountriesList(0).setOwner(world.getPlayerList(world.getCurrentPlayerIndex))
       gameLogic.getAttackIndexes("", "") should be ((-1, -1))
     }
-    "countries found" in {
+    "be not (-1, -1)" in {
       val indexDef = world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) && world.getCountriesList(0).getNeighboringCountries.contains(x) }
       val index = gameLogic.getAttackIndexes(world.getCountriesList(0).getName, world.getCountriesList(indexDef).getName)
       index._1 should be > -1
       index._2 should be > -1
     }
-    "player attacking his own country" in {
+    "remain after player attacking his own country" in {
       gameLogic.getAttackIndexes(world.getCountriesList(0).getName, world.getCountriesList(0).getName)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
-    "player attacking with country which doesn't belog to him" in {
+    "remain after player attacking with country which doesn't belog to him" in {
       val index = world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) }
       gameLogic.getAttackIndexes(world.getCountriesList(index).getName, world.getCountriesList(index).getName)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
   }
   
-  "moveTroops" should {
-    "wrong status" in {
+  "Move troops" should {
+    "remain status on wrong status" in {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       gameLogic.moveTroops(0)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
-    "wrong amount of troops" in {
+    "remain status on wrong amount of troops" in {
       gameLogic.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
       gameLogic.attackerDefenderIndex = (0, world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) && world.getCountriesList(0).getNeighboringCountries.contains(x) })
       gameLogic.moveTroops(0)
       gameLogic.getStatus should be (Statuses.PLAYER_CONQUERED_A_COUNTRY)
     }
-    "move troops after PLAYER_CONQUERED_A_COUNTRY or PLAYER_CONQUERED_A_CONTINENT" in {
+    "set status to PLAYER_ATTACK after PLAYER_CONQUERED_A_COUNTRY or PLAYER_CONQUERED_A_CONTINENT" in {
       gameLogic.setStatus(Statuses.PLAYER_CONQUERED_A_COUNTRY)
       gameLogic.attackerDefenderIndex = (0, world.getCountriesList.indexWhere { x => !x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1) && world.getCountriesList(0).getNeighboringCountries.contains(x) })
       gameLogic.moveTroops(1)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
-    "move troops turn" in {
+    "remain status on PLAYER_MOVE_TROOPS" in {
       gameLogic.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       gameLogic.attackerDefenderIndex = (0, world.getCountriesList.indexWhere { x => x.getOwner.getName.equals(gameLogic.getCurrentPlayer._1)})
       gameLogic.moveTroops(1)
@@ -283,48 +283,48 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "dragTroops" should {
-    "wrong status" in  {
+  "Drag troops" should {
+    "remain status on wrong status" in  {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       gameLogic.dragTroops("", "", 0)
       gameLogic.getStatus should be (Statuses.PLAYER_ATTACK)
     }
-    "wrong country" in  {
+    "set attacker defender indices to (-1, -1)" in  {
       gameLogic.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       gameLogic.dragTroops("", world.getCountriesList(0).getName, 0)
       gameLogic.getAttackerDefenderIndex should be (-1, -1)
     }
-    "move troops" in  {
+    "set attacker defender indices to (0, 0)" in  {
       gameLogic.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       gameLogic.dragTroops(world.getCountriesList(0).getName, world.getCountriesList(0).getName, 0)
       gameLogic.getAttackerDefenderIndex should be (0, 0)
     }
   }
 
-  "rollDice" should {
-    "troops are < 2" in {
+  "Rolled dices" should {
+    "be (nil, nil) on troops are < 2" in {
       world.getCountriesList(0).setTroops(1)
       gameLogic.rollDice(world.getCountriesList(0), world.getCountriesList(0)) should be ((Nil, Nil))
     }
-    "attaker troops = 2, defender troops = 1" in {
+    "not be (nil, nil) on attaker troops = 2, defender troops = 1" in {
       world.getCountriesList(0).setTroops(2)
       world.getCountriesList(1).setTroops(1)
       gameLogic.rollDice(world.getCountriesList(0), world.getCountriesList(1)) should not be ((Nil, Nil))
     }
-    "attaker troops = 3, defender troops = 2" in {
+    "not be (nil, nil) on attaker troops = 3, defender troops = 2" in {
       world.getCountriesList(0).setTroops(3)
       world.getCountriesList(1).setTroops(2)
       gameLogic.rollDice(world.getCountriesList(0), world.getCountriesList(1)) should not be ((Nil, Nil))
     }
-    "attaker troops > 3, defender troops = 2" in {
+    "not be (nil, nil) on attaker troops > 3, defender troops = 2" in {
       world.getCountriesList(0).setTroops(4)
       world.getCountriesList(1).setTroops(2)
       gameLogic.rollDice(world.getCountriesList(0), world.getCountriesList(1)) should not be ((Nil, Nil))
     }
   }
 
-  "getCurrentPlayerColor" should {
-    "current player should have the same color" in {
+  "Current player" should {
+    "have the same color as player with the same index" in {
       gameLogic.getCurrentPlayerColor should be (world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString())
     }
   }
@@ -335,8 +335,8 @@ class GameLogicSpec extends WordSpec {
     }
   }
   
-  "getOwnerColor" should {
-    "bla" in {
+  "Players" should {
+    "matching integer to color" in {
       gameLogic.setPlayer(("Player3", "YELLOW"))
       gameLogic.setPlayer(("Player4", "GREEN"))
       gameLogic.setPlayer(("Player5", "PINK"))
@@ -356,14 +356,15 @@ class GameLogicSpec extends WordSpec {
     }
   }
 
-  "To xml" should {
-    "bla" in {
+  "Generate xml from game and load it again" should {
+    "generate the same game" in {
       gameLogic.rolledDieces = (6::5::Nil, 5::5::Nil)
       gameLogic.attackerDefenderIndex = (1,2)
       gameLogic.troopsToSpread = 6
-      print (gameLogic.toXml)
       gameLogic.fromXml(gameLogic.toXml)
-      1 should be (1)
+      gameLogic.rolledDieces should be (6::5::Nil, 5::5::Nil)
+      gameLogic.attackerDefenderIndex should be (1,2)
+      gameLogic.troopsToSpread should be (6)
     }
   }
 }

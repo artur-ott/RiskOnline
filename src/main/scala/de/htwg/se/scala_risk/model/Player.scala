@@ -29,4 +29,6 @@ trait Player {
   def getTroops() : Int
   
   def setTroops(troops: Int)
+  
+  def toXml:scala.xml.Elem
 }

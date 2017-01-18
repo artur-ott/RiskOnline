@@ -47,4 +47,8 @@ trait Country {
    * @return color as integer.
    */
   def getRefColor() : Int
+  
+  def setNeighboringCountries(neighbor: Set[Country])
+  
+  def toXml:scala.xml.Elem
 }

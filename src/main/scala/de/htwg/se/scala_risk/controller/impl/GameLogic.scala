@@ -7,6 +7,7 @@ import de.htwg.se.scala_risk.model.Continent
 import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
+import de.htwg.se.scala_risk.util.XML
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -372,13 +373,13 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   }
 
-  def toXml = {
+  def toXml:scala.xml.Node = {
     <GameLogic>
       <status>{ this.status.toString() }</status>
       <attackerDefenderIndex>{ this.getAttackerDefenderIndexXml(this.attackerDefenderIndex) }</attackerDefenderIndex>
       <rolledDieces>{ this.getRolledDiecesXml(this.rolledDieces) }</rolledDieces>
       <troopsToSpread>{ this.troopsToSpread }</troopsToSpread>
-      <world>{ world.toXml }</world>
+      <world>{ this.world.toXml }</world>
     </GameLogic>
   }
 
@@ -388,31 +389,25 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     var secondList = <list id="second"></list>
     node._1.foreach(x => {
       val xmlEl = <listEl>{ x }</listEl>
-      firstList = addXmlChild(firstList, xmlEl)
+      firstList = XML.addXmlChild(firstList, xmlEl)
     })
     node._2.foreach(x => {
       val xmlEl = <listEl>{ x }</listEl>
-      secondList = addXmlChild(secondList, xmlEl)
+      secondList = XML.addXmlChild(secondList, xmlEl)
     })
-    return addXmlChild(addXmlChild(xml, firstList), secondList)
+    return XML.addXmlChild(XML.addXmlChild(xml, firstList), secondList)
   }
 
   def getAttackerDefenderIndexXml(node: (Int, Int)): scala.xml.Elem = {
     val xml = <tuple></tuple>
     val first = <element id="first">{ node._1 }</element>
     val second = <element id="second">{ node._2 }</element>
-    return addXmlChild(addXmlChild(xml, first), second)
-  }
-
-  def addXmlChild(n: scala.xml.Node, newChild: scala.xml.Node) = n match {
-    case scala.xml.Elem(prefix, label, attribs, scope, child @ _*) =>
-      scala.xml.Elem(prefix, label, attribs, scope, child ++ newChild: _*)
-    case _ => error("Can only add children to elements!")
+    return XML.addXmlChild(XML.addXmlChild(xml, first), second)
   }
 
   def fromXml(node: scala.xml.Node) = {
     // get status
-    this.status = Statuses.fromXml(node)
+    this.status = Statuses.withName((node \ "status").text.toUpperCase())
     // get attackerDefenderIndex
     this.attackerDefenderIndex = ((node \ "attackerDefenderIndex")(0).child.head.child.head.text.toInt, (node \ "attackerDefenderIndex")(0).child.head.child.last.text.toInt)
     // get rolledDieces
@@ -424,7 +419,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     // get troops to spreed
     this.troopsToSpread = (node \ "troopsToSpread").text.toInt
     this.world.fromXml((node \ "world")(0))
-    this.setStatus(this.status)
+    this.notifyObservers
   }
 
 }
