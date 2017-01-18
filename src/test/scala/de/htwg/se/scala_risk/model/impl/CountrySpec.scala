@@ -8,22 +8,20 @@ import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
 
-
 @RunWith(classOf[JUnitRunner])
 class CountrySpec extends WordSpec {
   val world = new World
 
   "Two countries" should {
     "not be equal" in {
-      world.countries.sibirien.equals("bla") should be (false)
-      world.countries.westaustralien.equals(world.countries.ostafrika) should be (false)
+      world.countries.sibirien.equals("bla") should be(false)
+      world.countries.westaustralien.equals(world.countries.ostafrika) should be(false)
     }
-    
+
     "be equal" in {
-      world.countries.ural.equals(world.countries.ural) should be (true)
+      world.countries.ural.equals(world.countries.ural) should be(true)
     }
-   
-    
+
   }
   "listCountries" should {
     "contain 42 countries" in {
@@ -34,7 +32,6 @@ class CountrySpec extends WordSpec {
     }
   }
 
- 
   "Every country in the countryList" should {
     "have a name" in {
       var bool: Boolean = true;
@@ -75,17 +72,17 @@ class CountrySpec extends WordSpec {
       neighborsOfArgentinien.contains(world.countries.brasilien) should be(true)
       neighborsOfArgentinien.contains(world.countries.peru) should be(true)
     }
-    
+
     "have a string representation" in {
       world.countries.brasilien.toString() should not be (null)
     }
-    
+
     "have a reference color" in {
-      world.countries.brasilien.getRefColor() should be <0
+      world.countries.brasilien.getRefColor() should be < 0
     }
-    
+
     "have the DefaultPlayer as owner" in {
-      world.countries.brasilien.getOwner() should be (world.players.Default)
+      world.countries.brasilien.getOwner() should be(world.players.Default)
     }
   }
 
@@ -94,8 +91,6 @@ class CountrySpec extends WordSpec {
       world.countries.brasilien.getNeighboringCountries.contains(world.countries.argentinien) should be(true)
     }
   }
-  
-  
 
   "After assigning troops to BRASILIEN it" should {
     "contain the troops" in {

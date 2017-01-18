@@ -1,5 +1,5 @@
 package de.htwg.se.scala_risk.model.impl
-import de.htwg.se.scala_risk.model.{World => TWorld}
+import de.htwg.se.scala_risk.model.{ World => TWorld }
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import de.htwg.se.scala_risk.model.{ Player => TPlayer }
 
@@ -12,7 +12,7 @@ case class Country(name: String, world: TWorld, var neighboring_countries: Set[T
   if (this.owner == null) this.owner = world.getDefaultPlayer
   override def getName(): String = return this.name
   override def getTroops(): Int = return this.troops
-  override def setTroops(number: Int) = if(number > 0) this.troops = number
+  override def setTroops(number: Int) = if (number > 0) this.troops = number
   override def getNeighboringCountries(): Set[TCountry] = neighboring_countries
   override def toString(): String = {
     var neighbors: String = ""
@@ -21,7 +21,7 @@ case class Country(name: String, world: TWorld, var neighboring_countries: Set[T
   }
   override def getOwner(): TPlayer = if (owner == null) return world.getDefaultPlayer else return owner
   override def setOwner(player: TPlayer) = this.owner = player
-  override def getRefColor() : Int = return this.color
+  override def getRefColor(): Int = return this.color
   override def equals(that: Any): Boolean = {
     if (!that.isInstanceOf[TCountry]) return false
     var p = that.asInstanceOf[TCountry]

@@ -10,7 +10,7 @@ import org.scalatest.Matchers._
 import scala.collection._
 
 @RunWith(classOf[JUnitRunner])
-class ContinentSpec extends WordSpec  {
+class ContinentSpec extends WordSpec {
   val world = new World
   val afrika = world.countries.afrika
   "toString" should {
@@ -55,7 +55,7 @@ class ContinentSpec extends WordSpec  {
 
       afrika.getIncludedCountries().head.setOwner(world.players.playerList(1))
       afrika.getOwner() should be(world.players.Default)
-      afrika.getOwner().getName == "Rick" should be (false)
+      afrika.getOwner().getName == "Rick" should be(false)
     }
   }
 
