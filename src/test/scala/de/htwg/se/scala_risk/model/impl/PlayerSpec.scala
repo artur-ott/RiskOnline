@@ -5,7 +5,7 @@ import de.htwg.se.scala_risk.model.impl.Colors._
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
-
+import org.scalatest.WordSpec
 @RunWith(classOf[JUnitRunner])
 class PlayerSpec extends WordSpec {
 val world = new World

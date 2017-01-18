@@ -1,15 +1,16 @@
 package de.htwg.se.scala_risk.model.impl
 
-import org.scalatest.Matchers
 import org.scalatest.WordSpec
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import de.htwg.se.scala_risk.model.impl.Colors._
 import scala.util.control.Breaks._
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
+
 
 @RunWith(classOf[JUnitRunner])
-class CountrySpec extends WordSpec with Matchers {
+class CountrySpec extends WordSpec {
   val world = new World
 
   "Two countries" should {

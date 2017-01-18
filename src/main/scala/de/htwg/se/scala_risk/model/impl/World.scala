@@ -281,7 +281,6 @@ class World extends TWorld {
   def getCurrentPlayerIndex: Int = this.players.currentPlayer
   def addPlayer(name: String, color: String) = this.players.addPlayer(name, color)
   def getPlayerColorList: List[Color] = this.players.colorList
-  def getAllCountries : Countries = this.countries
   
   def getContinentList : ArrayBuffer[TContinent] = this.countries.listContinents
 }
