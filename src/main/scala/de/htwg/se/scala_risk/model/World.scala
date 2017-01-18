@@ -13,5 +13,9 @@ trait World {
   def addPlayer(name: String, color: String)
   def getPlayerColorList: List[Color]
 
-  def getContinentList: ArrayBuffer[Continent]
+  def getContinentList : ArrayBuffer[Continent]
+  
+  def toXml:scala.xml.Elem
+  def fromXml(node: scala.xml.Node)
+
 }

@@ -354,4 +354,15 @@ class GameLogicSpec extends WordSpec {
       gameLogic.randomDice() should (be >= 1 and be <= 6)
     }
   }
+
+  "To xml" should {
+    "bla" in {
+      gameLogic.rolledDieces = (6::5::Nil, 5::5::Nil)
+      gameLogic.attackerDefenderIndex = (1,2)
+      gameLogic.troopsToSpread = 6
+      print (gameLogic.toXml)
+      gameLogic.fromXml(gameLogic.toXml)
+      1 should be (1)
+    }
+  }
 }
