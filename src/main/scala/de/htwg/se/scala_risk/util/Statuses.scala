@@ -1,6 +1,7 @@
 package de.htwg.se.scala_risk.util
 
 object Statuses extends Enumeration {
+
   val
   // Game specific statuses
   CREATE_GAME,

@@ -22,9 +22,9 @@ case class Continent(name: String, countries: ArrayBuffer[TCountry],
   }
 
   override def getIncludedCountries(): ArrayBuffer[TCountry] = {
-//    var includedCountries: immutable.Set[TCountry] = immutable.Set()
-//    for (x <- this.countries) includedCountries += world.getCountriesList(x)
-//    return includedCountries
+    //    var includedCountries: immutable.Set[TCountry] = immutable.Set()
+    //    for (x <- this.countries) includedCountries += world.getCountriesList(x)
+    //    return includedCountries
     return this.countries
   }
   override def getName(): String = return this.name

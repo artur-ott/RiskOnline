@@ -159,7 +159,8 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   def getCurrentPlayer: (String, String) = (
     world.getPlayerList(world.getCurrentPlayerIndex).getName,
-    world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString())
+    world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString()
+  )
 
   def getTroopsToSpread: Int = this.troopsToSpread
 
@@ -196,7 +197,8 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
           if (attackerDefenderIndex._1 != -1) {
             this.rolledDieces = this.rollDice(
               world.getCountriesList(attackerDefenderIndex._1),
-              world.getCountriesList(attackerDefenderIndex._2))
+              world.getCountriesList(attackerDefenderIndex._2)
+            )
             this.setStatus(Statuses.DIECES_ROLLED)
             val min = Math.min(this.rolledDieces._1.length, this.rolledDieces._2.length)
             var extantTroopsAttacker = world.getCountriesList(attackerDefenderIndex._1).getTroops
@@ -287,8 +289,10 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   def dragTroops(countryFrom: String, countryTo: String, troops: Int) = {
     if (this.status == Statuses.PLAYER_MOVE_TROOPS) {
-      this.attackerDefenderIndex = (this.getCountryIndexByString(countryFrom),
-        this.getCountryIndexByString(countryTo))
+      this.attackerDefenderIndex = (
+        this.getCountryIndexByString(countryFrom),
+        this.getCountryIndexByString(countryTo)
+      )
       if (this.attackerDefenderIndex._1 < 0 || this.attackerDefenderIndex._2 < 0) {
         this.clearAttack
         this.setErrorStatus(Statuses.COUNTRY_NOT_FOUND)

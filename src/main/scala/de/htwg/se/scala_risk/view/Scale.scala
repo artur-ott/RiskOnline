@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage
 import java.awt.RenderingHints
 
 object Scale {
-  def getScaledImage(srcImg:Image, w:Int, h:Int) : BufferedImage = {
+  def getScaledImage(srcImg: Image, w: Int, h: Int): BufferedImage = {
     val resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
     val g2 = resizedImg.createGraphics();
 

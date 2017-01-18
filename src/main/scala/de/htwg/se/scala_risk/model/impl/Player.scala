@@ -7,7 +7,7 @@ object Colors extends Enumeration {
 }
 
 import Colors._
-import de.htwg.se.scala_risk.model.{World => TWorld}
+import de.htwg.se.scala_risk.model.{ World => TWorld }
 import de.htwg.se.scala_risk.model.{ Player => TPlayer }
 import de.htwg.se.scala_risk.model.{ Country => TCountry }
 import scala.collection._

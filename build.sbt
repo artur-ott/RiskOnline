@@ -3,6 +3,7 @@ organization  := "de.htwg.se"
 version       := "0.0.1"
 scalaVersion  := "2.11.8"
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf8")
+mainClass := Some("ScalaRisk")
 
 resolvers += Resolver.jcenterRepo
 
@@ -18,3 +19,4 @@ libraryDependencies ++= {
 libraryDependencies += "org.scala-lang" % "scala-swing" % "2.11+"
 libraryDependencies += "junit" % "junit" % "4.8" % "test"
 libraryDependencies += "net.codingwell" %% "scala-guice" % "4.1.0"
+

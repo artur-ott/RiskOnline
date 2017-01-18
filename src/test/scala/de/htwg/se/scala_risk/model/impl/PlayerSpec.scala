@@ -5,10 +5,10 @@ import de.htwg.se.scala_risk.model.impl.Colors._
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
-
+import org.scalatest.WordSpec
 @RunWith(classOf[JUnitRunner])
 class PlayerSpec extends WordSpec {
-val world = new World
+  val world = new World
 
   "A Player" should {
     val player1 = Player("Peter", RED, 3, world)
@@ -18,48 +18,48 @@ val world = new World
     }
     "have a color" in {
       player1.color should be(RED)
-      player1.getColor() should be(RED)  
+      player1.getColor() should be(RED)
     }
-    
+
     "have 3 troops" in {
-      player1.getTroops() should be (3)
+      player1.getTroops() should be(3)
     }
-    
+
     "have more troops when setting to a higher number" in {
       player1.setTroops(10)
-      player1.getTroops() should be (10)
-    } 
+      player1.getTroops() should be(10)
+    }
   }
 
   "Two Players" should {
     "be equal" in {
       val player1 = Player("Hans", RED, 0, world)
       val player2 = Player("Hans", RED, 0, world)
-      player1.equals(player2) should be (true)
-      
+      player1.equals(player2) should be(true)
+
       val player3 = Player("Test", null, 0, world)
       val player4 = Player("Test", null, 0, world)
-      player3.equals(player4) should be (true)
+      player3.equals(player4) should be(true)
     }
-    
+
   }
   "Two Players" should {
     "not be equal" in {
       val player1 = Player("Hans", BLUE, 0, world)
       val player2 = Player("Hans", RED, 0, world)
-      player1.equals(player2) should be (false)
-            
+      player1.equals(player2) should be(false)
+
       val player5 = Player("Elfriede", null, 0, world)
       val player6 = Player("Norbert", null, 0, world)
-      player5.equals(player6) should be (false)
+      player5.equals(player6) should be(false)
     }
   }
-  
+
   "Two players with different instances" should {
     val player1 = Player("Hans", BLUE, 0, world)
     val player2 = "Hans"
     "not be equal" in {
-    player1.equals(player2) should be (false)
+      player1.equals(player2) should be(false)
     }
   }
 
@@ -71,7 +71,6 @@ val world = new World
       world.players.Default.color should be(null)
     }
   }
-  
 
   "The playerList after adding two (not equal) players" should {
     val player1 = Player("Hans", RED, 0, world)
