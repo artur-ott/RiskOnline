@@ -45,10 +45,10 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   val troopsToSpreadLabel = new JLabel("", SwingConstants.CENTER)
   troopsToSpreadLabel.setVisible(false)
   val endTurnButton = new JButton("Zug beenden")
-  val undoButton = new JButton("Rückgängig") 
+  val undoButton = new JButton("Rückgängig")
   undoButton.addActionListener(this)
   undoButton.setBounds(1080, 15, 120, 30)
-  
+
   undoButton.addActionListener(this)
   val leftGrid = new JPanel() {
     this.setLayout(new GridLayout(1, 5))
@@ -63,21 +63,18 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
-    1238, 810
-  )
+    1238, 810)
   /* Map to be displayed as legend */
   val map_legend = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
-    1238, 810
-  )
+    1238, 810)
 
   /* Reference map (BufferedImage) with different color for each country to determine
    * the country the player selected.
    */
   val map_ref = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
-    1238, 810
-  )
+    1238, 810)
   /* Map as a Label (Component) */
   val map = getMap()
 
@@ -305,31 +302,37 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         this,
         "Wollen Sie Ihren Zug beenden?",
         "Beenden?",
-        JOptionPane.YES_NO_OPTION
-      )
+        JOptionPane.YES_NO_OPTION)
       if (c == JOptionPane.YES_OPTION) {
         clearActionCountries()
         gameLogic.endTurn
       }
     }
     if (e.getSource == undoButton) {
+      this.gameLogic.undo
+      this.initialize()
+      this.updatePlayerLabel()
+      this.updateTroopsSpreadLabel()
       
-      
-      
-      
-      
-      //TODO: undo Button
-      
-      
-      
-      
-      
+      gameLogic.getStatus match {
+        case Statuses.PLAYER_ATTACK =>
+          troopsToSpreadLabel.setVisible(false)
+          this.endTurnButton.setEnabled(true)
+        case Statuses.PLAYER_MOVE_TROOPS => 
+          troopsToSpreadLabel.setVisible(false)
+          this.endTurnButton.setEnabled(true)
+        case Statuses.PLAYER_SPREAD_TROOPS =>
+          troopsToSpreadLabel.setVisible(true)
+          this.endTurnButton.setEnabled(false)
+          
+      }
     }
   }
 
   def update() {
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => setStatusText("Aufrüsten")
+      case Statuses.PLAYER_SPREAD_TROOPS =>
+        setStatusText("Aufrüsten")
         updateTroopsSpreadLabel()
         this.troopsToSpreadLabel.setVisible(true)
         this.endTurnButton.setEnabled(false)
@@ -350,8 +353,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         updateLabels()
         repaintCountry(
           gameLogic.getAttackerDefenderCountries._2._4,
-          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2)
-        )
+          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))
         moveTroops()
       }
       case Statuses.PLAYER_CONQUERED_A_CONTINENT => if (this.running) {
@@ -359,8 +361,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         updateLabels()
         repaintCountry(
           gameLogic.getAttackerDefenderCountries._2._4,
-          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2)
-        )
+          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))
         moveTroops()
       }
 
@@ -433,18 +434,18 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       this.setEnabled(false)
       this.running = false
       val parent = this
-      val dices = new Dices(gameLogic) 
-        dices.addWindowListener(new WindowAdapter() {
-          override def windowClosing(e: WindowEvent) {
-            gameLogic.remove(dices)
-            parent.setEnabled(true)
-            parent.running = true
-            parent.clearActionCountries()
-            parent.updateLabels()
-            parent.update()
-          }
-        })
-      
+      val dices = new Dices(gameLogic)
+      dices.addWindowListener(new WindowAdapter() {
+        override def windowClosing(e: WindowEvent) {
+          gameLogic.remove(dices)
+          parent.setEnabled(true)
+          parent.running = true
+          parent.clearActionCountries()
+          parent.updateLabels()
+          parent.update()
+        }
+      })
+
       dices.setVisible(true)
     } else {
       if (gameLogic.getRolledDieces._1.isEmpty) {
@@ -518,18 +519,18 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
     this.selectedCountry1.setText("")
     this.selectedCountry2.setText("")
   }
-  
+
   def loadGame() {
     gameLogic.loadGame
     this.initialize()
     this.updatePlayerLabel()
     this.updateTroopsSpreadLabel()
   }
-  
+
   def saveGame() {
     gameLogic.saveGame
   }
-  
+
   def updateTroopsSpreadLabel() {
     this.troopsToSpreadLabel.setText(gameLogic.getTroopsToSpread.toString())
   }

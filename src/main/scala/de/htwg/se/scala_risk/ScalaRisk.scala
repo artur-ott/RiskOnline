@@ -17,11 +17,11 @@ object ScalaRisk {
     gui.setLocationRelativeTo(null)
     gui.setVisible(true)
 
-    /* Add background Music */
-    val clip = AudioSystem.getClip();
+    /* Add background Music */ // TODO: REMOVE COMMENTS
+    /*val clip = AudioSystem.getClip();
     clip.open(AudioSystem.getAudioInputStream(this.getClass().getResource(("/music/heart_of_courage.wav"))))
     clip.loop(Clip.LOOP_CONTINUOUSLY);
-    Thread.sleep(1000);
+    Thread.sleep(1000);*/
 
     while (tui.setNextInput(scala.io.StdIn.readLine())) {}
 

@@ -366,4 +366,17 @@ class GameLogicSpec extends WordSpec {
       gameLogic.troopsToSpread should be (6)
     }
   }
+  
+  "Save game and load it" should {
+    "resume in same game" in {
+      val status = gameLogic.getStatus
+      val countries = gameLogic.getCountries
+      val player = gameLogic.getCurrentPlayer
+      gameLogic.saveGame
+      gameLogic.loadGame
+      status should be (gameLogic.getStatus)
+      countries.length should be (gameLogic.getCountries.length)
+      player should be (gameLogic.getCurrentPlayer)
+    }
+  }
 }
