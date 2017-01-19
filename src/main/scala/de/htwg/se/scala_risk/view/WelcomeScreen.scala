@@ -13,6 +13,7 @@ import de.htwg.se.scala_risk.util.Statuses
 import javax.inject.Inject
 
 class WelcomeScreen @Inject() (gameLogic: GameLogic) extends JFrame with ActionListener with TObserver {
+
   gameLogic.add(this)
   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
   //println(getClass().getResource("welcome_screen.PNG"))
@@ -45,6 +46,7 @@ class WelcomeScreen @Inject() (gameLogic: GameLogic) extends JFrame with ActionL
   x0.add(welcome_background, BorderLayout.NORTH)
   this.setContentPane(x0)
   this.pack()
+  this.setLocationRelativeTo(null)
 
   def continue() {
     this.listenToUpdates = false

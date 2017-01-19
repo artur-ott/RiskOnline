@@ -85,6 +85,7 @@ class EnterPlayers(gameLogic: GameLogic) extends JFrame with ActionListener with
   x0.add(enter_player_background, BorderLayout.NORTH)
   this.setContentPane(x0)
   this.pack()
+  this.setLocationRelativeTo(null)
 
   var liste = scala.collection.immutable.List[String]()
   override def actionPerformed(e: ActionEvent) {

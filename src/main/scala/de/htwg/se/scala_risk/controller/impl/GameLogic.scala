@@ -358,7 +358,6 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   def checkContinents() {
     val playerList = world.getPlayerList
-    val countryList = world.getCountriesList
     val continentList = world.getContinentList
 
     playerList.foreach { x => x.setTroops(this.INIT_TROOPS); continentList.foreach { c => if (c.getOwner() == x) { x.setTroops(x.getTroops() + c.getBonusTroops()) } } }

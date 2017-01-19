@@ -27,6 +27,10 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
    * will be notified.
    */
   gameLogic.add(this)
+
+  /* Close the whole process if the "x" was clicked */
+  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
   /* Boolean that determines if the game is stopped */
   var running = true
 
@@ -156,6 +160,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   x0.setPreferredSize(new Dimension(1238, 950))
   this.setContentPane(x0)
   this.pack()
+  /* Position in the center of the screen */
+  this.setLocationRelativeTo(null)
   this.setVisible(true)
 
   def getMap(): JLabel = {
@@ -433,13 +439,16 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   def moveTroops() {
     val t = scala.Array.range(1, gameLogic.getAttackerDefenderCountries._1._3)
     val troopsToMove = t.map { x => x.asInstanceOf[Object] }
+
     val choice = JOptionPane.showInputDialog(this, "Wie viele Truppen sollen im neu eroberten Land stationiert werden?",
       "Stationiere Truppen...", JOptionPane.PLAIN_MESSAGE,
       null, troopsToMove,
       "1")
-    val choiceAsInt = Integer.valueOf(choice.toString())
+    var choiceAsInt = 1
+    if (choice != null) {
+      choiceAsInt = Integer.valueOf(choice.toString())
+    }
     gameLogic.moveTroops(choiceAsInt)
-
   }
 
   def moveTroopsEnd(countryColor: Int) {
@@ -458,16 +467,16 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
         val t = scala.Array.range(0, actionCountries(0)._3)
         val troopsToMove = t.map { x => x.asInstanceOf[Object] }
+
         val choice = JOptionPane.showInputDialog(this, "Wie viele Truppen möchten Sie verschieben?",
           "Verschiebe Truppen...", JOptionPane.PLAIN_MESSAGE,
           null, troopsToMove,
           "0")
+
         this.selectedCountry2.setText(actionCountries(1)._1)
-        var choiceAsInt = -1
+        var choiceAsInt = 0
         if (choice != null) {
           choiceAsInt = Integer.valueOf(choice.toString())
-        } else {
-          choiceAsInt = 0
         }
         gameLogic.dragTroops(actionCountries(0)._1, actionCountries(1)._1, choiceAsInt)
         updateLabels()

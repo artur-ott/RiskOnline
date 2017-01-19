@@ -116,5 +116,12 @@ class CountrySpec extends WordSpec {
       world.countries.alaska.getOwner should be(player)
     }
   }
+  
+  "getOwner" should {
+    "return the default player" in {
+      world.countries.westaustralien.setOwner(null)
+      world.countries.westaustralien.getOwner() should be (world.players.Default)
+    }
+  }
 
 }
