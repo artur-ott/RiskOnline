@@ -45,6 +45,8 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       gameLogic.saveGame
     } else if (input.equals("load")) {
       gameLogic.loadGame
+    } else if (input.equals("undo")) {
+      gameLogic.undo
     } else {
       logger.info("Current state: " + gameLogic.getStatus)
       gameLogic.getStatus match {

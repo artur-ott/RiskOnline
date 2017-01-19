@@ -23,6 +23,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
 
   private[impl] var attackerDefenderIndex: (Int, Int) = (-1, -1)
   private[impl] var rolledDieces: (List[Int], List[Int]) = (Nil, Nil)
+  private var lastState: scala.xml.Node = null
   //private[this] val world: World = new de.htwg.se.scala_risk.model.impl.World // Changed to test GUI
 
   def startGame = {
@@ -88,6 +89,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
   }*/
 
   def endTurn = {
+    this.lastState = this.toXml
     this.logic
   }
 
@@ -172,6 +174,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     if (index >= 0) {
       if (world.getCountriesList(index).getOwner.equals(world.getPlayerList(world.getCurrentPlayerIndex))) {
         if (troops <= troopsToSpread) {
+          this.lastState = this.toXml
           val countryList = world.getCountriesList.toList
           countryList(index).setTroops(countryList(index).getTroops + troops)
           troopsToSpread -= troops
@@ -196,6 +199,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
         this.setErrorStatus(Statuses.NOT_A_NEIGHBORING_COUNTRY)
       } else {
         if (this.status == Statuses.PLAYER_ATTACK) {
+          this.lastState = this.toXml
           this.attackerDefenderIndex = getAttackIndexes(countryAttacker, countryDefender);
           if (attackerDefenderIndex._1 != -1) {
             this.rolledDieces = this.rollDice(
@@ -280,6 +284,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
         this.clearAttack
         this.setStatus(Statuses.PLAYER_ATTACK)
       } else {
+        this.lastState = this.toXml
         world.getCountriesList(this.attackerDefenderIndex._1).setTroops(currentTroops - count)
         world.getCountriesList(this.attackerDefenderIndex._2).setTroops(world.getCountriesList(this.attackerDefenderIndex._2).getTroops + count)
         this.clearAttack
@@ -436,6 +441,15 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     this.troopsToSpread = (node \ "troopsToSpread").text.toInt
     this.world.fromXml((node \ "world")(0))
     this.notifyObservers
+  }
+  
+  def undo = {
+    if (this.lastState != null) {
+      println("hi")
+      val temp = this.lastState
+      this.lastState = null
+      this.fromXml(temp)
+    }
   }
 
 }

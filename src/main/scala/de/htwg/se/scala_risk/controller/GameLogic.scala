@@ -25,6 +25,5 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   
   def saveGame
   def loadGame
-  def toXml:scala.xml.Node
-  def fromXml(node: scala.xml.Node)
+  def undo
 }

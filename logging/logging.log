@@ -1,13 +1,1872 @@
-18-01-2017 23:31:02 INFO  TUI:28 - 
+19-01-2017 22:20:32 INFO  TUI:30 - 
 _______________________________________________________________________
 
-18-01-2017 23:31:02 INFO  TUI:29 - 
+19-01-2017 22:20:32 INFO  TUI:31 - 
 ______________________To start the game press s________________________
 
-18-01-2017 23:31:02 INFO  TUI:30 - 
+19-01-2017 22:20:32 INFO  TUI:32 - 
 _______________________________________________________________________
 
-18-01-2017 23:31:03 INFO  TUI:55 - Status after update: INITIALIZE_PLAYERS
-18-01-2017 23:31:03 INFO  TUI:189 - -----------------------------------------------------------------------
-18-01-2017 23:31:03 INFO  TUI:191 - Following colors are still available: RED, YELLOW, GREEN, BLUE, PINK, ORANGE
-18-01-2017 23:31:03 INFO  TUI:192 - Pleas enter v to start the game or a name and color which is available (name, color) to create a player:
+19-01-2017 22:20:38 INFO  TUI:69 - Status after update: PLAYER_MOVE_TROOPS
+19-01-2017 22:20:38 INFO  TUI:217 - 
+[etrt]
+
+19-01-2017 22:20:38 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:38 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:38 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:38 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:38 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:38 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - INDIEN:                     ert                             1
+
+19-01-2017 22:20:38 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:38 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:38 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:38 INFO  TUI:264 - q:     quit                  country, country, x:                move
+n:     new game                          country:                show candidates
+e      end turn
+19-01-2017 22:20:38 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:43 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:43 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:43 INFO  TUI:211 - Troops to spread: 5
+19-01-2017 22:20:43 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:43 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:43 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:43 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:43 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:43 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:43 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - INDIEN:                     ert                             1
+
+19-01-2017 22:20:43 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:43 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:43 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:43 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:43 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:45 INFO  TUI:69 - Status after update: PLAYER_MOVE_TROOPS
+19-01-2017 22:20:45 INFO  TUI:217 - 
+[etrt]
+
+19-01-2017 22:20:45 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:45 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:45 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:45 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:45 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:45 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - INDIEN:                     ert                             1
+
+19-01-2017 22:20:45 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:45 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:45 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:45 INFO  TUI:264 - q:     quit                  country, country, x:                move
+n:     new game                          country:                show candidates
+e      end turn
+19-01-2017 22:20:45 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:52 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:52 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:52 INFO  TUI:211 - Troops to spread: 5
+19-01-2017 22:20:52 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:52 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:52 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:52 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:52 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:52 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:52 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - INDIEN:                     ert                             1
+
+19-01-2017 22:20:52 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:52 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:52 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:52 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:52 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:54 INFO  TUI:69 - Status after update: COUNTRY_DOES_NOT_BELONG_TO_PLAYER
+19-01-2017 22:20:54 INFO  TUI:81 - COUNTRY_DOES_NOT_BELONG_TO_PLAYER
+19-01-2017 22:20:55 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:55 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:55 INFO  TUI:211 - Troops to spread: 5
+19-01-2017 22:20:55 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:55 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:55 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:55 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:55 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:55 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:55 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - INDIEN:                     ert                             1
+
+19-01-2017 22:20:55 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:55 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:55 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:55 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:55 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:56 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:56 INFO  TUI:211 - Troops to spread: 4
+19-01-2017 22:20:56 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDIEN:                     ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:56 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:56 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:56 INFO  TUI:211 - Troops to spread: 3
+19-01-2017 22:20:56 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDIEN:                     ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:56 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:56 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:56 INFO  TUI:211 - Troops to spread: 2
+19-01-2017 22:20:56 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:56 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:56 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDIEN:                     ert                             4
+
+19-01-2017 22:20:56 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:56 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:56 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:56 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:56 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:57 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:20:57 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:20:57 INFO  TUI:211 - Troops to spread: 1
+19-01-2017 22:20:57 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:57 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:57 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:57 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - INDIEN:                     ert                             5
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:57 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:20:57 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:20:57 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:20:57 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:20:57 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:20:57 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:20:57 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:20:57 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:20:57 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:20:57 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:20:57 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:20:57 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:20:57 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:01 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:21:01 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:21:01 INFO  TUI:211 - Troops to spread: 1
+19-01-2017 22:21:01 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:01 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:01 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:01 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:01 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:01 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:01 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - INDIEN:                     ert                             5
+
+19-01-2017 22:21:01 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:01 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:01 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:01 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:21:01 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:07 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:07 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:07 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:07 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:07 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:07 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:07 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:07 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:07 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:07 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:07 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:07 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:07 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:08 INFO  TUI:69 - Status after update: PLAYER_SPREAD_TROOPS
+19-01-2017 22:21:08 INFO  TUI:210 - -----------------------------------------------------------------------
+19-01-2017 22:21:08 INFO  TUI:211 - Troops to spread: 1
+19-01-2017 22:21:08 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:08 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:08 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:08 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:08 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:08 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:08 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - INDIEN:                     ert                             5
+
+19-01-2017 22:21:08 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:08 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:08 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:08 INFO  TUI:262 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+19-01-2017 22:21:08 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:11 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:11 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:11 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:11 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:11 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:11 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:11 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:11 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:11 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:11 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:11 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:11 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:11 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:13 INFO  TUI:69 - Status after update: DIECES_ROLLED
+19-01-2017 22:21:13 INFO  TUI:182 - -----------------------------------------------------------------------
+19-01-2017 22:21:13 INFO  TUI:189 - ert etrt
+19-01-2017 22:21:13 INFO  TUI:198 - 4    1
+19-01-2017 22:21:13 INFO  TUI:198 - 3    1
+19-01-2017 22:21:13 INFO  TUI:198 - 2    -
+19-01-2017 22:21:14 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:14 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:14 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:14 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:14 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:14 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:14 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - CHINA:                     etrt                             1
+
+19-01-2017 22:21:14 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:14 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:14 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:14 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:14 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:14 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:14 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:17 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:17 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:17 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:17 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:17 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:17 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:17 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - CHINA:                     etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:17 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:17 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:17 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:17 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:17 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:17 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:20 INFO  TUI:69 - Status after update: DIECES_ROLLED
+19-01-2017 22:21:20 INFO  TUI:182 - -----------------------------------------------------------------------
+19-01-2017 22:21:20 INFO  TUI:189 - ert etrt
+19-01-2017 22:21:20 INFO  TUI:198 - 4    2
+19-01-2017 22:21:20 INFO  TUI:198 - 3    1
+19-01-2017 22:21:20 INFO  TUI:198 - 1    -
+19-01-2017 22:21:20 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:20 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:20 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:20 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:20 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:20 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:20 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - CHINA:                     etrt                             1
+
+19-01-2017 22:21:20 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:20 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:20 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:20 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:20 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:20 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:20 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:23 INFO  TUI:69 - Status after update: DIECES_ROLLED
+19-01-2017 22:21:23 INFO  TUI:182 - -----------------------------------------------------------------------
+19-01-2017 22:21:23 INFO  TUI:189 - ert etrt
+19-01-2017 22:21:23 INFO  TUI:198 - 4    3
+19-01-2017 22:21:23 INFO  TUI:198 - 4    -
+19-01-2017 22:21:23 INFO  TUI:198 - 1    -
+19-01-2017 22:21:23 INFO  TUI:69 - Status after update: PLAYER_CONQUERED_A_COUNTRY
+19-01-2017 22:21:23 INFO  TUI:171 - -----------------------------------------------------------------------
+19-01-2017 22:21:23 INFO  TUI:172 - You have 5 troops to move.
+19-01-2017 22:21:23 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:23 INFO  TUI:265 - q:     quit                  x:                move
+n:     new game
+19-01-2017 22:21:23 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:31 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:31 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:31 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:31 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:31 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:31 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:31 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - CHINA:                      ert                             1
+
+19-01-2017 22:21:31 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:31 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - INDIEN:                     ert                             5
+
+19-01-2017 22:21:31 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:31 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:31 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:31 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:31 INFO  TUI:270 - _______________________________________________________________________
+
+19-01-2017 22:21:33 INFO  TUI:69 - Status after update: PLAYER_ATTACK
+19-01-2017 22:21:33 INFO  TUI:217 - 
+[ert]
+
+19-01-2017 22:21:33 INFO  TUI:234 - ALASKA:                    etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - NORDWEST-TERRITORIEN:      etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - ALBERTA:                   etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - ONTARIO:                   etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - GROENLAND:                  ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - OSTKANADA:                 etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - WESTSTAATEN:                ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - OSTSTAATEN:                 ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - MITTELAMERIKA:              ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - VENEZUELA:                  ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - PERU:                       ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - ARGENTINIEN:                ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - BRASILIEN:                  ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - NORDAFRIKA:                 ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - ZENTRALAFRIKA:              ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - SUEDAFRIKA:                etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - MADAGASKAR:                 ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - OSTAFRIKA:                  ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - AEGYPTEN:                  etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - SUEDEUROPA:                 ert                             1
+
+19-01-2017 22:21:33 INFO  TUI:234 - WESTEUROPA:                 ert                             1
+
+19-01-2017 22:21:33 INFO  TUI:234 - NORDEUROPA:                 ert                             1
+
+19-01-2017 22:21:33 INFO  TUI:234 - GROSSBRITANNIEN:           etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - ISLAND:                     ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - SKANDINAVIEN:               ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - RUSSLAND:                   ert                             2
+
+19-01-2017 22:21:33 INFO  TUI:234 - URAL:                      etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - SIBIRIEN:                  etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - JAKUTIEN:                  etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - IRKUTSK:                   etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - KAMTSCHATKA:               etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - JAPAN:                      ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - MONGOLEI:                  etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - CHINA:                     etrt                             1
+
+19-01-2017 22:21:33 INFO  TUI:234 - AFGHANISTAN:                ert                             2
+
+19-01-2017 22:21:33 INFO  TUI:234 - MITTLERER-OSTEN:            ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - INDIEN:                     ert                             6
+
+19-01-2017 22:21:33 INFO  TUI:234 - SUEDOSTASIEN:               ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - INDONESIEN:                etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - NEUGUINEA:                 etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - OSTAUSTRALIEN:              ert                             3
+
+19-01-2017 22:21:33 INFO  TUI:234 - WESTAUSTRALIEN:            etrt                             3
+
+19-01-2017 22:21:33 INFO  TUI:259 - 
+_______________________________________________________________________
+
+19-01-2017 22:21:33 INFO  TUI:263 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+19-01-2017 22:21:33 INFO  TUI:270 - _______________________________________________________________________
+
