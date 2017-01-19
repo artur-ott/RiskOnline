@@ -46,5 +46,9 @@ trait Country {
    * Returns the unique color of the country.
    * @return color as integer.
    */
-  def getRefColor(): Int
+  def getRefColor() : Int
+  
+  def setNeighboringCountries(neighbor: Set[Country])
+  
+  def toXml:scala.xml.Elem
 }

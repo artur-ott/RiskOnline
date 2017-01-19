@@ -4,13 +4,15 @@ import de.htwg.se.scala_risk.controller.GameLogic
 import de.htwg.se.scala_risk.util.observer.TObserver
 import de.htwg.se.scala_risk.util.Statuses
 import javax.inject.Inject
-//import org.apache.log4j._
+import org.apache.log4j._
 
 class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
 
   gameLogic.add(this)
-  //val logger = Logger.getLogger(getClass.getName)
+
+  val logger = Logger.getLogger(getClass.getName)
+
 
   // TODO: REMOVE INIT
   /*----------------HERE---------------------*/
@@ -25,9 +27,10 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   /*----------------HERE---------------------*/
 
   if (gameLogic.getStatus == Statuses.CREATE_GAME) {
-    println("\n_______________________________________________________________________\n");
-    println("\n______________________To start the game press s________________________\n");
-    println("\n_______________________________________________________________________\n");
+    logger.info("\n_______________________________________________________________________\n");
+    logger.info("\n______________________To start the game press s________________________\n");
+    logger.info("\n_______________________________________________________________________\n");
+
   }
 
   def setNextInput(input: String): Boolean = {
@@ -35,19 +38,26 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
     if (input.equals("q")) {
       System.exit(0)
     }
-    println("Current state: " + gameLogic.getStatus)
-    gameLogic.getStatus match {
-      case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
-      case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
-      case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
-      case Statuses.PLAYER_ATTACK => this.parseAttack(input)
-      case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
-      case Statuses.GAME_INITIALIZED =>
-      case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
-      case _ => println(gameLogic.getStatus)
-    }
 
+    if (input.equals("n"))
+      gameLogic.startGame
+    else if (input.equals("s")) {
+      gameLogic.fromXml(gameLogic.toXml) 
+    } else {
+      logger.info("Current state: " + gameLogic.getStatus)
+      gameLogic.getStatus match {
+        case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
+        case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
+        case Statuses.PLAYER_SPREAD_TROOPS => this.parseSpreadTroops(input)
+        case Statuses.PLAYER_ATTACK => this.parseAttack(input)
+        case Statuses.PLAYER_MOVE_TROOPS => this.parseMoveTroops(input)
+        case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
+        case Statuses.GAME_INITIALIZED =>
+        case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
+        case _ => println(gameLogic.getStatus)
+      }
+
+    }
     return true
   }
 

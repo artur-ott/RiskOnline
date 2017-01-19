@@ -36,5 +36,14 @@ case class Player(name: String, color: Color, var troops: Int, world: TWorld) ex
   override def getColor(): Color = return this.color
   override def getTroops(): Int = return this.troops
   override def setTroops(troops: Int) = this.troops = troops
+  
+  override def toXml:scala.xml.Elem = {
+    var xml = <player></player>
+    import de.htwg.se.scala_risk.util.XML
+    xml = XML.addXmlChild(xml, <name>{this.name}</name>)
+    xml = XML.addXmlChild(xml, <color>{this.color.toString()}</color>)
+    xml = XML.addXmlChild(xml, <troops>{this.troops}</troops>)
+    xml
+  }
 
 }

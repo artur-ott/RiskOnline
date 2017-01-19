@@ -40,4 +40,12 @@ case class Continent(name: String, countries: ArrayBuffer[TCountry],
     "Name: " + name + ", containing countries: " + containingCountries + ", bonus troops: " + bonusTroops + ", owner: " + this.getOwner()
   }
 
+  def toXml:scala.xml.Elem = {
+    var xml = <continent></continent>
+    import de.htwg.se.scala_risk.util.XML
+    xml = XML.addXmlChild(xml, <name>{this.name}</name>)
+    xml = XML.addXmlChild(xml, <bonusTroops>{this.bonusTroops}</bonusTroops>)
+    countries.foreach { x => xml = XML.addXmlChild(xml, <country>{x.getName.toString()}</country>) }
+    xml
+  }
 }

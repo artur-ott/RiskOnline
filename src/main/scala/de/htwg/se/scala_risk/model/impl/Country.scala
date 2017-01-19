@@ -27,5 +27,18 @@ case class Country(name: String, world: TWorld, var neighboring_countries: Set[T
     var p = that.asInstanceOf[TCountry]
     return if (this.name.equals(p.getName)) true else false
   }
-
+  override def setNeighboringCountries(neighbor: Set[TCountry]) = this.neighboring_countries = neighbor
+  
+  def toXml:scala.xml.Elem = {
+    var xml = <country></country>
+    import de.htwg.se.scala_risk.util.XML
+    xml = XML.addXmlChild(xml, <name>{this.name}</name>)
+    xml = XML.addXmlChild(xml, <troops>{this.troops}</troops>)
+    xml = XML.addXmlChild(xml, <color>{this.color}</color>)
+    xml = XML.addXmlChild(xml, <owner>{this.owner.getName.toString()}</owner>)
+    var list = <list></list>
+    this.neighboring_countries.foreach { x => list = XML.addXmlChild(list, <country>{x.getName}</country>) }
+    xml = XML.addXmlChild(xml, list)
+    xml
+  }
 }
