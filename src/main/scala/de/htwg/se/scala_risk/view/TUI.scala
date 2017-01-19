@@ -6,12 +6,14 @@ import de.htwg.se.scala_risk.util.Statuses
 import javax.inject.Inject
 import org.apache.log4j._
 
+
 class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
 
   gameLogic.add(this)
 
   val logger = Logger.getLogger(getClass.getName)
+
 
 
   // TODO: REMOVE INIT
@@ -34,7 +36,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   def setNextInput(input: String): Boolean = {
-    logger.info("Player pressed: " + input)
+    logger.debug("Player pressed: '" + input + "'")
     if (input.equals("q")) {
       System.exit(0)
     }
@@ -46,7 +48,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
     } else if (input.equals("load")) {
       gameLogic.loadGame
     } else {
-      logger.info("Current state: " + gameLogic.getStatus)
+      logger.debug("Current state: " + gameLogic.getStatus)
       gameLogic.getStatus match {
         case Statuses.CREATE_GAME => if (input.equals("s")) gameLogic.startGame
         case Statuses.INITIALIZE_PLAYERS => this.parsePlayer(input)
@@ -64,7 +66,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   def update() = {
-    logger.info("Status after update: " + gameLogic.getStatus)
+    logger.debug("Status after update: " + gameLogic.getStatus)
     gameLogic.getStatus match {
       case Statuses.INITIALIZE_PLAYERS => this.printPlayerInitialisation
       case Statuses.GAME_INITIALIZED => printPitch
@@ -76,11 +78,11 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_CONQUERED_A_CONTINENT => logger.info("juchu")
 
       // Errors
-      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => logger.info("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
-      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => logger.info("NOT_ENOUGH_TROOPS_TO_SPREAD")
-      case Statuses.COUNTRY_NOT_FOUND => logger.info("COUNTRY_NOT_FOUND")
-      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => logger.info("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
-      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => logger.info("PLAYER_ATTACKING_HIS_COUNTRY")
+      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => logger.error("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => logger.error("NOT_ENOUGH_TROOPS_TO_SPREAD")
+      case Statuses.COUNTRY_NOT_FOUND => logger.error("COUNTRY_NOT_FOUND")
+      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => logger.error("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
+      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => logger.error("PLAYER_ATTACKING_HIS_COUNTRY")
       case Statuses.NOT_A_NEIGHBORING_COUNTRY => { /*TODO: implement*/ }
       case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => { /*TODO: implement*/ }
     }
@@ -88,14 +90,16 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
 
   private def parsePlayer(player: String) {
     if (player.equals("v")) {
-      logger.info("Player pressed 'v'")
+      logger.debug("Player pressed 'v'")
       gameLogic.initializeGame
     } else {
       val playerData = player.split(", ")
-      if (playerData.length >= 2)
+      if (playerData.length >= 2) {
+        logger.debug("Player entered: " + playerData(0) + "  " + playerData(1))
         gameLogic.setPlayer((playerData(0), playerData(1)))
-      else
+      } else{
         gameLogic.setPlayer(("", ""))
+      }
     }
   }
 
