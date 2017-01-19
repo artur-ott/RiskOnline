@@ -23,6 +23,8 @@ trait GameLogic extends Obserable with PlayerController with CountryController {
   def getOwnerColor(owner: String) : Int
   def getOwnerName(country: String) : String
   
+  def saveGame
+  def loadGame
   def toXml:scala.xml.Node
   def fromXml(node: scala.xml.Node)
 }

@@ -41,8 +41,10 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
 
     if (input.equals("n"))
       gameLogic.startGame
-    else if (input.equals("s")) {
-      gameLogic.fromXml(gameLogic.toXml) 
+    else if (input.equals("save")) {
+      gameLogic.saveGame
+    } else if (input.equals("load")) {
+      gameLogic.loadGame
     } else {
       logger.info("Current state: " + gameLogic.getStatus)
       gameLogic.getStatus match {

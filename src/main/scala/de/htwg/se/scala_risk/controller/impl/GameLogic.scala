@@ -8,6 +8,9 @@ import de.htwg.se.scala_risk.model.Country
 import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
 import de.htwg.se.scala_risk.util.XML
+import java.io.File
+import java.io.FileOutputStream
+import scala.io.Source
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -372,8 +375,17 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     return continentName
   }
 
-  def saveGame() {
-
+  def saveGame = {
+    val file: File = new File("savegame.xml")
+    val fos:FileOutputStream = new FileOutputStream(file, false)
+    val saveXML:Array[Byte] = this.toXml.toString().getBytes
+    fos.write(saveXML)
+    fos.close()
+  }
+  
+  def loadGame = {
+    val filename = "savegame.xml"
+    this.fromXml(scala.xml.XML.loadFile(filename))
   }
 
   def toXml:scala.xml.Node = {
