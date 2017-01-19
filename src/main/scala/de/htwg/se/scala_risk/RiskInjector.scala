@@ -1,3 +1,5 @@
+package de.htwg.se.scala_risk
+
 import com.google.inject.{ AbstractModule, PrivateModule }
 import net.codingwell.scalaguice.{ ScalaModule, ScalaPrivateModule }
 import de.htwg.se.scala_risk.model.World
@@ -11,3 +13,5 @@ class RiskInjector extends AbstractModule with ScalaModule {
     bind[GameLogic].to[ImplGameLogic]
   }
 }
+
+

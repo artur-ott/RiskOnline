@@ -22,8 +22,19 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   val item3 = new JMenuItem("Spiel fortsetzen");
   item3.addActionListener(this);
 
+  /* Create item4. */
+  val item4 = new JMenuItem("Spiel laden");
+  item4.addActionListener(this);
+  
+  /* Create item3. */
+  val item5 = new JMenuItem("Spiel speichern");
+  item5.addActionListener(this);  
+  
   /* Add items to menu. */
-  menu.add(item1);
+  menu.add(item4)
+  menu.add(item5)
+  menu.addSeparator()
+  menu.add(item1)
   menu.add(item3)
   menu.addSeparator();
   menu.add(item2);
@@ -41,7 +52,12 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
       if (c == JOptionPane.YES_OPTION) {
         System.exit(0)
       }
-
+    }
+    if (e.getSource == item4) {
+      parent.loadGame()
+    }
+    if (e.getSource == item5) {
+      parent.saveGame()
     }
 
     if (e.getSource == item1) {

@@ -45,7 +45,11 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   val troopsToSpreadLabel = new JLabel("", SwingConstants.CENTER)
   troopsToSpreadLabel.setVisible(false)
   val endTurnButton = new JButton("Zug beenden")
-
+  val undoButton = new JButton("Rückgängig") 
+  undoButton.addActionListener(this)
+  undoButton.setBounds(1080, 15, 120, 30)
+  
+  undoButton.addActionListener(this)
   val leftGrid = new JPanel() {
     this.setLayout(new GridLayout(1, 5))
     this.add(currentPlayer)
@@ -58,7 +62,6 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
 
   /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(
-
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
     1238, 810
   )
@@ -148,6 +151,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   x1.setLayout(new BoxLayout(x1, BoxLayout.Y_AXIS))
   map.setLayout(null)
   countryArray.foreach { x => map.add(x) }
+  map.add(undoButton)
   x1.add(map)
 
   val x2 = new JPanel()
@@ -171,6 +175,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       this.addMouseListener(new MouseAdapter() {
 
         override def mouseClicked(e: MouseEvent) {
+          println(e.getPoint)
           if (running) {
             /* Determine the color of the country in the reference map */
             val country = map_ref.getRGB(e.getPoint.x, e.getPoint.y)
@@ -182,6 +187,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
             //println(r,g,b)
             parent.status match {
               case Statuses.PLAYER_SPREAD_TROOPS =>
+                updateTroopsSpreadLabel()
                 troopsToSpreadLabel.setText(gameLogic.getTroopsToSpread.toString())
                 troopsToSpreadLabel.setVisible(true)
                 spreadTroops(country)
@@ -306,13 +312,25 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         gameLogic.endTurn
       }
     }
+    if (e.getSource == undoButton) {
+      
+      
+      
+      
+      
+      //TODO: undo Button
+      
+      
+      
+      
+      
+    }
   }
 
   def update() {
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS =>
-        setStatusText("Aufrüsten")
-        this.troopsToSpreadLabel.setText(gameLogic.getTroopsToSpread.toString())
+      case Statuses.PLAYER_SPREAD_TROOPS => setStatusText("Aufrüsten")
+        updateTroopsSpreadLabel()
         this.troopsToSpreadLabel.setVisible(true)
         this.endTurnButton.setEnabled(false)
         updatePlayerLabel()
@@ -415,9 +433,10 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       this.setEnabled(false)
       this.running = false
       val parent = this
-      val dices = new Dices(gameLogic) {
-        this.addWindowListener(new WindowAdapter() {
+      val dices = new Dices(gameLogic) 
+        dices.addWindowListener(new WindowAdapter() {
           override def windowClosing(e: WindowEvent) {
+            gameLogic.remove(dices)
             parent.setEnabled(true)
             parent.running = true
             parent.clearActionCountries()
@@ -425,7 +444,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
             parent.update()
           }
         })
-      }
+      
       dices.setVisible(true)
     } else {
       if (gameLogic.getRolledDieces._1.isEmpty) {
@@ -498,6 +517,21 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
     this.actionCountries = scala.List[(String, String, Int, Int)]()
     this.selectedCountry1.setText("")
     this.selectedCountry2.setText("")
+  }
+  
+  def loadGame() {
+    gameLogic.loadGame
+    this.initialize()
+    this.updatePlayerLabel()
+    this.updateTroopsSpreadLabel()
+  }
+  
+  def saveGame() {
+    gameLogic.saveGame
+  }
+  
+  def updateTroopsSpreadLabel() {
+    this.troopsToSpreadLabel.setText(gameLogic.getTroopsToSpread.toString())
   }
 
 }

@@ -349,6 +349,7 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
       case "BLUE" => intcolor = -8350209
       case "PINK" => intcolor = -563473
       case "ORANGE" => intcolor = -355265
+      case _ => intcolor = 0
     }
     return intcolor
   }

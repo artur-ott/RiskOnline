@@ -264,7 +264,7 @@ class World extends TWorld {
     // List to hold the remaining colors.
     var colorList: List[Color] = List(RED, YELLOW, GREEN, BLUE, PINK, ORANGE)
     // Default Player e.g. if a country or a continent is not occupied yet.
-    val Default = Player("", null.asInstanceOf[Color], 0, world)
+    val Default = Player("", null, 0, world)
 
     var currentPlayer = -1
     /**

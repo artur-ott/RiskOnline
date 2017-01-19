@@ -34,9 +34,21 @@ class WelcomeScreen @Inject() (gameLogic: GameLogic) extends JFrame with ActionL
   val startButton = new JButton("SPIEL STARTEN") { this.setBounds(302 - 100, 500 - 50, 200, 100) }
   startButton.addActionListener(this)
   welcome_background.add(startButton)
+  val loadButton = new JButton("SPIEL LADEN") { this.setBounds(302 - 100, 700 - 50, 200, 100) }
+  loadButton.addActionListener(this)
+  welcome_background.add(loadButton)
 
   override def actionPerformed(e: ActionEvent) {
-    gameLogic.startGame
+    if (e.getSource == startButton) {
+      gameLogic.startGame
+    }
+    if (e.getSource == loadButton) {
+      gameLogic.remove(this)
+      val gui = new GUI(gameLogic)
+      gui.loadGame()
+      gui.setVisible(true)
+      this.dispose()
+    }    
   }
 
   //  val x1 = new JPanel()

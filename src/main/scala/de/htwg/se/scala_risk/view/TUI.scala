@@ -34,7 +34,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   def setNextInput(input: String): Boolean = {
-    println("Player pressed: " + input)
+    logger.info("Player pressed: " + input)
     if (input.equals("q")) {
       System.exit(0)
     }
@@ -56,7 +56,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
         case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
         case Statuses.GAME_INITIALIZED =>
         case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
-        case _ => println(gameLogic.getStatus)
+        case _ => logger.info(gameLogic.getStatus)
       }
 
     }
@@ -64,7 +64,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   def update() = {
-    println("Status after update: " + gameLogic.getStatus)
+    logger.info("Status after update: " + gameLogic.getStatus)
     gameLogic.getStatus match {
       case Statuses.INITIALIZE_PLAYERS => this.printPlayerInitialisation
       case Statuses.GAME_INITIALIZED => printPitch
@@ -73,14 +73,14 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
       case Statuses.DIECES_ROLLED => printRolledDieces
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
-      case Statuses.PLAYER_CONQUERED_A_CONTINENT => println("juchu")
+      case Statuses.PLAYER_CONQUERED_A_CONTINENT => logger.info("juchu")
 
       // Errors
-      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => println("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
-      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => println("NOT_ENOUGH_TROOPS_TO_SPREAD")
-      case Statuses.COUNTRY_NOT_FOUND => println("COUNTRY_NOT_FOUND")
-      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => println("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
-      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => println("PLAYER_ATTACKING_HIS_COUNTRY")
+      case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => logger.info("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
+      case Statuses.NOT_ENOUGH_TROOPS_TO_SPREAD => logger.info("NOT_ENOUGH_TROOPS_TO_SPREAD")
+      case Statuses.COUNTRY_NOT_FOUND => logger.info("COUNTRY_NOT_FOUND")
+      case Statuses.INVALID_QUANTITY_OF_TROOPS_TO_MOVE => logger.info("INVALID_QUANTITY_OF_TROOPS_TO_MOVE")
+      case Statuses.PLAYER_ATTACKING_HIS_COUNTRY => logger.info("PLAYER_ATTACKING_HIS_COUNTRY")
       case Statuses.NOT_A_NEIGHBORING_COUNTRY => { /*TODO: implement*/ }
       case Statuses.NOT_ENOUGH_TROOPS_TO_ATTACK => { /*TODO: implement*/ }
     }
@@ -88,7 +88,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
 
   private def parsePlayer(player: String) {
     if (player.equals("v")) {
-      println("Player pressed 'v'")
+      logger.info("Player pressed 'v'")
       gameLogic.initializeGame
     } else {
       val playerData = player.split(", ")
@@ -106,11 +106,11 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
         if (input.equals("b")) {
           printSpreadTroops
         } else if (input.equals("show")) {
-          println("-----------------------------------------------------------------------");
+          logger.info("-----------------------------------------------------------------------");
           this.showCandidates(gameLogic.getCandidates())
-          println("\n_______________________________________________________________________\n");
-          println("b:     back");
-          println("_______________________________________________________________________\n");
+          logger.info("\n_______________________________________________________________________\n");
+          logger.info("b:     back");
+          logger.info("_______________________________________________________________________\n");
         }
       }
       case x if x >= 2 => gameLogic.addTroops(splitInput(0), splitInput(1).toInt)
@@ -127,11 +127,11 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
         } else if (input.equals("e"))
           this.gameLogic.endTurn
         else {
-          println("-----------------------------------------------------------------------");
+          logger.info("-----------------------------------------------------------------------");
           this.showCandidates(gameLogic.getCandidates(splitInput(0)))
-          println("\n_______________________________________________________________________\n");
-          println("b:     back");
-          println("_______________________________________________________________________\n");
+          logger.info("\n_______________________________________________________________________\n");
+          logger.info("b:     back");
+          logger.info("_______________________________________________________________________\n");
         }
       }
       case x if x >= 2 => gameLogic.attack(splitInput(0), splitInput(1))
@@ -148,11 +148,11 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
         } else if (input.equals("e"))
           this.gameLogic.endTurn
         else {
-          println("-----------------------------------------------------------------------");
+          logger.info("-----------------------------------------------------------------------");
           this.showCandidates(gameLogic.getCandidates(splitInput(0)))
-          println("\n_______________________________________________________________________\n");
-          println("b:     back");
-          println("_______________________________________________________________________\n");
+          logger.info("\n_______________________________________________________________________\n");
+          logger.info("b:     back");
+          logger.info("_______________________________________________________________________\n");
         }
       }
       case x if x >= 3 => gameLogic.dragTroops(splitInput(0), splitInput(1), splitInput(2).toInt)
@@ -166,8 +166,8 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   private def printConquered = {
-    println("-----------------------------------------------------------------------");
-    println("You have " + (this.gameLogic.getAttackerDefenderCountries._1._3 - 1) + " troops to move.");
+    logger.info("-----------------------------------------------------------------------");
+    logger.info("You have " + (this.gameLogic.getAttackerDefenderCountries._1._3 - 1) + " troops to move.");
     printMenu
   }
 
@@ -177,14 +177,14 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   }
 
   private def printRolledDieces = {
-    println("-----------------------------------------------------------------------");
+    logger.info("-----------------------------------------------------------------------");
     val dieces = gameLogic.getRolledDieces
     val max = Math.max(dieces._1.length, dieces._2.length)
     val attackerName = this.gameLogic.getAttackerDefenderCountries._1._2
     val defenderName = this.gameLogic.getAttackerDefenderCountries._2._2
     val maxSpace = attackerName.length + 2
     val text: String = "%s%" + maxSpace + "s"
-    println(text.format(attackerName, defenderName))
+    logger.info(text.format(attackerName, defenderName))
     var i = 0
     for (i <- 0 to max - 1) {
       var text1 = ""
@@ -193,26 +193,26 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       else text1 = "-"
       if (dieces._2.length > i) text2 = dieces._2(i).toString()
       else text2 = "-"
-      println(text.format(text1, text2))
+      logger.info(text.format(text1, text2))
     }
   }
 
   private def printPlayerInitialisation = {
-    println("-----------------------------------------------------------------------");
+    logger.info("-----------------------------------------------------------------------");
     val avColors = gameLogic.getAvailableColors.toString()
-    println("Following colors are still available: " + avColors.substring(5, avColors.length() - 1));
-    println("Pleas enter v to start the game or a name and color which is available (name, color) to create a player:");
+    logger.info("Following colors are still available: " + avColors.substring(5, avColors.length() - 1));
+    logger.info("Pleas enter v to start the game or a name and color which is available (name, color) to create a player:");
   }
 
   private def printSpreadTroops = {
-    println("-----------------------------------------------------------------------");
-    println("Troops to spread: " + gameLogic.getTroopsToSpread)
+    logger.info("-----------------------------------------------------------------------");
+    logger.info("Troops to spread: " + gameLogic.getTroopsToSpread)
     printPitch
     printMenu
   }
 
   private def printPitch = {
-    println("\n[" + gameLogic.getCurrentPlayer._1 + "]\n");
+    logger.info("\n[" + gameLogic.getCurrentPlayer._1 + "]\n");
 
     val countries = gameLogic.getCountries
 
@@ -229,7 +229,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       val p2 = LENGTH;
       val text: String = "%s:%" + p1 + "s%" + p2 + "d\n"
 
-      println(text.format(s1, s2, s3));
+      logger.info(text.format(s1, s2, s3));
 
     }
   }
@@ -248,23 +248,23 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       val p2 = LENGTH;
       val text: String = "%s:%" + p1 + "s%" + p2 + "d\n"
 
-      println(text.format(s1, s2, s3));
+      logger.info(text.format(s1, s2, s3));
 
     }
   }
 
   private def printMenu = {
-    println("\n_______________________________________________________________________\n");
+    logger.info("\n_______________________________________________________________________\n");
 
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => println("q:     quit           country, x:                spread\nn:     new game             show:                show candidates");
-      case Statuses.PLAYER_ATTACK => println("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn");
-      case Statuses.PLAYER_MOVE_TROOPS => println("q:     quit                  country, country, x:                move\nn:     new game                          country:                show candidates\ne      end turn");
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY => println("q:     quit                  x:                move\nn:     new game");
+      case Statuses.PLAYER_SPREAD_TROOPS => logger.info("q:     quit           country, x:                spread\nn:     new game             show:                show candidates");
+      case Statuses.PLAYER_ATTACK => logger.info("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn");
+      case Statuses.PLAYER_MOVE_TROOPS => logger.info("q:     quit                  country, country, x:                move\nn:     new game                          country:                show candidates\ne      end turn");
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => logger.info("q:     quit                  x:                move\nn:     new game");
     }
 
-    //println("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");
+    //logger.info("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");
 
-    println("_______________________________________________________________________\n");
+    logger.info("_______________________________________________________________________\n");
   }
 }

@@ -168,6 +168,7 @@ class EnterPlayers(gameLogic: GameLogic) extends JFrame with ActionListener with
     }
 
   }
+  
 
   def continue() {
     this.listenToUpdates = false
