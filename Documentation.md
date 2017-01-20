@@ -80,8 +80,8 @@ In opposition to the board game currently some restrictions apply:
 
 ## Notes
 * "save" folder must always be located in the same directory as the .exe or .jar file
-How to create a runnable .exe from the scala project:
-* Add the following code to your build.sbt:
+* Add the following code to your build.sbt to create a runnable .exe file:
+
 ```
 import com.github.retronym.SbtOneJar._
 
