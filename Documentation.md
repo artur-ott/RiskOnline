@@ -9,7 +9,6 @@ It includes load/save functions and logging mechanisms.
 
 ## Programming Language
 * Scala
-* Java
 
 ## Language
 * German
