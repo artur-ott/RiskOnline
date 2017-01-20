@@ -63,18 +63,21 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
-    1238, 810)
+    1238, 810
+  )
   /* Map to be displayed as legend */
   val map_legend = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
-    1238, 810)
+    1238, 810
+  )
 
   /* Reference map (BufferedImage) with different color for each country to determine
    * the country the player selected.
    */
   val map_ref = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
-    1238, 810)
+    1238, 810
+  )
   /* Map as a Label (Component) */
   val map = getMap()
 
@@ -172,7 +175,6 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       this.addMouseListener(new MouseAdapter() {
 
         override def mouseClicked(e: MouseEvent) {
-          println(e.getPoint)
           if (running) {
             /* Determine the color of the country in the reference map */
             val country = map_ref.getRGB(e.getPoint.x, e.getPoint.y)
@@ -302,7 +304,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         this,
         "Wollen Sie Ihren Zug beenden?",
         "Beenden?",
-        JOptionPane.YES_NO_OPTION)
+        JOptionPane.YES_NO_OPTION
+      )
       if (c == JOptionPane.YES_OPTION) {
         clearActionCountries()
         gameLogic.endTurn
@@ -313,18 +316,18 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
       this.initialize()
       this.updatePlayerLabel()
       this.updateTroopsSpreadLabel()
-      
+
       gameLogic.getStatus match {
         case Statuses.PLAYER_ATTACK =>
           troopsToSpreadLabel.setVisible(false)
           this.endTurnButton.setEnabled(true)
-        case Statuses.PLAYER_MOVE_TROOPS => 
+        case Statuses.PLAYER_MOVE_TROOPS =>
           troopsToSpreadLabel.setVisible(false)
           this.endTurnButton.setEnabled(true)
         case Statuses.PLAYER_SPREAD_TROOPS =>
           troopsToSpreadLabel.setVisible(true)
           this.endTurnButton.setEnabled(false)
-          
+
       }
     }
   }
@@ -353,7 +356,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         updateLabels()
         repaintCountry(
           gameLogic.getAttackerDefenderCountries._2._4,
-          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))
+          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2)
+        )
         moveTroops()
       }
       case Statuses.PLAYER_CONQUERED_A_CONTINENT => if (this.running) {
@@ -361,7 +365,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         updateLabels()
         repaintCountry(
           gameLogic.getAttackerDefenderCountries._2._4,
-          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2))
+          gameLogic.getOwnerColor(gameLogic.getAttackerDefenderCountries._1._2)
+        )
         moveTroops()
       }
 
@@ -426,7 +431,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   }
 
   def updatePlayerLabel() {
-    this.currentPlayer.setText("" + gameLogic.getCurrentPlayer._1 + "," + gameLogic.getCurrentPlayer._2)
+    this.currentPlayer.setText("" + gameLogic.getCurrentPlayer._1 + ",   " + gameLogic.getCurrentPlayer._2)
   }
 
   def rollDices() {
@@ -475,15 +480,15 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
     var country = null.asInstanceOf[(String, String, Int, Int)]
 
     gameLogic.getCountries.foreach { x => if (x._4 == countryColor) { country = x } }
-    if (country._2 == gameLogic.getCurrentPlayer._1) {
+    if (country != null && country._2 == gameLogic.getCurrentPlayer._1) {
       actionCountries = actionCountries.:+(country)
     }
 
-    if (actionCountries.length == 1) {
+    if (country != null && actionCountries.length == 1) {
       this.selectedCountry1.setText(country._1)
     }
 
-    if (actionCountries.length == 2) {
+    if (country != null && actionCountries.length == 2) {
       if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
         val t = scala.Array.range(0, actionCountries(0)._3)
         val troopsToMove = t.map { x => x.asInstanceOf[Object] }

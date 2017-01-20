@@ -32,6 +32,6 @@ trait Continent {
    * @return Countries of this continent.
    */
   def getIncludedCountries(): ArrayBuffer[Country]
-  
-  def toXml:scala.xml.Elem
+
+  def toXml: scala.xml.Elem
 }

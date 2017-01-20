@@ -19,4 +19,13 @@ libraryDependencies ++= {
 libraryDependencies += "org.scala-lang" % "scala-swing" % "2.11+"
 libraryDependencies += "junit" % "junit" % "4.8" % "test"
 libraryDependencies += "net.codingwell" %% "scala-guice" % "4.1.0"
-libraryDependencies += "org.apache.spark" %% "spark-core" % "2.1.0"
+libraryDependencies += "org.apache.spark" %% "spark-core" % "2.1.0"	% "provided"
+
+import com.github.retronym.SbtOneJar._
+
+oneJarSettings
+
+// or if using sbt version < 0.13
+// seq(com.github.retronym.SbtOneJar.oneJarSettings: _*)
+
+libraryDependencies += "commons-lang" % "commons-lang" % "2.6"

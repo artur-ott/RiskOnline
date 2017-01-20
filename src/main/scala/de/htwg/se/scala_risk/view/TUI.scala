@@ -6,15 +6,12 @@ import de.htwg.se.scala_risk.util.Statuses
 import javax.inject.Inject
 import org.apache.log4j._
 
-
 class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
   val LENGTH = 30
 
   gameLogic.add(this)
 
   val logger = Logger.getLogger(getClass.getName)
-
-
 
   // TODO: REMOVE INIT
   /*----------------HERE---------------------*/
@@ -60,7 +57,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
         case Statuses.PLAYER_CONQUERED_A_COUNTRY => this.gameLogic.moveTroops(input.toInt)
         case Statuses.GAME_INITIALIZED =>
         case Statuses.PLAYER_CONQUERED_A_CONTINENT => this.gameLogic.moveTroops(input.toInt)
-        case _ => logger.info(gameLogic.getStatus)
+        case _ => logger.debug(gameLogic.getStatus)
       }
 
     }
@@ -77,7 +74,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       case Statuses.PLAYER_MOVE_TROOPS => printMoveTroops
       case Statuses.DIECES_ROLLED => printRolledDieces
       case Statuses.PLAYER_CONQUERED_A_COUNTRY => printConquered
-      case Statuses.PLAYER_CONQUERED_A_CONTINENT => logger.info("juchu")
+      case Statuses.PLAYER_CONQUERED_A_CONTINENT => logger.info("You conquered a continent!")
 
       // Errors
       case Statuses.COUNTRY_DOES_NOT_BELONG_TO_PLAYER => logger.error("COUNTRY_DOES_NOT_BELONG_TO_PLAYER")
@@ -99,7 +96,7 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
       if (playerData.length >= 2) {
         logger.debug("Player entered: " + playerData(0) + "  " + playerData(1))
         gameLogic.setPlayer((playerData(0), playerData(1)))
-      } else{
+      } else {
         gameLogic.setPlayer(("", ""))
       }
     }
@@ -263,10 +260,10 @@ class TUI @Inject() (gameLogic: GameLogic) extends TObserver {
     logger.info("\n_______________________________________________________________________\n");
 
     gameLogic.getStatus match {
-      case Statuses.PLAYER_SPREAD_TROOPS => logger.info("q:     quit           country, x:                spread\nn:     new game             show:                show candidates");
-      case Statuses.PLAYER_ATTACK => logger.info("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn");
-      case Statuses.PLAYER_MOVE_TROOPS => logger.info("q:     quit                  country, country, x:                move\nn:     new game                          country:                show candidates\ne      end turn");
-      case Statuses.PLAYER_CONQUERED_A_COUNTRY => logger.info("q:     quit                  x:                move\nn:     new game");
+      case Statuses.PLAYER_SPREAD_TROOPS => logger.info("q:     quit           country, x:                spread\nn:     new game             show:                show candidates\nload:  load game            save:                save game");
+      case Statuses.PLAYER_ATTACK => logger.info("q:     quit           country, country:                attack\nn:     new game                country:                show candidates\ne      end turn\nload:  load game            save:                save game");
+      case Statuses.PLAYER_MOVE_TROOPS => logger.info("q:     quit                  country, country, x:                move\nn:     new game                          country:                show candidates\ne      end turn\nload:  load game            save:                save game");
+      case Statuses.PLAYER_CONQUERED_A_COUNTRY => logger.info("q:     quit                  x:                move\nn:     new game\nload:  load game            save:                save game");
     }
 
     //logger.info("q:     quit              country1, country2:     attack\nn:     new game          country, x:             recruit\ne:     end turn          country:                show candidates");

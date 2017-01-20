@@ -179,7 +179,7 @@ class World extends TWorld {
     val asienCountries = ArrayBuffer[TCountry](ural, sibirien, jakutien, irkutsk, kamtschatka, japan, mongolei, china, afghanistan,
       mittlererosten, indien, suedostasien)
     val australienCountries = ArrayBuffer[TCountry](indonesien, neuguinea, ostaustralien, westaustralien)
-   
+
     val nordamerika = Continent("Nordamerika", nordamerikaCountries, 5, world)
     val suedamerika = Continent("Südamerika", suedamerikaCountries, 2, world)
     val afrika = Continent("Afrika", afrikaCountries, 3, world)
@@ -188,15 +188,15 @@ class World extends TWorld {
     val australien = Continent("Australien", australienCountries, 2, world)
 
     val listContinents = ArrayBuffer[TContinent](nordamerika, suedamerika, afrika, europa, asien, australien)
-    
-    def toXml:scala.xml.Elem = {
+
+    def toXml: scala.xml.Elem = {
       <countries>
-				<countries>{this.getCountriesXml(this.listCountries)}</countries>
-				<continents>{this.getContinentsXml(this.listContinents)}</continents>
+        <countries>{ this.getCountriesXml(this.listCountries) }</countries>
+        <continents>{ this.getContinentsXml(this.listContinents) }</continents>
       </countries>
     }
-    
-    def fromXml(node:scala.xml.Node) = {
+
+    def fromXml(node: scala.xml.Node) = {
       while (this.listCountries.length != 0) {
         this.listCountries.remove(0)
       }
@@ -207,49 +207,63 @@ class World extends TWorld {
       val countriesList = ((countries \ "countries") \ "list")(0)
       val continents = ((countries \ "continents") \ "list")(0)
       val country_neig: scala.collection.mutable.Map[String, List[String]] = scala.collection.mutable.Map()
-      countriesList.child.foreach { x => {
-        val country = (x \ "country")
-        this.listCountries += Country((country \ "name")(0).text, this.world, troops = (country \ "troops")(0).text.toInt, 
+      countriesList.child.foreach { x =>
+        {
+          val country = (x \ "country")
+          this.listCountries += Country((country \ "name")(0).text, this.world, troops = (country \ "troops")(0).text.toInt,
             color = (country \ "color")(0).text.toInt, owner = this.world.getPlayerList.find { x => x.getName.equals((country \ "owner")(0).text) }.get)
-        val neighbors = (country \ "list")(0)
-        country_neig((country \ "name")(0).text) = List()
-        val list = (country \ "list")(0)
-        list.child.foreach { y => {
-          country_neig((country \ "name").text) = y.text :: country_neig((country \ "name").text)
-        } }
-      } }
-      val country_neig_set: scala.collection.mutable.Map[String, scala.collection.immutable.Set[TCountry]] = scala.collection.mutable.Map()
-      this.listCountries.foreach { x =>  {
-        country_neig_set(x.getName) = scala.collection.immutable.Set()
-        country_neig(x.getName).foreach { y => {
-          val index = this.listCountries.indexWhere { j => j.getName.equals(y) }
-          country_neig_set(x.getName) += this.listCountries(index)
-        } }
-      } }
-      continents.child.foreach { x => {
-        val continent = (x \ "continent")(0)
-        val countries: ArrayBuffer[TCountry] = ArrayBuffer[TCountry]()
-        continent.child.foreach { x => {
-          if (x.label.equals("country")) {
-            countries += this.listCountries.find { y => y.getName.equals(x.text) }.get
+          val neighbors = (country \ "list")(0)
+          country_neig((country \ "name")(0).text) = List()
+          val list = (country \ "list")(0)
+          list.child.foreach { y =>
+            {
+              country_neig((country \ "name").text) = y.text :: country_neig((country \ "name").text)
+            }
           }
-        } }
-        this.listContinents += Continent((continent \ "name")(0).text, countries, (continent \ "bonusTroops")(0).text.toInt, this.world)
-      } }
-      this.listCountries.foreach { x => {
-        x.setNeighboringCountries(country_neig_set(x.getName))
-      } }
+        }
+      }
+      val country_neig_set: scala.collection.mutable.Map[String, scala.collection.immutable.Set[TCountry]] = scala.collection.mutable.Map()
+      this.listCountries.foreach { x =>
+        {
+          country_neig_set(x.getName) = scala.collection.immutable.Set()
+          country_neig(x.getName).foreach { y =>
+            {
+              val index = this.listCountries.indexWhere { j => j.getName.equals(y) }
+              country_neig_set(x.getName) += this.listCountries(index)
+            }
+          }
+        }
+      }
+      continents.child.foreach { x =>
+        {
+          val continent = (x \ "continent")(0)
+          val countries: ArrayBuffer[TCountry] = ArrayBuffer[TCountry]()
+          continent.child.foreach { x =>
+            {
+              if (x.label.equals("country")) {
+                countries += this.listCountries.find { y => y.getName.equals(x.text) }.get
+              }
+            }
+          }
+          this.listContinents += Continent((continent \ "name")(0).text, countries, (continent \ "bonusTroops")(0).text.toInt, this.world)
+        }
+      }
+      this.listCountries.foreach { x =>
+        {
+          x.setNeighboringCountries(country_neig_set(x.getName))
+        }
+      }
     }
-    
+
     private def getCountriesXml(countries: ArrayBuffer[TCountry]): scala.xml.Elem = {
       var xml = <list></list>
-      countries.foreach { x => xml = XML.addXmlChild(xml, <country>{x.toXml}</country>) }
+      countries.foreach { x => xml = XML.addXmlChild(xml, <country>{ x.toXml }</country>) }
       xml
     }
-    
+
     private def getContinentsXml(continents: ArrayBuffer[TContinent]): scala.xml.Elem = {
       var xml = <list></list>
-      continents.foreach { x => xml = XML.addXmlChild(xml, <continent>{x.toXml}</continent>) }
+      continents.foreach { x => xml = XML.addXmlChild(xml, <continent>{ x.toXml }</continent>) }
       xml
     }
   }
@@ -329,37 +343,39 @@ class World extends TWorld {
 
     def toXml = {
       <players>
-				<currentPlayer>{this.currentPlayer}</currentPlayer>
-				<players>{this.getPlayersXml(this.playerList)}</players>
-			</players>
+        <currentPlayer>{ this.currentPlayer }</currentPlayer>
+        <players>{ this.getPlayersXml(this.playerList) }</players>
+      </players>
     }
-    
+
     private def getColorsXml(colors: List[Color]): scala.xml.Elem = {
       var xml = <list></list>
-      this.colorList.foreach { x => xml = XML.addXmlChild(xml, <color>{x.toString()}</color>) }
+      this.colorList.foreach { x => xml = XML.addXmlChild(xml, <color>{ x.toString() }</color>) }
       xml
     }
-    
+
     private def getPlayersXml(players: ArrayBuffer[TPlayer]): scala.xml.Elem = {
       var xml = <list></list>
-      players.foreach { x => xml = XML.addXmlChild(xml, <player>{x.toXml}</player>) }
+      players.foreach { x => xml = XML.addXmlChild(xml, <player>{ x.toXml }</player>) }
       xml
     }
-    
-    def fromXml(node:scala.xml.Node) = {
+
+    def fromXml(node: scala.xml.Node) = {
       this.playerList = ArrayBuffer()
       this.colorList = List(RED, YELLOW, GREEN, BLUE, PINK, ORANGE)
       val players = (node \ "players")(0)
       this.currentPlayer = (players \ "currentPlayer")(0).text.toInt
       val playersList = ((players \ "players")(0) \ "list")(0)
-      
-      playersList.child.foreach { x => {
-        val player = (x \ "player")
-        val name = (player \ "name").text
-        val color = (player \ "color").text
-        this.addPlayer(name, color)
-        this.playerList.find { y => y.getName.equals(name) && y.getColor.toString().equals(color) }.get.setTroops((player \ "troops").text.toInt)
-      } }
+
+      playersList.child.foreach { x =>
+        {
+          val player = (x \ "player")
+          val name = (player \ "name").text
+          val color = (player \ "color").text
+          this.addPlayer(name, color)
+          this.playerList.find { y => y.getName.equals(name) && y.getColor.toString().equals(color) }.get.setTroops((player \ "troops").text.toInt)
+        }
+      }
     }
   }
 
@@ -374,10 +390,10 @@ class World extends TWorld {
   def getCurrentPlayerIndex: Int = this.players.currentPlayer
   def addPlayer(name: String, color: String) = this.players.addPlayer(name, color)
   def getPlayerColorList: List[Color] = this.players.colorList
-  
-  def getContinentList : ArrayBuffer[TContinent] = this.countries.listContinents
-  
-  def toXml:scala.xml.Elem = {
+
+  def getContinentList: ArrayBuffer[TContinent] = this.countries.listContinents
+
+  def toXml: scala.xml.Elem = {
     <world>
       <players>{ this.players.toXml }</players>
       <countries>{ this.countries.toXml }</countries>

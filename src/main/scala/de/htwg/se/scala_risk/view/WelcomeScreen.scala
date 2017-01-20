@@ -48,7 +48,7 @@ class WelcomeScreen @Inject() (gameLogic: GameLogic) extends JFrame with ActionL
       gui.loadGame()
       gui.setVisible(true)
       this.dispose()
-    }    
+    }
   }
 
   //  val x1 = new JPanel()

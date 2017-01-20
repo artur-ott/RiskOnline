@@ -41,7 +41,7 @@ class ContinentSpec extends WordSpec {
       world.players.addPlayer("Jasmine", "RED")
       afrika.getIncludedCountries.foreach { x => x.setOwner(world.players.playerList(0)) }
       afrika.getOwner() should be(world.players.playerList(0))
-      
+
     }
   }
 
@@ -59,12 +59,11 @@ class ContinentSpec extends WordSpec {
       afrika.getOwner().getName == "Rick" should be(false)
     }
   }
-  
-  
+
   "allOwnedByOne" should {
     "return true" in {
       update()
-      
+
     }
   }
 

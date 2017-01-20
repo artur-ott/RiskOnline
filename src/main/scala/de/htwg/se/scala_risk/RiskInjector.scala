@@ -14,4 +14,3 @@ class RiskInjector extends AbstractModule with ScalaModule {
   }
 }
 
-

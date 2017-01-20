@@ -97,7 +97,6 @@ class EnterPlayers(gameLogic: GameLogic) extends JFrame with ActionListener with
         var li = scala.collection.immutable.List[String]()
 
         comboArray.foreach { x => if (x.getSelectedItem != "" && !li.contains(x.getSelectedItem)) { li = li.::(x.getSelectedItem.toString()) } }
-        li.foreach { x => println(x) }
         comboArray.foreach { x =>
           {
             val src = x.getSelectedItem.toString()
@@ -168,10 +167,10 @@ class EnterPlayers(gameLogic: GameLogic) extends JFrame with ActionListener with
     }
 
   }
-  
 
   def continue() {
     this.listenToUpdates = false
+    gameLogic.remove(this)
     this.setVisible(false)
     new GUI(gameLogic)
   }

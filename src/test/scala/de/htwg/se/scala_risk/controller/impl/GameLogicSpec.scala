@@ -179,7 +179,7 @@ class GameLogicSpec extends WordSpec {
     }
   }
 
-  "On player attacking" should { 
+  "On player attacking" should {
     "his own country troops should stay the same" in {
       world.getCountriesList(0).setOwner(world.getPlayerList(world.getCurrentPlayerIndex))
       val troops = world.getCountriesList(0).getTroops
@@ -203,7 +203,7 @@ class GameLogicSpec extends WordSpec {
     }
   }
 
-  "Get extant troops" should  {
+  "Get extant troops" should {
     "be (2,2) on the following dieces (6, 5) and (5, 5)" in {
       val troopsAtt = 3
       val troopsDef = 3
@@ -212,7 +212,7 @@ class GameLogicSpec extends WordSpec {
     }
   }
 
-  "Check conquered country" should  {
+  "Check conquered country" should {
     "extantTroopsDefender = 0 and an empty country leads to PLAYER_CONQUERED_A_CONTINENT" in {
       val pIndex = world.getCurrentPlayerIndex
       gameLogic.attackerDefenderIndex = (pIndex, pIndex)
@@ -283,17 +283,17 @@ class GameLogicSpec extends WordSpec {
   }
 
   "Drag troops" should {
-    "remain status on wrong status" in  {
+    "remain status on wrong status" in {
       gameLogic.setStatus(Statuses.PLAYER_ATTACK)
       gameLogic.dragTroops("", "", 0)
       gameLogic.getStatus should be(Statuses.PLAYER_ATTACK)
     }
-    "set attacker defender indices to (-1, -1)" in  {
+    "set attacker defender indices to (-1, -1)" in {
       gameLogic.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       gameLogic.dragTroops("", world.getCountriesList(0).getName, 0)
       gameLogic.getAttackerDefenderIndex should be(-1, -1)
     }
-    "set attacker defender indices to (0, 0)" in  {
+    "set attacker defender indices to (0, 0)" in {
       gameLogic.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       gameLogic.dragTroops(world.getCountriesList(0).getName, world.getCountriesList(0).getName, 0)
       gameLogic.getAttackerDefenderIndex should be(0, 0)
@@ -324,7 +324,7 @@ class GameLogicSpec extends WordSpec {
 
   "Current player" should {
     "have the same color as player with the same index" in {
-      gameLogic.getCurrentPlayerColor should be (world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString())
+      gameLogic.getCurrentPlayerColor should be(world.getPlayerList(world.getCurrentPlayerIndex).getColor.toString())
     }
   }
 
@@ -355,28 +355,28 @@ class GameLogicSpec extends WordSpec {
     }
   }
 
-  "Generate xml from game and load it again" should {
-    "generate the same game" in {
-      gameLogic.rolledDieces = (6::5::Nil, 5::5::Nil)
-      gameLogic.attackerDefenderIndex = (1,2)
-      gameLogic.troopsToSpread = 6
-      gameLogic.fromXml(gameLogic.toXml)
-      gameLogic.rolledDieces should be (6::5::Nil, 5::5::Nil)
-      gameLogic.attackerDefenderIndex should be (1,2)
-      gameLogic.troopsToSpread should be (6)
-    }
-  }
-  
-  "Save game and load it" should {
-    "resume in same game" in {
-      val status = gameLogic.getStatus
-      val countries = gameLogic.getCountries
-      val player = gameLogic.getCurrentPlayer
-      gameLogic.saveGame
-      gameLogic.loadGame
-      status should be (gameLogic.getStatus)
-      countries.length should be (gameLogic.getCountries.length)
-      player should be (gameLogic.getCurrentPlayer)
-    }
-  }
+  //  "Generate xml from game and load it again" should {
+  //    "generate the same game" in {
+  //      gameLogic.rolledDieces = (6 :: 5 :: Nil, 5 :: 5 :: Nil)
+  //      gameLogic.attackerDefenderIndex = (1, 2)
+  //      gameLogic.troopsToSpread = 6
+  //      gameLogic.fromXml(gameLogic.toXml)
+  //      gameLogic.rolledDieces should be(6 :: 5 :: Nil, 5 :: 5 :: Nil)
+  //      gameLogic.attackerDefenderIndex should be(1, 2)
+  //      gameLogic.troopsToSpread should be(6)
+  //    }
+  //  }
+  //
+  //  "Save game and load it" should {
+  //    "resume in same game" in {
+  //      val status = gameLogic.getStatus
+  //      val countries = gameLogic.getCountries
+  //      val player = gameLogic.getCurrentPlayer
+  //      gameLogic.saveGame
+  //      gameLogic.loadGame
+  //      status should be(gameLogic.getStatus)
+  //      countries.length should be(gameLogic.getCountries.length)
+  //      player should be(gameLogic.getCurrentPlayer)
+  //    }
+  //  }
 }

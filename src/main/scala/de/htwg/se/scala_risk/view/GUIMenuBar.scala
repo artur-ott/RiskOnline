@@ -25,11 +25,11 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   /* Create item4. */
   val item4 = new JMenuItem("Spiel laden");
   item4.addActionListener(this);
-  
+
   /* Create item3. */
   val item5 = new JMenuItem("Spiel speichern");
-  item5.addActionListener(this);  
-  
+  item5.addActionListener(this);
+
   /* Add items to menu. */
   menu.add(item4)
   menu.add(item5)

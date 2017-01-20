@@ -382,19 +382,20 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
   }
 
   def saveGame = {
-    val file: File = new File("savegame.xml")
-    val fos:FileOutputStream = new FileOutputStream(file, false)
-    val saveXML:Array[Byte] = this.toXml.toString().getBytes
+    val file: File = new File("./save/savegame.xml")
+    val fos: FileOutputStream = new FileOutputStream(file, false)
+    val saveXML: Array[Byte] = this.toXml.toString().getBytes
     fos.write(saveXML)
     fos.close()
   }
-  
+
   def loadGame = {
-    val filename = "savegame.xml"
-    this.fromXml(scala.xml.XML.loadFile(filename))
+    val filename = "./save/savegame.xml"
+    //this.fromXml(scala.xml.XML.loadFile(filename))
+    this.fromXml(scala.xml.XML.load(new java.io.InputStreamReader(new java.io.FileInputStream(filename), "UTF-8")))
   }
 
-  def toXml:scala.xml.Node = {
+  def toXml: scala.xml.Node = {
     <GameLogic>
       <status>{ this.status.toString() }</status>
       <attackerDefenderIndex>{ this.getAttackerDefenderIndexXml(this.attackerDefenderIndex) }</attackerDefenderIndex>
@@ -442,10 +443,9 @@ class GameLogic @Inject() (world: World) extends TGameLogic {
     this.world.fromXml((node \ "world")(0))
     this.notifyObservers
   }
-  
+
   def undo = {
     if (this.lastState != null) {
-      println("hi")
       val temp = this.lastState
       this.lastState = null
       this.fromXml(temp)
