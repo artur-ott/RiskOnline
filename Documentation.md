@@ -76,6 +76,7 @@ In opposition to the board game currently some restrictions apply:
 * Add more maps
 * Add different resolutions (and place buttons etc. relative to this)
 * Add button to change music
+* Add bonus troops to continent overview image
 * ...
 
 ## Notes
