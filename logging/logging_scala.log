@@ -7,3 +7,720 @@ ______________________To start the game press s________________________
 20-01-2017 01:48:02 INFO  TUI:31 - 
 _______________________________________________________________________
 
+20-01-2017 08:05:29 INFO  TUI:29 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:29 INFO  TUI:30 - 
+______________________To start the game press s________________________
+
+20-01-2017 08:05:29 INFO  TUI:31 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:31 DEBUG TUI:68 - Status after update: INITIALIZE_PLAYERS
+20-01-2017 08:05:31 INFO  TUI:204 - -----------------------------------------------------------------------
+20-01-2017 08:05:31 INFO  TUI:206 - Following colors are still available: RED, YELLOW, GREEN, BLUE, PINK, ORANGE
+20-01-2017 08:05:31 INFO  TUI:207 - Pleas enter v to start the game or a name and color which is available (name, color) to create a player:
+20-01-2017 08:05:35 DEBUG TUI:68 - Status after update: INITIALIZE_PLAYERS
+20-01-2017 08:05:35 INFO  TUI:204 - -----------------------------------------------------------------------
+20-01-2017 08:05:35 INFO  TUI:206 - Following colors are still available: RED, GREEN, BLUE, PINK, ORANGE
+20-01-2017 08:05:35 INFO  TUI:207 - Pleas enter v to start the game or a name and color which is available (name, color) to create a player:
+20-01-2017 08:05:35 DEBUG TUI:68 - Status after update: INITIALIZE_PLAYERS
+20-01-2017 08:05:35 INFO  TUI:204 - -----------------------------------------------------------------------
+20-01-2017 08:05:35 INFO  TUI:206 - Following colors are still available: RED, GREEN, BLUE, ORANGE
+20-01-2017 08:05:35 INFO  TUI:207 - Pleas enter v to start the game or a name and color which is available (name, color) to create a player:
+20-01-2017 08:05:35 DEBUG TUI:68 - Status after update: GAME_INITIALIZED
+20-01-2017 08:05:35 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:35 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - ALBERTA:                     ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - WESTSTAATEN:               dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:35 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:37 DEBUG TUI:68 - Status after update: PLAYER_SPREAD_TROOPS
+20-01-2017 08:05:37 INFO  TUI:211 - -----------------------------------------------------------------------
+20-01-2017 08:05:37 INFO  TUI:212 - Troops to spread: 3
+20-01-2017 08:05:37 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:37 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - ALBERTA:                     ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - WESTSTAATEN:               dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:37 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:37 INFO  TUI:263 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+load:  load game            save:                save game
+20-01-2017 08:05:37 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:38 DEBUG TUI:68 - Status after update: PLAYER_SPREAD_TROOPS
+20-01-2017 08:05:38 INFO  TUI:211 - -----------------------------------------------------------------------
+20-01-2017 08:05:38 INFO  TUI:212 - Troops to spread: 2
+20-01-2017 08:05:38 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALBERTA:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTSTAATEN:               dsfs                             4
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:38 INFO  TUI:263 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+load:  load game            save:                save game
+20-01-2017 08:05:38 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:38 DEBUG TUI:68 - Status after update: PLAYER_SPREAD_TROOPS
+20-01-2017 08:05:38 INFO  TUI:211 - -----------------------------------------------------------------------
+20-01-2017 08:05:38 INFO  TUI:212 - Troops to spread: 1
+20-01-2017 08:05:38 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALBERTA:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTSTAATEN:               dsfs                             5
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:38 INFO  TUI:263 - q:     quit           country, x:                spread
+n:     new game             show:                show candidates
+load:  load game            save:                save game
+20-01-2017 08:05:38 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:38 DEBUG TUI:68 - Status after update: PLAYER_ATTACK
+20-01-2017 08:05:38 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ALBERTA:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTSTAATEN:               dsfs                             6
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:38 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:38 INFO  TUI:264 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+load:  load game            save:                save game
+20-01-2017 08:05:38 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:39 DEBUG TUI:68 - Status after update: DIECES_ROLLED
+20-01-2017 08:05:39 INFO  TUI:183 - -----------------------------------------------------------------------
+20-01-2017 08:05:39 INFO  TUI:190 - dsfs    ss
+20-01-2017 08:05:39 INFO  TUI:199 - 6     5
+20-01-2017 08:05:39 INFO  TUI:199 - 4     3
+20-01-2017 08:05:39 INFO  TUI:199 - 4     -
+20-01-2017 08:05:39 DEBUG TUI:68 - Status after update: PLAYER_ATTACK
+20-01-2017 08:05:39 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:39 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - ALBERTA:                     ss                             1
+
+20-01-2017 08:05:39 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - WESTSTAATEN:               dsfs                             6
+
+20-01-2017 08:05:39 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:39 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:39 INFO  TUI:264 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+load:  load game            save:                save game
+20-01-2017 08:05:39 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:40 DEBUG TUI:68 - Status after update: DIECES_ROLLED
+20-01-2017 08:05:40 INFO  TUI:183 - -----------------------------------------------------------------------
+20-01-2017 08:05:40 INFO  TUI:190 - dsfs    ss
+20-01-2017 08:05:40 INFO  TUI:199 - 6     1
+20-01-2017 08:05:40 INFO  TUI:199 - 5     -
+20-01-2017 08:05:40 INFO  TUI:199 - 2     -
+20-01-2017 08:05:40 DEBUG TUI:68 - Status after update: PLAYER_CONQUERED_A_COUNTRY
+20-01-2017 08:05:40 INFO  TUI:172 - -----------------------------------------------------------------------
+20-01-2017 08:05:40 INFO  TUI:173 - You have 5 troops to move.
+20-01-2017 08:05:40 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:40 INFO  TUI:266 - q:     quit                  x:                move
+n:     new game
+load:  load game            save:                save game
+20-01-2017 08:05:40 INFO  TUI:271 - _______________________________________________________________________
+
+20-01-2017 08:05:42 DEBUG TUI:68 - Status after update: PLAYER_ATTACK
+20-01-2017 08:05:42 INFO  TUI:218 - 
+[dsfs]
+
+20-01-2017 08:05:42 INFO  TUI:235 - ALASKA:                      ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - NORDWEST-TERRITORIEN:        ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - ALBERTA:                   dsfs                             1
+
+20-01-2017 08:05:42 INFO  TUI:235 - ONTARIO:                   dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - GROENLAND:                   ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - OSTKANADA:                   ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - WESTSTAATEN:               dsfs                             5
+
+20-01-2017 08:05:42 INFO  TUI:235 - OSTSTAATEN:                dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - MITTELAMERIKA:               ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - VENEZUELA:                 dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - PERU:                        ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - ARGENTINIEN:               dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - BRASILIEN:                 dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - NORDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - ZENTRALAFRIKA:             dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - SUEDAFRIKA:                  ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - MADAGASKAR:                dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - OSTAFRIKA:                   ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - AEGYPTEN:                    ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - SUEDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - WESTEUROPA:                dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - NORDEUROPA:                dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - GROSSBRITANNIEN:             ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - ISLAND:                      ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - SKANDINAVIEN:              dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - RUSSLAND:                    ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - URAL:                      dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - SIBIRIEN:                    ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - JAKUTIEN:                    ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - IRKUTSK:                     ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - KAMTSCHATKA:               dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - JAPAN:                     dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - MONGOLEI:                  dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - CHINA:                     dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - AFGHANISTAN:               dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - MITTLERER-OSTEN:           dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - INDIEN:                      ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - SUEDOSTASIEN:                ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - INDONESIEN:                  ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - NEUGUINEA:                   ss                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - OSTAUSTRALIEN:             dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:235 - WESTAUSTRALIEN:            dsfs                             3
+
+20-01-2017 08:05:42 INFO  TUI:260 - 
+_______________________________________________________________________
+
+20-01-2017 08:05:42 INFO  TUI:264 - q:     quit           country, country:                attack
+n:     new game                country:                show candidates
+e      end turn
+load:  load game            save:                save game
+20-01-2017 08:05:42 INFO  TUI:271 - _______________________________________________________________________
+
