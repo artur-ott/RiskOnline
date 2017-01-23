@@ -165,7 +165,6 @@ class World extends TWorld {
       madagaskar, ostafrika, aegypten, suedeuropa, westeuropa, nordeuropa, grossbritannien, island, skandinavien, russland, ural,
       sibirien, jakutien, irkutsk, kamtschatka, japan, mongolei, china, afghanistan, mittlererosten, indien, suedostasien,
       indonesien, neuguinea, ostaustralien, westaustralien)
-    val test: ArrayBuffer[TCountry] = ArrayBuffer[TCountry](alaska, nordwestterritorien, alberta, ontario, groenland, ostkanada)
     def getColor(name: String): Integer = {
       var country = null.asInstanceOf[TCountry]
       listCountries.foreach { x => if (x.getName.toUpperCase().equals(name.toUpperCase())) { country = x } }

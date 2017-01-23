@@ -14,11 +14,10 @@ import scala.io.Source
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class GameLogic @Inject() (world: World) extends TGameLogic {
+//@Singleton
+class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
 
   private[this] var status: Statuses.Value = Statuses.CREATE_GAME
-
   private[this] val INIT_TROOPS: Int = 3
 
   private[impl] var attackerDefenderIndex: (Int, Int) = (-1, -1)

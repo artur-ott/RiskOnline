@@ -63,12 +63,12 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
-    1238, 810
+    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
   /* Map to be displayed as legend */
   val map_legend = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
-    1238, 810
+    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
 
   /* Reference map (BufferedImage) with different color for each country to determine
@@ -76,7 +76,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
    */
   val map_ref = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
-    1238, 810
+    1238, 810 // Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
   /* Map as a Label (Component) */
   val map = getMap()
@@ -140,8 +140,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
 
   /* Build the frame */
   this.setTitle("SCALA_RISK")
-  this.setPreferredSize(new Dimension(1238, 950))
-  this.setResizable(false)
+  this.setResizable(true)
   this.setJMenuBar(new GUIMenuBar(this))
 
   val x0 = new JPanel()
@@ -162,8 +161,11 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   x0.add(x1, BorderLayout.NORTH)
   x0.add(x2, BorderLayout.CENTER)
   x0.setPreferredSize(new Dimension(1238, 950))
+  //this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+  //this.setUndecorated(true)
   this.setContentPane(x0)
   this.pack()
+  
   /* Position in the center of the screen */
   this.setLocationRelativeTo(null)
   this.setVisible(true)
@@ -197,7 +199,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
         }
       })
     }
-    map.setPreferredSize(new Dimension(1238, 810))
+    //map.setPreferredSize(new Dimension(1238, 810))
     return map
   }
 

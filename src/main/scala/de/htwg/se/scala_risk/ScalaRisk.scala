@@ -7,12 +7,18 @@ import java.io.File
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.Clip
 import net.codingwell.scalaguice.InjectorExtensions._
+import de.htwg.se.scala_risk.controller.impl.{ GameLogic => ImplGameLogic }
 
 object ScalaRisk {
   def main(args: Array[String]): Unit = {
-    val injector = Guice.createInjector(new RiskInjector)
-    val tui: TUI = injector.instance[TUI]
-    val gui: WelcomeScreen = injector.instance[WelcomeScreen]
+    //val injector = Guice.createInjector(new RiskInjector)
+    //val tui: TUI = injector.instance[TUI]
+    //val gui: WelcomeScreen = injector.instance[WelcomeScreen]
+    val worldFactory = new WorldFactory()
+    val world = worldFactory.getWorld()
+    val gameLogic = new ImplGameLogic(world)
+    val tui : TUI = new TUI(gameLogic)
+    val gui : WelcomeScreen = new WelcomeScreen(gameLogic)
     gui.setLocationRelativeTo(null)
     gui.setVisible(true)
 
