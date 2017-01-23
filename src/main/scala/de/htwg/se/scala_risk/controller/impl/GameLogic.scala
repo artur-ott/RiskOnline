@@ -304,7 +304,12 @@ class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
         this.clearAttack
         this.setErrorStatus(Statuses.COUNTRY_NOT_FOUND)
       } else {
-        this.moveTroops(troops)
+        if (!this.getNeighbours(countryFrom).map { x => x.getName.toUpperCase() }.contains(countryFrom)) {
+          this.setErrorStatus(Statuses.NOT_A_NEIGHBORING_COUNTRY)
+        } else {
+          this.moveTroops(troops)
+        }
+        
       }
     }
   }

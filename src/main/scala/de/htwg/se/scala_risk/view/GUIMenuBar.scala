@@ -26,9 +26,13 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   val item4 = new JMenuItem("Spiel laden");
   item4.addActionListener(this);
 
-  /* Create item3. */
+  /* Create item5. */
   val item5 = new JMenuItem("Spiel speichern");
   item5.addActionListener(this);
+  
+  /* Create item6 */
+  val item6 = new JMenuItem("Vollbild");
+  item6.addActionListener(this);
 
   /* Add items to menu. */
   menu.add(item4)
@@ -37,7 +41,8 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   menu.add(item1)
   menu.add(item3)
   menu.addSeparator();
-  menu.add(item2);
+  menu.add(item2)
+  menu.add(item6)
 
   this.add(menu)
 
@@ -70,6 +75,18 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
       parent.running = true
       parent.countryArray.foreach { x => x.setVisible(true) }
       parent.map.setIcon(new ImageIcon(parent.map_grey))
+    }
+    
+    if (e.getSource == item6) {
+      val newFrame = new JFrame()
+      newFrame.add(parent.getContentPane)
+      newFrame.setJMenuBar(this)
+      newFrame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+      newFrame.setUndecorated(true)
+      newFrame.setVisible(true)
+      
+      parent.dispose()
+
     }
   }
 }

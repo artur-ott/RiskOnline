@@ -63,12 +63,23 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   /* Plane map (grey) */
   val map_grey = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
-    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100 // 1238, 810 
   )
+  
+  val map_grey_small = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
+    1238, 810 
+  )  
+  
   /* Map to be displayed as legend */
   val map_legend = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
-    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+  )
+  
+  val map_legend_small = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_legend.png")),
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
 
   /* Reference map (BufferedImage) with different color for each country to determine
@@ -76,7 +87,12 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
    */
   val map_ref = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
-    1238, 810 // Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+  )
+  
+  val map_ref_small = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_ref.png")),
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
   /* Map as a Label (Component) */
   val map = getMap()
@@ -161,8 +177,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   x0.add(x1, BorderLayout.NORTH)
   x0.add(x2, BorderLayout.CENTER)
   x0.setPreferredSize(new Dimension(1238, 950))
-  //this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
-  //this.setUndecorated(true)
+//  this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+//  this.setUndecorated(true)
   this.setContentPane(x0)
   this.pack()
   
@@ -491,7 +507,8 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
     }
 
     if (country != null && actionCountries.length == 2) {
-      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
+      this.selectedCountry2.setText(actionCountries(1)._1)
+      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {       
         val t = scala.Array.range(0, actionCountries(0)._3)
         val troopsToMove = t.map { x => x.asInstanceOf[Object] }
 
@@ -500,7 +517,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
           null, troopsToMove,
           "0")
 
-        this.selectedCountry2.setText(actionCountries(1)._1)
+        
         var choiceAsInt = 0
         if (choice != null) {
           choiceAsInt = Integer.valueOf(choice.toString())
