@@ -70,12 +70,13 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
   /* Plane map (grey) */
   val map_grey_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
-    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
-  )
-  /* Map to be displayed as legend */
+    1238, 810 
+  )  
+  
+  /* Map to be displayed as legend */ 
   val map_legend_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
-    1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+    1238, 810
   )
 
   /* Reference map (BufferedImage) with different color for each country to determine
@@ -83,7 +84,7 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
    */
   val map_ref_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
-    1238, 810 // Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+    1238, 810
   )
   
   /* Big maps */
@@ -192,6 +193,7 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
 
   x0.add(x1, BorderLayout.NORTH)
   x0.add(x2, BorderLayout.CENTER)
+//<<<<<<< HEAD
   
   if (fullscreen) {
     this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
@@ -200,6 +202,11 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
   x0.setPreferredSize(new Dimension(1238, 950)) 
   }
 
+//=======
+//  x0.setPreferredSize(new Dimension(1238, 950))
+////  this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+////  this.setUndecorated(true)
+//>>>>>>> c37e9736bdd16b49a9589d329ce6a23d85bd6b84
   this.setContentPane(x0)
   this.pack()
   
@@ -528,7 +535,8 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
     }
 
     if (country != null && actionCountries.length == 2) {
-      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {
+      this.selectedCountry2.setText(actionCountries(1)._1)
+      if (actionCountries(0)._2 == gameLogic.getCurrentPlayer._1) {       
         val t = scala.Array.range(0, actionCountries(0)._3)
         val troopsToMove = t.map { x => x.asInstanceOf[Object] }
 
@@ -537,7 +545,7 @@ class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with Action
           null, troopsToMove,
           "0")
 
-        this.selectedCountry2.setText(actionCountries(1)._1)
+        
         var choiceAsInt = 0
         if (choice != null) {
           choiceAsInt = Integer.valueOf(choice.toString())
