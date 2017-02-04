@@ -44,7 +44,7 @@ class WelcomeScreen /*@Inject()*/ (gameLogic: GameLogic) extends JFrame with Act
     }
     if (e.getSource == loadButton) {
       gameLogic.remove(this)
-      val gui = new GUI(gameLogic)
+      val gui = new GUI(gameLogic, false)
       gui.loadGame()
       gui.setVisible(true)
       this.dispose()

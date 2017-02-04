@@ -21,7 +21,9 @@ import de.htwg.se.scala_risk.util.Statuses
 object GUIJava {
 }
 
-class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListener {
+class GUI(gL: GameLogic, fsc: Boolean) extends JFrame with TObserver with ActionListener {
+  val gameLogic = gL
+  val fullscreen = fsc
   /* Register the GUI as a subscriber in the gameLogic.
    * As something changes in the gameLogic, the GUI
    * will be notified.
@@ -45,11 +47,12 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   val troopsToSpreadLabel = new JLabel("", SwingConstants.CENTER)
   troopsToSpreadLabel.setVisible(false)
   val endTurnButton = new JButton("Zug beenden")
+  endTurnButton.addActionListener(this)
   val undoButton = new JButton("Rückgängig")
   undoButton.addActionListener(this)
   undoButton.setBounds(1080, 15, 120, 30)
-
   undoButton.addActionListener(this)
+  
   val leftGrid = new JPanel() {
     this.setLayout(new GridLayout(1, 5))
     this.add(currentPlayer)
@@ -58,15 +61,19 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
     this.add(selectedCountry1)
     this.add(selectedCountry2)
   }
-  endTurnButton.addActionListener(this)
-
+  
+  var map_grey = map_grey_small
+  var map_ref = map_ref_small
+  var map_legend = map_legend_small
+  
+  /* Small maps */
   /* Plane map (grey) */
-  val map_grey = Scale.getScaledImage(
+  val map_grey_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
     1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
   /* Map to be displayed as legend */
-  val map_legend = Scale.getScaledImage(
+  val map_legend_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_legend.png")),
     1238, 810 //Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
@@ -74,10 +81,35 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
   /* Reference map (BufferedImage) with different color for each country to determine
    * the country the player selected.
    */
-  val map_ref = Scale.getScaledImage(
+  val map_ref_small = Scale.getScaledImage(
     ImageIO.read(getClass().getResource("/images/map_ref.png")),
     1238, 810 // Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
   )
+  
+  /* Big maps */
+  val map_grey_big = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_grey.jpg")),
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+  )
+  val map_legend_big = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_legend.png")),
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+  )
+  val map_ref_big = Scale.getScaledImage(
+    ImageIO.read(getClass().getResource("/images/map_ref.png")),
+    Toolkit.getDefaultToolkit.getScreenSize.getWidth.toInt, Toolkit.getDefaultToolkit.getScreenSize.getHeight.toInt - 100
+  )
+  
+  if (fullscreen) {
+    map_grey = map_grey_big
+    map_ref = map_ref_big
+    map_legend = map_legend_big
+  } else {
+    map_grey = map_grey_small
+    map_ref = map_ref_small
+    map_legend = map_legend_small    
+  }
+  
   /* Map as a Label (Component) */
   val map = getMap()
 
@@ -140,7 +172,7 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
 
   /* Build the frame */
   this.setTitle("SCALA_RISK")
-  this.setResizable(true)
+  this.setResizable(false)
   this.setJMenuBar(new GUIMenuBar(this))
 
   val x0 = new JPanel()
@@ -160,9 +192,14 @@ class GUI(gameLogic: GameLogic) extends JFrame with TObserver with ActionListene
 
   x0.add(x1, BorderLayout.NORTH)
   x0.add(x2, BorderLayout.CENTER)
-  x0.setPreferredSize(new Dimension(1238, 950))
-  //this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
-  //this.setUndecorated(true)
+  
+  if (fullscreen) {
+    this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+    this.setUndecorated(true)    
+  } else {
+  x0.setPreferredSize(new Dimension(1238, 950)) 
+  }
+
   this.setContentPane(x0)
   this.pack()
   

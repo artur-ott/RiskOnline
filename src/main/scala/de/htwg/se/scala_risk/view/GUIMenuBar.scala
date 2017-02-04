@@ -26,9 +26,17 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   val item4 = new JMenuItem("Spiel laden");
   item4.addActionListener(this);
 
-  /* Create item3. */
+  /* Create item5. */
   val item5 = new JMenuItem("Spiel speichern");
   item5.addActionListener(this);
+  
+  /* Create item6 */
+  val item6 = new JCheckBoxMenuItem("Vollbild")
+  if (parent.fullscreen)
+    item6.setSelected(true)
+  else
+    item6.setSelected(false)
+  item6.addActionListener(this)
 
   /* Add items to menu. */
   menu.add(item4)
@@ -38,6 +46,7 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
   menu.add(item3)
   menu.addSeparator();
   menu.add(item2);
+  menu.add(item6)
 
   this.add(menu)
 
@@ -71,5 +80,20 @@ class GUIMenuBar(parent: GUI) extends JMenuBar with ActionListener {
       parent.countryArray.foreach { x => x.setVisible(true) }
       parent.map.setIcon(new ImageIcon(parent.map_grey))
     }
+    
+    if (e.getSource == item6) {
+      val checkBox = e.getSource.asInstanceOf[JCheckBoxMenuItem]
+      var gui = null.asInstanceOf[GUI]
+      if (checkBox.isSelected()) {
+        gui = new GUI(parent.gameLogic, true)
+      } else {
+        gui = new GUI(parent.gameLogic, false)
+      }
+      gui.update()
+      parent.gameLogic.remove(parent)
+      parent.dispose()
+
+    }
   }
+
 }

@@ -172,7 +172,7 @@ class EnterPlayers(gameLogic: GameLogic) extends JFrame with ActionListener with
     this.listenToUpdates = false
     gameLogic.remove(this)
     this.setVisible(false)
-    new GUI(gameLogic)
+    new GUI(gameLogic, false)
   }
 
 }

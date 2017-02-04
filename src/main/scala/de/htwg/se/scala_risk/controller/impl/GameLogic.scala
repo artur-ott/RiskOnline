@@ -1,7 +1,6 @@
 package de.htwg.se.scala_risk.controller.impl
 
 import de.htwg.se.scala_risk.util.Statuses
-
 import de.htwg.se.scala_risk.controller.{ GameLogic => TGameLogic }
 import de.htwg.se.scala_risk.model.Continent
 import de.htwg.se.scala_risk.model.Country
@@ -52,7 +51,9 @@ class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
   def logic = {
     this.status match {
       case Statuses.GAME_INITIALIZED =>
-        checkContinents(); this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
+        checkContinents();
+        this.troopsToSpread = world.getPlayerList(world.getCurrentPlayerIndex).getTroops();
+        this.setStatus(Statuses.PLAYER_SPREAD_TROOPS)
       case Statuses.PLAYER_SPREAD_TROOPS => this.setStatus(Statuses.PLAYER_ATTACK)
       case Statuses.PLAYER_ATTACK => this.setStatus(Statuses.PLAYER_MOVE_TROOPS)
       case Statuses.PLAYER_MOVE_TROOPS => {
@@ -152,7 +153,7 @@ class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
   def getAttackerDefenderIndex: (Int, Int) = this.attackerDefenderIndex
 
   /* Player operations */
-  var troopsToSpread = 3
+  var troopsToSpread = 3//world.getPlayerList(world.getCurrentPlayerIndex).getTroops()
 
   def getAvailableColors: List[String] = world.getPlayerColorList.map { x => x.toString() }
 
@@ -372,7 +373,7 @@ class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
     playerList.foreach { x => x.setTroops(this.INIT_TROOPS); continentList.foreach { c => if (c.getOwner() == x) { x.setTroops(x.getTroops() + c.getBonusTroops()) } } }
 
   }
-
+  
   def getContinentOwner(countryName: String): String = {
     val continentList = world.getContinentList
     var continentName = ""
