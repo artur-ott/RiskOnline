@@ -1,17 +1,14 @@
 package de.htwg.se.scala_risk.controller.impl
 
 import de.htwg.se.scala_risk.util.Statuses
-import de.htwg.se.scala_risk.controller.{ GameLogic => TGameLogic }
-import de.htwg.se.scala_risk.model.Continent
+import de.htwg.se.scala_risk.controller.{GameLogic => TGameLogic}
 import de.htwg.se.scala_risk.model.Country
-import de.htwg.se.scala_risk.model.Player
 import de.htwg.se.scala_risk.model.World
 import de.htwg.se.scala_risk.util.XML
 import java.io.File
 import java.io.FileOutputStream
-import scala.io.Source
-import javax.inject.Inject
-import javax.inject.Singleton
+
+import scala.collection.mutable.ArrayBuffer
 
 //@Singleton
 class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
@@ -73,6 +70,39 @@ class GameLogic /*@Inject()*/ (world: World) extends TGameLogic {
       case _ =>
     }
   }
+
+  def prepareData(): String = {
+
+    val countries : ArrayBuffer[Country] = world.getCountriesList
+    var sb : StringBuilder = new StringBuilder
+
+    val newline = "\n"
+    sb.append("{" + newline)
+
+    for (i <- 0 until countries.length){
+      sb.append("\t\"" + countries(i).getName + "\"{")
+      sb.append(newline + "\t\t")
+      sb.append("color: [" + countries(i).getRefColor() + "]," + newline + "\t\t")
+      sb.append("troops: " + countries(i).getTroops + newline)
+      sb.append("\t}," + newline)
+    }
+
+    sb = removeLastChar(sb)
+
+    sb.append("}")
+
+    sb.toString()
+
+  }
+
+
+  def removeLastChar (stringBuilder: StringBuilder) : StringBuilder = {
+    val lastIndex = stringBuilder.lastIndexOf(",")
+    val splits = stringBuilder.splitAt(lastIndex)
+    val inputWithoutChar = splits._1.append(splits._2.drop(1))
+    inputWithoutChar
+  }
+
 
   /*
    * TODO: implement check game
